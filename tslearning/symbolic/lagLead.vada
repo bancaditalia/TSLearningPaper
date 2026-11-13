@@ -1,0 +1,103 @@
+@input("flow").
+@bind("flow","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","","${X}").
+@mapping("flow",0,"var3","string").
+@mapping("flow",1,"var3","int").
+@mapping("flow",2,"var3","double").
+@mapping("flow",3,"var3","int").
+@mapping("flow",4,"var3","int").
+@temporalMappings("flow",3,4,-1,-1,"[_,_)").
+
+lagValue(1)@[0,infty].
+lagValue(2)@[0,infty].
+lagValue(3)@[0,infty].
+lagValue(4)@[0,infty].
+lagValue(5)@[0,infty].
+
+
+flowLag(X,K,V,Lag):- <->[1,1] flow(X,K,V), Lag=1.
+flowLag(X,K,V,Lag):- <->[2,2] flow(X,K,V), Lag=2.
+flowLag(X,K,V,Lag):- <->[3,3] flow(X,K,V), Lag=3.
+flowLag(X,K,V,Lag):- <->[4,4] flow(X,K,V), Lag=4.
+flowLag(X,K,V,Lag):- <->[5,5] flow(X,K,V), Lag=5.
+
+
+%% SIGN AGREEMENT
+
+signLag(X,Y,S, Lag):- flow(X,_,V1), flowLag(Y,_,V2,Lag), S = V1 * V2. 
+
+
+
+positiveCorrelationLag(X,Y,S,Lag):- /\50 no_date signLag(X,Y,S,Lag), S>0.0.
+positiveCountLag(X,Y,Lag,Count):- positiveCorrelationLag(X,Y,S,Lag), Count = mcount(S).
+positiveMaxLag(X,Y,Lag,Max):- positiveCountLag(X, Y, Lag, C), Max = max(C).
+
+positivePctLag(X,Y,Pct,Lag):- maxSign(X,TS), positiveMaxLag(X,Y,Lag,Max), Pct = (Max * 100.0) / (TS).
+
+totalSign(X, TS):- /\50 no_date flow(X,_,V), TS = mcount(V).
+maxSign(X, MS):- totalSign(X, TS), MS = max(TS).
+
+
+%% MAGNITUDE AGREEMENT
+
+flowF(X,V):- flow(X,K,V).
+flowLagF(X,V,Lag):- flowLag(X,K,V,Lag).
+
+flowShift(X,V):- <->[1,1] flow(X,K,V).
+flowLagShift(X,V,Lag):- <->[1,1] flowLag(X,K,V,Lag).
+
+
+magnitudeConsistentLag(X,Y,K,Lag):- flowF(X,V1), flowShift(X,V2), flowLagF(Y,V3,Lag), flowLagShift(Y,V4,Lag), lagValue(Lag), V1>V2, V3>V4, K = V1+"-"+V2+"-"+V3+"-"+V4.
+
+magnitudeConsistentLag(X,Y,K,Lag):- flowF(X,V1), flowShift(X,V2), flowLagF(Y,V3,Lag), flowLagShift(Y,V4,Lag), lagValue(Lag), V1<V2, V3<V4, K = V1+"-"+V2+"-"+V3+"-"+V4.
+
+onlyMagnitudeConsistencyCountLag(X,Y,Lag,Count):- /\50 no_date magnitudeConsistentLag(X,Y,K,Lag),Count = mcount(K).
+onlyMagnitudeConsistencyMaxLag(X,Y, Lag, Max):- onlyMagnitudeConsistencyCountLag(X,Y, Lag, Count), Max = max(Count).
+onlyMagnitudeConsistencyPctLag(X,Y,P,Lag):- onlyMagnitudeConsistencyMaxLag(X,Y, Lag, Max), maxSign(X,TS), P = (Max * 100.0) / TS.
+
+
+
+%% SIGN AND MAGNITUDE
+
+
+isSameSignMagnitudeConsistentLag(X,Y,K,Lag):- magnitudeConsistentLag(X,Y,K,Lag), signLag(X,Y,S,Lag), S > 0.0.
+
+isDiffSignMagnitudeConsistentLag(X,Y,K,Lag):- magnitudeConsistentLag(X,Y,K,Lag), signLag(X,Y,S,Lag), S < 0.0.
+
+
+magnitudeSameSignConsistencyCountLag(X,Y,Lag,Count):- /\50 no_date isSameSignMagnitudeConsistentLag(X,Y,K,Lag),Count = mcount(K).
+magnitudeSameSignConsistencyMaxLag(X,Y, Lag, Max):- magnitudeSameSignConsistencyCountLag(X,Y, Lag, Count), Max = max(Count).
+magnitudeSameSignConsistencyPctLag(X,Y,Lag,P):- magnitudeSameSignConsistencyMaxLag(X,Y, Lag, Max), maxSign(X,TS), P = (Max * 100.0) / TS.
+
+
+magnitudeDiffSignConsistencyCountLag(X,Y,Lag,Count):- /\50 no_date isDiffSignMagnitudeConsistentLag(X,Y,K,Lag),Count = mcount(K).
+magnitudeDiffSignConsistencyMaxLag(X,Y, Lag, Max):- magnitudeDiffSignConsistencyCountLag(X,Y, Count,Lag), Max = max(Count).
+magnitudeDiffSignConsistencyPctLag(X,Y,Lag,P):- magnitudeDiffSignConsistencyMaxLag(X,Y, Lag, Max), maxSign(X, TS), P = (Max * 100.0) / TS.
+
+
+%isLaggedPositiveCorrelation(X1,X2, 3):- positivePercentage(X1,X2,P), P > 50.0.
+%isLaggedNegativeCorrelation(X1,X2, 3):- positivePercentage(X1,X2,P), P < 50.0.
+
+leadsPositively(X,Y,Lag):- magnitudeSameSignConsistencyPctLag(X,Y,Lag,P), P > 50.0.
+leadsNegatively(X,Y,Lag):- magnitudeDiffSignConsistencyPctLag(X,Y,Lag,P), P > 50.0.
+
+
+%@output("positiveCorrelationLag").
+%@output("positiveCountLag").
+%@output("positiveMaxLag").
+@output("positivePctLag").
+
+@output("magnitudeConsistentLag").
+
+@output("onlyMagnitudeConsistencyPctLag").
+
+@output("magnitudeDiffSignConsistencyPctLag").
+@output("leadsPositively").
+@output("leadsNegatively").
+
+
+@output("maxSign").
+
+%@output("flowLag").
+
+@timeGranularity("no_date").
+@temporalType("int").

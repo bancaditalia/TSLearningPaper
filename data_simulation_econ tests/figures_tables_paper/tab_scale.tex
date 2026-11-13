@@ -1,0 +1,26 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\caption{Daily co-movement versus window trends}
+\label{tab:tab_scale}
+\begin{tabular}{llrrr}
+\toprule
+Pair & Daily label & Same trend & Opposite trend & No common trend \\
+\midrule
+S\&P 500 – Bond & pos & 37\% & 12\% & 51\% \\
+ & no & 26\% & 20\% & 54\% \\
+ & neg & 19\% & 29\% & 53\% \\
+S\&P 500 – Gold & pos & 40\% & 22\% & 38\% \\
+ & no & 30\% & 31\% & 38\% \\
+ & neg & 29\% & 26\% & 44\% \\
+S\&P 500 – Bitcoin & pos & 56\% & 19\% & 25\% \\
+ & no & 51\% & 22\% & 26\% \\
+ & neg & 45\% & 19\% & 36\% \\
+Gold – Bond & pos & 36\% & 14\% & 50\% \\
+ & no & 27\% & 20\% & 53\% \\
+ & neg & 24\% & 18\% & 58\% \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\parbox{\linewidth}{\footnotesize Rows: correlation regime of the pair on a 50-day window (deadband labels: positive if S $>$ 10, negative if S $<$ $-$10, none otherwise). Columns: share of those windows in which the two series trend in the same direction, in opposite directions, or have no common trend. A series trends up (down) when the sum of its daily log returns over the window exceeds 0.02 (falls below $-$0.02). Rows sum to 100\%.}
+\end{table}

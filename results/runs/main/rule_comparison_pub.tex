@@ -1,0 +1,31 @@
+% run 'main': train 2015-01-01..2021-12-31, test 2022-01-01..2024-12-31, window 50, real-pair stride 1
+\begin{figure}[t]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llllrrrrrll}
+\toprule
+Proposer & Pair & Rule & Constants & Test & Base & Lift & CI & n & Verdict & About pair \\
+\midrule
+template & S\&P 500 -- Gold & T2 contagion & w=1 & 0.66 & 0.22 & +0.446 & [0.212, 0.782] & 134 & significant & yes \\
+template & S\&P 500 -- Gold & T4 leads under stress & w=1, k=5 & 0.40 & 0.28 & +0.115 & [-0.285, 0.506] & 238 & positive lift & yes \\
+template & S\&P 500 -- Gold & T7 macro conditioned & w=1 & 0.32 & 0.22 & +0.099 & [-0.169, 0.589] & 369 & positive lift & yes \\
+template & S\&P 500 -- Gold & T3b decoupled\_bw & w=1 & 0.33 & 0.31 & +0.024 & [-0.177, 0.267] & 543 & negligible & yes \\
+LLM llama3.1 & S\&P 500 -- Gold & L25 & $\diamondplus_{[10,20]}$ & 0.74 & 0.75 & -0.012 & [-0.156, 0.177] & 714 & negligible & yes \\
+LLM llama3.1 & S\&P 500 -- Gold & L39 & $\diamondplus_{[5,20]}$ & 0.96 & 0.98 & -0.013 & [-0.016, 0.024] & 161 & near-vacuous & yes \\
+template & S\&P 500 -- Gold & T1b safe haven\_bw & -- & -- & -- & not fitted & -- & -- & not fitted & -- \\
+template & S\&P 500 -- Gold & T5 hedge horizon & d=37 & -- & -- & ineligible & -- & -- & ineligible & yes \\
+template & S\&P 500 -- Gold & T6 regime reversal & -- & -- & -- & not fitted & -- & -- & not fitted & -- \\
+LLM claude-sonnet-5-5 & S\&P 500 -- Gold & L4 & $\diamondplus_{[0,15]}$ & -- & -- & ineligible & -- & -- & ineligible & yes \\
+LLM claude-sonnet-5-5 & S\&P 500 -- Gold & L8 & $\diamondplus_{[0,20]}$ & -- & -- & ineligible & -- & -- & ineligible & yes \\
+LLM claude-sonnet-5-5 & S\&P 500 -- Gold & L10 & $\diamondplus_{[0,60]}$ & -- & -- & ineligible & -- & -- & ineligible & yes \\
+LLM claude-sonnet-5-5 & S\&P 500 -- Gold & L11 & $\diamondplus_{[0,60]}$ & -- & -- & ineligible & -- & -- & ineligible & yes \\
+LLM claude-sonnet-5-5 & S\&P 500 -- Gold & L14 & $\diamondplus_{[0,30]}$ & -- & -- & ineligible & -- & -- & ineligible & yes \\
+LLM llama3.1 & S\&P 500 -- Gold & L30 & $\diamondplus_{[0,10]}$, k=1 & -- & -- & ineligible & -- & -- & ineligible & yes \\
+LLM llama3.1 & S\&P 500 -- Gold & L35 & $\diamondplus_{[0,20]}$ & -- & -- & ineligible & -- & -- & ineligible & yes \\
+LLM llama3.1 & S\&P 500 -- Gold & L36 & $\diamondplus_{[0,20]}$ & -- & -- & ineligible & -- & -- & ineligible & yes \\
+\bottomrule
+\end{tabular}
+}
+\caption{\small{Template and LLM rules, fitted on 2015--2021, scored on 2022--2024 by the same code. LLM: per model, the top 5 by \emph{train} lift of 40 distinct rules (53 proposals, 10 runs). Listed last: \emph{not fitted} (no constants on 2015--2021), \emph{ineligible} (condition or conclusion never holds on 2022--2024).}}
+\label{fig:rule-comparison-pub}
+\end{figure}

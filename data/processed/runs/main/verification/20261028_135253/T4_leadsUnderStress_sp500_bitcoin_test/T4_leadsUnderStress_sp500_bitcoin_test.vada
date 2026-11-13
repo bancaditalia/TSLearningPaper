@@ -1,0 +1,39 @@
+%% ======== EDB: derived predicate facts, real timeline ======== %%
+
+@input("highVol").
+@bind("highVol","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","edb_highVol.csv").
+@mapping("highVol",0,"X","string").
+@mapping("highVol",1,"Start","int").
+@mapping("highVol",2,"End","int").
+@temporalMappings("highVol",1,2,-1,-1,"[_,_)").
+
+@input("leadsPositively").
+@bind("leadsPositively","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","edb_leadsPositively.csv").
+@mapping("leadsPositively",0,"X","string").
+@mapping("leadsPositively",1,"Y","string").
+@mapping("leadsPositively",2,"Lag","int").
+@mapping("leadsPositively",3,"Start","int").
+@mapping("leadsPositively",4,"End","int").
+@temporalMappings("leadsPositively",3,4,-1,-1,"[_,_)").
+
+%% ======== MINED RULE UNDER VERIFICATION ======== %%
+% template : T4_leadsUnderStress
+% pair     : sp500_bitcoin
+% constants: {'w': 1, 'k': 1}
+% fitted on: 2015-01-01..2021-12-31
+leadsUnderStress(X,Y) :- highVol(X), <+>[0,1] leadsPositively(X,Y,1).
+
+@output("leadsUnderStress").
+@bind("leadsUnderStress","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","leadsUnderStress_${I}.csv").
+@mapping("leadsUnderStress",0,"X","string").
+@mapping("leadsUnderStress",1,"Y","string").
+@mapping("leadsUnderStress",2,"Start","int").
+@mapping("leadsUnderStress",3,"End","int").
+@temporalMappings("leadsUnderStress",2,3,-1,-1,"[_,_]").
+
+%% ======== ANNOTATIONS ======== %%
+
+@timeGranularity("no_date").
+@temporalType("int").
+
+@library("math:","math").

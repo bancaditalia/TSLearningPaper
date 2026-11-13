@@ -1,0 +1,7 @@
+X,Y,Start,End
+sp500_synth_30,ust10z_synth_30,1500,1550
+sp500_synth_32,ust10z_synth_32,1600,1650
+sp500_synth_34,ust10z_synth_34,1700,1750
+sp500_synth_35,ust10z_synth_35,1750,1800
+sp500_synth_41,ust10z_synth_41,2050,2100
+sp500_synth_47,ust10z_synth_47,2350,2400

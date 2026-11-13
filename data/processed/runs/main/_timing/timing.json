@@ -1,0 +1,13 @@
+{
+  "batches": {
+    "sp500_gold_000": 494.4,
+    "sp500_gold_001": 487.6,
+    "sp500_gold_002": 440.9
+  },
+  "total_seconds": 1422.8,
+  "deadband": 10.0,
+  "n_done": 3,
+  "n_skipped": 0,
+  "n_failed": 0,
+  "timestamp": "2026-10-28T13:07:07"
+}

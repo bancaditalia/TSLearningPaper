@@ -1,0 +1,26 @@
+\begin{figure}[t]
+\centering
+\fbox{\begin{minipage}{0.95\textwidth}\small
+\textbf{claude-sonnet-5-5}\hspace{1em plus 1fill}{\footnotesize 5 runs, default sampling}\\[2pt]
+\textbf{L8}\quad{\footnotesize train lift +0.873; test lift n/a; ineligible}\\
+\hspace*{1.5em}\mbox{$\mathit{highVol}(X), \mathit{highVol}(Y), \diamondplus_{[0,20]} \mathit{tailDependent}(X,Y)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{stressContagion}(X,Y)$}\\[4pt]
+\textbf{L14}\quad{\footnotesize train lift +0.716; test lift n/a; ineligible}\\
+\hspace*{1.5em}\mbox{$\mathit{highVol}(Y), \mathit{lowVol}(X), \diamondplus_{[0,30]} \mathit{highVol}(X)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{goldToEquityVolSpillover}(X,Y)$}\\[4pt]
+\textbf{L4}\quad{\footnotesize train lift +0.548; test lift n/a; ineligible}\\
+\hspace*{1.5em}\mbox{$\mathit{tailDependent}(X,Y), \mathit{highVol}(X), \diamondplus_{[0,15]} \mathit{highVol}(Y)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{contagionVolPersistence}(X,Y)$}\\[8pt]
+\textbf{llama3.1}\hspace{1em plus 1fill}{\footnotesize 5 runs, temperature 0.3}\\[2pt]
+\textbf{L36}\quad{\footnotesize train lift +0.209; test lift n/a; ineligible}\\
+\hspace*{1.5em}\mbox{$\mathit{highVol}(X), \mathit{highVol}(Y), \diamondplus_{[0,20]} \mathit{isNoCorrelation}(X,Y)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{myNoCorrelation}(X,Y)$}\\[4pt]
+\textbf{L35}\quad{\footnotesize train lift +0.022; test lift n/a; ineligible}\\
+\hspace*{1.5em}\mbox{$\mathit{highVol}(X), \mathit{highVol}(Y), \diamondplus_{[0,20]} \mathit{leadsPositively}(X,Y,k)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{myCorrelationLag}(X,Y,k)$}\\[4pt]
+\textbf{L39}\quad{\footnotesize train lift +0.016; test lift -0.013; near-vacuous; head reuses a vocabulary predicate}\\
+\hspace*{1.5em}\mbox{$\mathit{isPositiveCorrelation}(X,Y), \diamondplus_{[5,20]} \mathit{trendUp}(X) \to \mathit{trendUp}(X)$}
+\end{minipage}}
+\caption{\small{LLM rules: per model, the 3 with the highest \emph{train} lift of the 5 in the comparison. Rules are written body $\to$ head, with the window exactly as the model wrote it. Lifts, verdicts and the pair check use the templates' code.}}
+\label{fig:llm-rules-pub}
+\end{figure}

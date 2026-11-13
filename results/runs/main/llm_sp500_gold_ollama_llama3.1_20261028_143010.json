@@ -1,0 +1,242 @@
+{
+  "meta": {
+    "pair": "sp500_gold",
+    "source": "py",
+    "input_mode": "series",
+    "provider": "ollama",
+    "model": "llama3.1",
+    "temperature": 0.3,
+    "seconds": 503.4689030420268,
+    "json_mode": true,
+    "num_ctx": 32768,
+    "train": [
+      "2015-01-01",
+      "2021-12-31"
+    ],
+    "test": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "n_proposed": 6,
+    "n_parsed": 4,
+    "n_rejected": 2,
+    "prompt_hash": "745252cf4a57",
+    "prompt_chars": 59321
+  },
+  "accepted": [
+    {
+      "template": "LLM_correlation",
+      "head": "myCorrelation({X},{Y})",
+      "body": "highVol({X}), highVol({Y}), <+>[0,10] isPositiveCorrelation({X},{Y})",
+      "constants": {
+        "w": 10
+      },
+      "scores": {
+        "rule": "[LLM_correlation] sp500_gold: myCorrelation(\"sp500\",\"gold\") :- highVol(\"sp500\"), highVol(\"gold\"), <+>[0,10] isPositiveCorrelation(\"sp500\",\"gold\").  (w=10)",
+        "train": {
+          "confidence": 0.0,
+          "condition_days": 95,
+          "hit_days": 0,
+          "baseline": 0.16818181818181818,
+          "lift": -0.16818181818181818,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": null,
+          "condition_days": 0,
+          "hit_days": 0,
+          "baseline": null,
+          "lift": null,
+          "eligible": false,
+          "reason": "no condition days"
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "strong positive correlation between two assets",
+        "rationale": "When both series are highly volatile, they tend to move together.",
+        "declared_constants": {
+          "w": 10
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    },
+    {
+      "template": "LLM_tail_dependency",
+      "head": "myTailDependency({X},{Y})",
+      "body": "lowVol({Y}), trendUp({Y}), tailDependent({X},{Y}), <+>[0,20] isPositiveCorrelation({X},{Y})",
+      "constants": {
+        "w": 20
+      },
+      "scores": {
+        "rule": "[LLM_tail_dependency] sp500_gold: myTailDependency(\"sp500\",\"gold\") :- lowVol(\"gold\"), trendUp(\"gold\"), tailDependent(\"sp500\",\"gold\"), <+>[0,20] isPositiveCorrelation(\"sp500\",\"gold\").  (w=20)",
+        "train": {
+          "confidence": 0.0,
+          "condition_days": 35,
+          "hit_days": 0,
+          "baseline": 0.1965909090909091,
+          "lift": -0.1965909090909091,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": null,
+          "condition_days": 0,
+          "hit_days": 0,
+          "baseline": null,
+          "lift": null,
+          "eligible": false,
+          "reason": "no condition days"
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "two assets' prices move in sync when one of them is extreme",
+        "rationale": "When one asset's price is extreme and volatile, the other tends to move in sync.",
+        "declared_constants": {
+          "w": 20
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    },
+    {
+      "template": "LLM_magnitude_consistency_leads",
+      "head": "myMagnitudeConsistencyLeads({X},{Y})",
+      "body": "leadsPositively({X},{Y},1), <+>[0,10] isPositiveCorrelation({X},{Y})",
+      "constants": {
+        "w": 10,
+        "k": 1
+      },
+      "scores": {
+        "rule": "[LLM_magnitude_consistency_leads] sp500_gold: myMagnitudeConsistencyLeads(\"sp500\",\"gold\") :- leadsPositively(\"sp500\",\"gold\",1), <+>[0,10] isPositiveCorrelation(\"sp500\",\"gold\").  (w=10, k=1)",
+        "train": {
+          "confidence": 0.0,
+          "condition_days": 1646,
+          "hit_days": 0,
+          "baseline": 0.0,
+          "lift": 0.0,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": 0.0,
+          "condition_days": 635,
+          "hit_days": 0,
+          "baseline": 0.0,
+          "lift": 0.0,
+          "eligible": true,
+          "reason": null
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "one asset's price tends to lead the other's",
+        "rationale": "When one asset's price leads the other's in terms of magnitude consistency, they tend to have a positive correlation.",
+        "declared_constants": {
+          "w": 10
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    },
+    {
+      "template": "LLM_magnitude_consistency_leads_reversed",
+      "head": "myMagnitudeConsistencyLeadsReversed({X},{Y})",
+      "body": "leadsPositively({Y},{X},1), <+>[0,10] isNegativeCorrelation({X},{Y})",
+      "constants": {
+        "w": 10,
+        "k": 1
+      },
+      "scores": {
+        "rule": "[LLM_magnitude_consistency_leads_reversed] sp500_gold: myMagnitudeConsistencyLeadsReversed(\"sp500\",\"gold\") :- leadsPositively(\"gold\",\"sp500\",1), <+>[0,10] isNegativeCorrelation(\"sp500\",\"gold\").  (w=10, k=1)",
+        "train": {
+          "confidence": 0.0,
+          "condition_days": 1646,
+          "hit_days": 0,
+          "baseline": 0.0,
+          "lift": 0.0,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": 0.0,
+          "condition_days": 635,
+          "hit_days": 0,
+          "baseline": 0.0,
+          "lift": 0.0,
+          "eligible": true,
+          "reason": null
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "one asset's price tends to lead the other's (reversed)",
+        "rationale": "When one asset's price leads the other's in terms of magnitude consistency (reversed), they tend to have a negative correlation.",
+        "declared_constants": {
+          "w": 10
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    }
+  ],
+  "rejected": [
+    {
+      "name": "LLM_magnitude_consistency",
+      "body": "same%(X,Y), <+>[0,10] isPositiveCorrelation(X,Y)",
+      "reason": "cannot parse atom 'same%(X,Y)'",
+      "phenomenon": "two assets' prices tend to rise or fall together",
+      "rationale": "When both series move in the same direction, they tend to have a positive correlation."
+    },
+    {
+      "name": "LLM_magnitude_consistency_reversed",
+      "body": "diff%(X,Y), <+>[0,10] isNegativeCorrelation(X,Y)",
+      "reason": "cannot parse atom 'diff%(X,Y)'",
+      "phenomenon": "two assets' prices tend to rise or fall together (reversed)",
+      "rationale": "When both series move in opposite directions, they tend to have a negative correlation."
+    }
+  ]
+}

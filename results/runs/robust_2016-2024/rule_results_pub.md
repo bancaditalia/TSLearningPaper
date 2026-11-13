@@ -1,0 +1,19 @@
+| Rule | Pair | Constants | Train | Test | Base | Lift | CI | n | Verdict |
+|---|---|---|---|---|---|---|---|---|---|
+| T1b | S&P 500 – Gold | w=0 | 0.29 | 0.15 | 0.19 | -0.033 | [-0.186, 0.230] | 346 | negligible |
+| T1b | S&P 500 – US 10y Treasury | w=0 | 0.36 | 0.29 | 0.19 | 0.104 | [-0.186, 0.254] | 936 | positive lift |
+| T1b | S&P 500 – US 10y zero-coupon (GSW) | w=0 | 0.33 | 0.30 | 0.19 | 0.110 | [-0.110, 0.209] | 949 | positive lift |
+| T1b | S&P 500 – US Treasury 20y+ (TLT) | w=0 | 0.35 | 0.30 | 0.19 | 0.111 | [-0.186, 0.285] | 655 | positive lift |
+| T2 | S&P 500 – Gold | w=0 | 0.18 | 0.00 | 0.16 | -0.158 | [-0.158, -0.158] | 122 | negative |
+| T3b | S&P 500 – US 10y Treasury | w=0 | 0.61 | 0.46 | 0.52 | -0.058 | [-0.360, 0.297] | 1013 | negative |
+| T3b | S&P 500 – US 10y zero-coupon (GSW) | w=0 | 0.63 | 0.47 | 0.53 | -0.058 | [-0.237, 0.286] | 1140 | negative |
+| T3b | S&P 500 – US Treasury 20y+ (TLT) | w=0 | 0.62 | 0.49 | 0.51 | -0.018 | [-0.281, 0.281] | 1327 | negligible |
+| T4 | S&P 500 – Gold | w=0, k=2 | 0.49 | 0.40 | 0.58 | -0.180 | [-0.411, 0.080] | 482 | negative |
+| T4 | S&P 500 – US 10y Treasury | w=0, k=2 | 0.86 | 0.69 | 0.62 | 0.073 | [-0.213, 0.354] | 482 | positive lift |
+| T4 | S&P 500 – US 10y zero-coupon (GSW) | w=0, k=2 | 0.87 | 0.66 | 0.67 | -0.007 | [-0.307, 0.282] | 481 | negligible |
+| T4 | S&P 500 – US Treasury 20y+ (TLT) | w=0, k=2 | 0.88 | 0.55 | 0.57 | -0.024 | [-0.373, 0.325] | 482 | negligible |
+| T7 | S&P 500 – US 10y Treasury | w=0 | 0.13 | 0.21 | 0.14 | 0.071 | [-0.063, 0.327] | 624 | positive lift |
+| T7 | S&P 500 – US 10y zero-coupon (GSW) | w=0 | 0.14 | 0.09 | 0.07 | 0.021 | [-0.070, 0.272] | 621 | negligible |
+| T7 | S&P 500 – US Treasury 20y+ (TLT) | w=0 | 0.06 | 0.12 | 0.12 | -0.007 | [-0.101, 0.025] | 624 | negligible |
+| T5 | S&P 500 – Gold | d=9 | 0.83 | — | — | — | — | — | ineligible |
+| T6 | S&P 500 – Gold | — | — | — | — | — | — | — | not fitted |

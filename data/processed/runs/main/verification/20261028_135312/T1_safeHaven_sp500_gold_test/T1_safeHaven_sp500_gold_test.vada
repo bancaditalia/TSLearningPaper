@@ -1,0 +1,45 @@
+%% ======== EDB: derived predicate facts, real timeline ======== %%
+
+@input("highVol").
+@bind("highVol","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","edb_highVol.csv").
+@mapping("highVol",0,"X","string").
+@mapping("highVol",1,"Start","int").
+@mapping("highVol",2,"End","int").
+@temporalMappings("highVol",1,2,-1,-1,"[_,_)").
+
+@input("trendDown").
+@bind("trendDown","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","edb_trendDown.csv").
+@mapping("trendDown",0,"X","string").
+@mapping("trendDown",1,"Start","int").
+@mapping("trendDown",2,"End","int").
+@temporalMappings("trendDown",1,2,-1,-1,"[_,_)").
+
+@input("isNegativeCorrelation").
+@bind("isNegativeCorrelation","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","edb_isNegativeCorrelation.csv").
+@mapping("isNegativeCorrelation",0,"X","string").
+@mapping("isNegativeCorrelation",1,"Y","string").
+@mapping("isNegativeCorrelation",2,"Start","int").
+@mapping("isNegativeCorrelation",3,"End","int").
+@temporalMappings("isNegativeCorrelation",2,3,-1,-1,"[_,_)").
+
+%% ======== MINED RULE UNDER VERIFICATION ======== %%
+% template : T1_safeHaven
+% pair     : sp500_gold
+% constants: {'w': 1}
+% fitted on: 2015-01-01..2021-12-31
+safeHavenEpisode(Y,X) :- highVol(X), trendDown(X), <+>[0,1] isNegativeCorrelation(X,Y).
+
+@output("safeHavenEpisode").
+@bind("safeHavenEpisode","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","safeHavenEpisode_${I}.csv").
+@mapping("safeHavenEpisode",0,"X","string").
+@mapping("safeHavenEpisode",1,"Y","string").
+@mapping("safeHavenEpisode",2,"Start","int").
+@mapping("safeHavenEpisode",3,"End","int").
+@temporalMappings("safeHavenEpisode",2,3,-1,-1,"[_,_]").
+
+%% ======== ANNOTATIONS ======== %%
+
+@timeGranularity("no_date").
+@temporalType("int").
+
+@library("math:","math").

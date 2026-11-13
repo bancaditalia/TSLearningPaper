@@ -1,0 +1,118 @@
+\begin{figure}[t]
+\centering
+\fbox{\begin{minipage}{0.95\textwidth}\small
+\textbf{claude-sonnet-5-5}\hspace{1em plus 1fill}{\footnotesize 5 runs, default sampling}\\[2pt]
+\textbf{L1}\quad{\footnotesize train lift -0.025; test lift n/a}\\
+\hspace*{1.5em}\mbox{$\mathit{highVol}(X), \mathit{trendDown}(X), \diamondplus_{[0,20]} \mathit{trendUp}(X)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{reboundAfterTurbulentSelloff}(X)$}\\[4pt]
+\textbf{L2}\quad{\footnotesize train lift +0.085; test lift n/a}\\
+\hspace*{1.5em}\mbox{$\mathit{highVol}(X), \mathit{trendDown}(X), \mathit{lowVol}(Y), \diamondplus_{[0,20]} \mathit{trendUp}(Y)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{safeHavenBid}(X,Y)$}\\[4pt]
+\textbf{L3}\quad{\footnotesize train lift -0.069; test lift n/a}\\
+\hspace*{1.5em}\mbox{$\mathit{lowVol}(X), \mathit{trendUp}(X), \diamondplus_{[0,40]} \mathit{trendDown}(X) \to \mathit{complacencyReversal}(X)$}\\[4pt]
+\textbf{L4}\quad{\footnotesize train lift +0.548; test lift n/a; ineligible}\\
+\hspace*{1.5em}\mbox{$\mathit{tailDependent}(X,Y), \mathit{highVol}(X), \diamondplus_{[0,15]} \mathit{highVol}(Y)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{contagionVolPersistence}(X,Y)$}\\[4pt]
+\textbf{L5}\quad{\footnotesize train lift +0.000; test lift n/a}\\
+\hspace*{1.5em}\mbox{$\mathit{highVol}(X), \mathit{trendDown}(X), \diamondplus_{[0,40]} \mathit{trendUp}(X) \to \mathit{reboundAfterPanic}(X)$}\\[4pt]
+\textbf{L6}\quad{\footnotesize train lift -0.143; test lift n/a}\\
+\hspace*{1.5em}\mbox{$\mathit{lowVol}(X), \mathit{lowVol}(Y), \diamondplus_{[0,100]} \mathit{highVol}(X) \to \mathit{complacencyThenShock}(X,Y)$}\\[4pt]
+\textbf{L7}\quad{\footnotesize train lift +0.085; test lift n/a}\\
+\hspace*{1.5em}\mbox{$\mathit{isNegativeCorrelation}(X,Y), \mathit{trendDown}(X), \diamondplus_{[0,20]} \mathit{trendUp}(Y)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{goldHavenBid}(X,Y)$}\\[4pt]
+\textbf{L8}\quad{\footnotesize train lift +0.873; test lift n/a; ineligible}\\
+\hspace*{1.5em}\mbox{$\mathit{highVol}(X), \mathit{highVol}(Y), \diamondplus_{[0,20]} \mathit{tailDependent}(X,Y)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{stressContagion}(X,Y)$}\\[4pt]
+\textbf{L9}\quad{\footnotesize train lift -0.263; test lift n/a}\\
+\hspace*{1.5em}\mbox{$\mathit{tailDependent}(X,Y), \mathit{trendDown}(X), \diamondplus_{[0,60]} \mathit{lowVol}(X)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{tailCouplingFades}(X,Y)$}\\[4pt]
+\textbf{L10}\quad{\footnotesize train lift +0.135; test lift n/a; ineligible}\\
+\hspace*{1.5em}\mbox{$\mathit{highVol}(X), \mathit{lowVol}(Y), \diamondplus_{[0,60]} \mathit{lowVol}(X) \to \mathit{equityCalmAfterStorm}(X,Y)$}\\[4pt]
+\textbf{L11}\quad{\footnotesize train lift +0.354; test lift n/a; ineligible}\\
+\hspace*{1.5em}\mbox{$\mathit{highVol}(Y), \mathit{lowVol}(X), \diamondplus_{[0,60]} \mathit{lowVol}(Y) \to \mathit{goldCalmAfterStorm}(X,Y)$}\\[4pt]
+\textbf{L12}\quad{\footnotesize train lift +0.000; test lift n/a}\\
+\hspace*{1.5em}\mbox{$\mathit{highVol}(X), \mathit{trendDown}(X), \mathit{isNoCorrelation}(X,Y), \diamondplus_{[0,40]} \mathit{trendUp}(X)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{equityReboundAfterSelloff}(X,Y)$}\\[4pt]
+\textbf{L13}\quad{\footnotesize train lift -0.349; test lift n/a}\\
+\hspace*{1.5em}\mbox{$\mathit{tailDependent}(X,Y), \mathit{highVol}(X), \diamondplus_{[0,30]} \mathit{isNegativeCorrelation}(X,Y)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{havenDecouplingAfterJointCrash}(X,Y)$}\\[4pt]
+\textbf{L14}\quad{\footnotesize train lift +0.716; test lift n/a; ineligible}\\
+\hspace*{1.5em}\mbox{$\mathit{highVol}(Y), \mathit{lowVol}(X), \diamondplus_{[0,30]} \mathit{highVol}(X)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{goldToEquityVolSpillover}(X,Y)$}\\[4pt]
+\textbf{L15}\quad{\footnotesize train lift -0.088; test lift n/a}\\
+\hspace*{1.5em}\mbox{$\mathit{highVol}(X), \mathit{trendDown}(X), \diamondplus_{[0,60]} \mathit{lowVol}(X)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{equityCalmAfterStorm}(X)$}\\[4pt]
+\textbf{L16}\quad{\footnotesize train lift +0.062; test lift n/a}\\
+\hspace*{1.5em}\mbox{$\mathit{tailDependent}(X,Y), \mathit{highVol}(X), \diamondplus_{[0,30]} \mathit{trendUp}(Y)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{goldRecoversAfterJointCrash}(X,Y)$}\\[4pt]
+\textbf{L17}\quad{\footnotesize train lift +0.000; test lift n/a}\\
+\hspace*{1.5em}\mbox{$\mathit{trendDown}(X), \mathit{trendUp}(Y), \diamondplus_{[0,40]} \mathit{trendUp}(X)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{equityReboundAfterFlight}(X,Y)$}\\[4pt]
+\textbf{L18}\quad{\footnotesize train lift -0.110; test lift n/a}\\
+\hspace*{1.5em}\mbox{$\mathit{lowVol}(X), \mathit{lowVol}(Y), \diamondplus_{[0,60]} \mathit{highVol}(X) \to \mathit{complacencyBreak}(X,Y)$}\\[4pt]
+\textbf{L19}\quad{\footnotesize train lift +0.000; test lift n/a}\\
+\hspace*{1.5em}\mbox{$\mathit{highVol}(X), \mathit{trendDown}(X), \diamondplus_{[0,30]} \mathit{trendUp}(X)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{reboundAfterTurbulentDecline}(X)$}\\[4pt]
+\textbf{L20}\quad{\footnotesize train lift -0.308; test lift n/a}\\
+\hspace*{1.5em}\mbox{$\mathit{tailDependent}(X,Y), \mathit{highVol}(X), \diamondplus_{[0,60]} \mathit{lowVol}(X)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{calmFollowsJointCrash}(X,Y)$}\\[4pt]
+\textbf{L21}\quad{\footnotesize train lift -0.122; test lift n/a}\\
+\hspace*{1.5em}\mbox{$\mathit{lowVol}(X), \mathit{lowVol}(Y), \mathit{trendUp}(X), \diamondplus_{[0,40]} \mathit{highVol}(X)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{complacencyBreaks}(X,Y)$}\\[4pt]
+\textbf{L22}\quad{\footnotesize train lift -0.127; test lift n/a}\\
+\hspace*{1.5em}\mbox{$\mathit{isNegativeCorrelation}(X,Y), \mathit{highVol}(X), \diamondplus_{[0,20]} \mathit{tailDependent}(X,Y)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{diversifierFailsInStress}(X,Y)$}\\[8pt]
+\textbf{llama3.1}\hspace{1em plus 1fill}{\footnotesize 5 runs, temperature 0.3}\\[2pt]
+\textbf{L23}\quad{\footnotesize train lift -0.017; test lift n/a}\\
+\hspace*{1.5em}\mbox{$\mathit{trendUp}(X), \diamondplus_{[10,20]} \mathit{highVol}(X) \to \mathit{myEffect}(X)$}\\[4pt]
+\textbf{L24}\quad{\footnotesize train lift -0.242; test lift n/a}\\
+\hspace*{1.5em}\mbox{$\mathit{tailDependent}(X,Y), \mathit{isPositiveCorrelation}(X,Y),$}\\
+\hspace*{1.5em}\hspace*{1.5em}\mbox{$\diamondplus_{[10,20]} \mathit{isNoCorrelation}(X,Y)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{myEffect}(X,Y)$}\\[4pt]
+\textbf{L25}\quad{\footnotesize train lift +0.005; test lift -0.012; negligible}\\
+\hspace*{1.5em}\mbox{$\mathit{trendUp}(X), \diamondplus_{[10,20]} \mathit{isNoCorrelation}(X,Y) \to \mathit{myEffect}(X)$}\\[4pt]
+\textbf{L26}\quad{\footnotesize train lift -0.143; test lift n/a}\\
+\hspace*{1.5em}\mbox{$\mathit{lowVol}(X), \diamondplus_{[10,20]} \mathit{highVol}(X) \to \mathit{myEffect}(X)$}\\[4pt]
+\textbf{L27}\quad{\footnotesize train lift -0.008; test lift n/a}\\
+\hspace*{1.5em}\mbox{$\mathit{tailDependent}(X,Y), \mathit{isNoCorrelation}(X,Y),$}\\
+\hspace*{1.5em}\hspace*{1.5em}\mbox{$\diamondplus_{[10,20]} \mathit{isPositiveCorrelation}(X,Y)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{myEffect}(X,Y)$}\\[4pt]
+\textbf{L28}\quad{\footnotesize train lift -0.168; test lift n/a}\\
+\hspace*{1.5em}\mbox{$\mathit{highVol}(X), \mathit{highVol}(Y), \diamondplus_{[0,10]} \mathit{isPositiveCorrelation}(X,Y)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{myCorrelation}(X,Y)$}\\[4pt]
+\textbf{L29}\quad{\footnotesize train lift -0.197; test lift n/a}\\
+\hspace*{1.5em}\mbox{$\mathit{lowVol}(Y), \mathit{trendUp}(Y), \mathit{tailDependent}(X,Y),$}\\
+\hspace*{1.5em}\hspace*{1.5em}\mbox{$\diamondplus_{[0,20]} \mathit{isPositiveCorrelation}(X,Y)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{myTailDependency}(X,Y)$}\\[4pt]
+\textbf{L30}\quad{\footnotesize train lift +0.000; test lift n/a; ineligible}\\
+\hspace*{1.5em}\mbox{$\mathit{leadsPositively}(X,Y,1), \diamondplus_{[0,10]} \mathit{isPositiveCorrelation}(X,Y)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{myMagnitudeConsistencyLeads}(X,Y)$}\\[4pt]
+\textbf{L31}\quad{\footnotesize train lift +0.000; test lift n/a}\\
+\hspace*{1.5em}\mbox{$\mathit{leadsPositively}(Y,X,1), \diamondplus_{[0,10]} \mathit{isNegativeCorrelation}(X,Y)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{myMagnitudeConsistencyLeadsReversed}(X,Y)$}\\[4pt]
+\textbf{L32}\quad{\footnotesize train lift -0.197; test lift n/a}\\
+\hspace*{1.5em}\mbox{$\mathit{highVol}(X), \mathit{highVol}(Y), \diamondplus_{[0,20]} \mathit{isPositiveCorrelation}(X,Y)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{myCorrelation}(X,Y)$}\\[4pt]
+\textbf{L33}\quad{\footnotesize train lift +0.000; test lift n/a}\\
+\hspace*{1.5em}\mbox{$\mathit{lowVol}(X), \diamondplus_{[0,30]} \mathit{trendUp}(X) \to \mathit{myTrend}(X)$}\\[4pt]
+\textbf{L34}\quad{\footnotesize train lift -0.055; test lift n/a}\\
+\hspace*{1.5em}\mbox{$\mathit{lowVol}(X), \mathit{lowVol}(Y), \diamondplus_{[0,20]} \mathit{tailDependent}(X,Y)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{myTailDependence}(X,Y)$}\\[4pt]
+\textbf{L35}\quad{\footnotesize train lift +0.022; test lift n/a; ineligible}\\
+\hspace*{1.5em}\mbox{$\mathit{highVol}(X), \mathit{highVol}(Y), \diamondplus_{[0,20]} \mathit{leadsPositively}(X,Y,k)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{myCorrelationLag}(X,Y,k)$}\\[4pt]
+\textbf{L36}\quad{\footnotesize train lift +0.209; test lift n/a; ineligible}\\
+\hspace*{1.5em}\mbox{$\mathit{highVol}(X), \mathit{highVol}(Y), \diamondplus_{[0,20]} \mathit{isNoCorrelation}(X,Y)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{myNoCorrelation}(X,Y)$}\\[4pt]
+\textbf{L37}\quad{\footnotesize train lift -0.041; test lift n/a; head reuses a vocabulary predicate}\\
+\hspace*{1.5em}\mbox{$\mathit{highVol}(X), \diamondplus_{[5,20]} \mathit{trendUp}(X) \to \mathit{trendUp}(X)$}\\[4pt]
+\textbf{L38}\quad{\footnotesize train lift -0.080; test lift n/a; head reuses a vocabulary predicate}\\
+\hspace*{1.5em}\mbox{$\mathit{lowVol}(X), \diamondplus_{[5,20]} \mathit{trendDown}(X) \to \mathit{trendDown}(X)$}\\[4pt]
+\textbf{L39}\quad{\footnotesize train lift +0.016; test lift -0.013; near-vacuous; head reuses a vocabulary predicate}\\
+\hspace*{1.5em}\mbox{$\mathit{isPositiveCorrelation}(X,Y), \diamondplus_{[5,20]} \mathit{trendUp}(X) \to \mathit{trendUp}(X)$}\\[4pt]
+\textbf{L40}\quad{\footnotesize train lift -0.063; test lift n/a; head reuses a vocabulary predicate}\\
+\hspace*{1.5em}\mbox{$\mathit{isNegativeCorrelation}(X,Y), \diamondplus_{[5,20]} \mathit{trendDown}(X) \to \mathit{trendDown}(X)$}
+\end{minipage}}
+\caption{\small{Every distinct rule proposed by each language model, pooled over its runs of the same prompt. Rules are written body $\to$ head, with the window exactly as the model wrote it. Lifts, verdicts and the pair check use the templates' code.}}
+\label{fig:llm-rules}
+\end{figure}

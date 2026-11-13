@@ -1,0 +1,23 @@
+# written by tslearning.eval.fidelity.run, 2026-10-29 10:18
+# dataset=real pair=None step=10 results=data/processed/runs/tr2015-2021_te2022-2024_w50_s1_minw1_gold-bitcoin-ust10y-tlt-ust10z/real_test_results_dominance csv=fidelity_real_bitcoin.csv
+
+classifier weights: classifier_v7p3_s42.pt
+real test windows 2022-01-01..2024-12-31: 703 of 1962; subsampled every 10 -> 71 (3 batches of 25)
+===== REAL test 2022-01-01..2024-12-31 · correlation regime (n=71) =====
+                       precision    recall  f1-score   support
+
+isPositiveCorrelation      0.913     0.933     0.923        45
+isNegativeCorrelation      0.000     0.000     0.000         1
+      isNoCorrelation      0.840     0.840     0.840        25
+
+             accuracy                          0.887        71
+            macro avg      0.584     0.591     0.588        71
+         weighted avg      0.874     0.887     0.881        71
+
+confusion (rows=true, cols=pred):
+ [[42  0  3]
+ [ 0  0  1]
+ [ 4  0 21]]
+accuracy 0.887 | macro-F1 0.588
+majority-class baseline (always 'isPositiveCorrelation'): accuracy 0.634 | macro-F1 0.259
+wrote -> results/runs/tr2015-2021_te2022-2024_w50_s1_minw1_gold-bitcoin-ust10y-tlt-ust10z/fidelity_real_bitcoin.csv

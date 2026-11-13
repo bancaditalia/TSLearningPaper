@@ -1,0 +1,483 @@
+%% ======== INPUT ======== %%
+
+@input("flow").
+@bind("flow","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","","${X}").
+@mapping("flow",0,"var3","string").
+@mapping("flow",1,"var3","int").
+@mapping("flow",2,"var3","double").
+@mapping("flow",3,"var3","int").
+@mapping("flow",4,"var3","int").
+@temporalMappings("flow",3,4,-1,-1,"[_,_)").
+
+@input("qLow").
+@bind("qLow","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","","${Q}").
+@mapping("qLow",0,"var3","string").
+@mapping("qLow",1,"var3","double").
+@mapping("qLow",2,"var3","int").
+@mapping("qLow",3,"var3","int").
+@temporalMappings("qLow",2,3,-1,-1,"[_,_)").
+
+
+@input("tau").
+@bind("tau","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","","${T}").
+@mapping("tau",0,"var3","string").
+@mapping("tau",1,"var3","double").
+@mapping("tau",2,"var3","int").
+@mapping("tau",3,"var3","int").
+@temporalMappings("tau",2,3,-1,-1,"[_,_)").
+
+%% ======== RULESET: 0. COMMONS ======== %%
+
+totalSign(X, TS):- /\50 no_date flow(X,_,V), TS = mcount(V).
+maxSign(X, MS):- totalSign(X, TS), MS = max(TS).
+
+%% ======== RULESET: 1. LINEAR CORRELATION ======== %%
+
+deadBand(${Deadband})@[0,infty].
+
+flowRow(X,K,A):- flow(X,K,V), A = math:abs(V).
+
+flowShifted(X,K,Z):- <->[1,1] flowRow(X,K,Z).
+flowShiftedRow(X,K,A):- flowShifted(X,K,Z), A = math:abs(Z).
+
+
+% SIGN AGREEMENT
+
+sign(X1,X2,S):- flow(X1,Y1,V1), flow(X2,Y2,V2),  X1<>X2,S = V1 * V2.
+
+
+
+positiveCorrelationTA(X1,X2,C):- /\50 no_date sign(X1,X2,S), S>0.0, C = mcount(S).
+positiveMax(X1, X2, Max):- positiveCorrelationTA(X1,X2,C), Max = max(C).
+percentagePositive(X1,X2,Pct):- maxSign(X1,TS), positiveMax(X1,X2, PC), Pct = (PC * 100.0) / TS.
+
+
+% MAGNITUDE AGREEMENT
+
+magnitudeConsistent(X,Y,K):- flowRow(X,K,V1), flowShiftedRow(X,_,V2), flowRow(Y,_,V3), flowShiftedRow(Y,_,V4),X<>Y,V1>V2, V3>V4.
+
+magnitudeConsistent(X,Y,K):- flowRow(X,K,V1), flowShiftedRow(X,_,V2), flowRow(Y,_,V3), flowShiftedRow(Y,_,V4),X<>Y,V1<V2, V3<V4.
+
+onlyMagnitudeConsistencyCount(X,Y,Count):- /\50 no_date magnitudeConsistent(X,Y,K),Count = mcount(K).
+onlyMagnitudeConsistencyMax(X,Y, Max):- onlyMagnitudeConsistencyCount(X,Y, Count), Max = max(Count).
+onlyMagnitudeConsistencyPercentage(X,Y,Pct):- onlyMagnitudeConsistencyMax(X,Y, Max), maxSign(X, TS), Pct = (Max * 100.0) / TS.
+
+
+% SIGN and MAGNITUDE together
+% why at this point? because we want to know where the sign and the strength of the change are in agreement at the same time;
+% we can't say that there is positive correlation if the sign is in agreement for 50% of the sample while the magnitude is in agreement for the other 50% of the sample
+
+isSameSignMagnitudeConsistent(X,Y,K):- magnitudeConsistent(X,Y,K), sign(X,Y,S), S > 0.0.
+
+isDiffSignMagnitudeConsistent(X,Y,K):- magnitudeConsistent(X,Y,K), sign(X,Y,S), S < 0.0.
+
+
+magnitudeSameSignConsistencyCount(X,Y,Count):- /\50 no_date isSameSignMagnitudeConsistent(X,Y,K),Count = mcount(K).
+magnitudeSameSignConsistencyMax(X,Y, Max):- magnitudeSameSignConsistencyCount(X,Y, Count), Max = max(Count).
+magnitudeSameSignConsistencyPercentage(X,Y,Pct):- magnitudeSameSignConsistencyMax(X,Y, Max), maxSign(X,TS), Pct = (Max * 100.0) / TS.
+
+
+magnitudeDiffSignConsistencyCount(X,Y,Count):- /\50 no_date isDiffSignMagnitudeConsistent(X,Y,K),Count = mcount(K).
+magnitudeDiffSignConsistencyMax(X,Y, Max):- magnitudeDiffSignConsistencyCount(X,Y, Count), Max = max(Count).
+magnitudeDiffSignConsistencyPercentage(X,Y,Pct):- magnitudeDiffSignConsistencyMax(X,Y, Max), maxSign(X,TS), Pct = (Max * 100.0) / TS.
+
+
+
+isPositiveCorrelation(X1,X2):- magnitudeSameSignConsistencyPercentage(X1,X2,PPos), magnitudeDiffSignConsistencyPercentage(X1,X2,PDiff), deadBand(D), PPos > PDiff + D.
+isNegativeCorrelation(X1,X2):- magnitudeDiffSignConsistencyPercentage(X1,X2,PDiff), magnitudeSameSignConsistencyPercentage(X1,X2,PPos), deadBand(D), PDiff > PPos + D.
+%isNoCorrelation1(X1,X2):- totalSign(X1,S), totalSign(X2,S), not isNegativeCorrelation(X1,X2).
+isNoCorrelation(X1,X2):- magnitudeSameSignConsistencyPercentage(X1,X2,PPos), magnitudeDiffSignConsistencyPercentage(X1,X2,PDiff), deadBand(D), PPos <= PDiff + D, PDiff <= PPos + D.
+
+
+isNonLinearCorrelation(X1,X2):- onlyMagnitudeConsistencyPercentage(X1,X2,K), percentagePositive(X1,X2,P), P > 40.0, P < 60.0.
+
+%% ======== RULESET: 2. LEAD/LAG ======== %%
+
+lagValue(1)@[0,infty].
+lagValue(2)@[0,infty].
+lagValue(3)@[0,infty].
+lagValue(4)@[0,infty].
+lagValue(5)@[0,infty].
+
+
+% flowLag(X,K,V,Lag):- <->[1,1] flow(X,K,V), Lag=1.
+% flowLag(X,K,V,Lag):- <->[2,2] flow(X,K,V), Lag=2.
+% flowLag(X,K,V,Lag):- <->[3,3] flow(X,K,V), Lag=3.
+% flowLag(X,K,V,Lag):- <->[4,4] flow(X,K,V), Lag=4.
+% flowLag(X,K,V,Lag):- <->[5,5] flow(X,K,V), Lag=5.
+
+
+% %% SIGN AGREEMENT
+
+% signLag(X,Y,S, Lag):- flow(X,_,V1), flowLag(Y,_,V2,Lag), S = V1 * V2. 
+
+
+
+% positiveCorrelationLag(X,Y,S,Lag):- /\50 no_date signLag(X,Y,S,Lag), S>0.0.
+% positiveCountLag(X,Y,Lag,Count):- positiveCorrelationLag(X,Y,S,Lag), Count = mcount(S).
+% positiveMaxLag(X,Y,Lag,Max):- positiveCountLag(X, Y, Lag, C), Max = max(C).
+
+% positivePctLag(X,Y,Lag,Pct):- maxSign(X,TS), positiveMaxLag(X,Y,Lag,Max), Pct = (Max * 100.0) / (TS).
+
+
+
+
+% %% MAGNITUDE AGREEMENT
+
+% flowF(X,A):- flow(X,K,V), A = math:abs(V).
+% flowLagF(X,V,Lag):- flowLag(X,K,V,Lag).
+
+% flowShift(X,A):- <->[1,1] flow(X,K,V), A = math:abs(V). %% TODO commons
+% flowLagShift(X,V,Lag):- <->[1,1] flowLag(X,K,V,Lag).
+
+
+% magnitudeConsistentLag(X,Y,K,Lag):- flowF(X,V1), flowShift(X,V2), flowLagF(Y,V3,Lag), flowLagShift(Y,V4,Lag), lagValue(Lag), V1>V2, V3>V4, K = V1+"-"+V2+"-"+V3+"-"+V4.
+
+% magnitudeConsistentLag(X,Y,K,Lag):- flowF(X,V1), flowShift(X,V2), flowLagF(Y,V3,Lag), flowLagShift(Y,V4,Lag), lagValue(Lag), V1<V2, V3<V4, K = V1+"-"+V2+"-"+V3+"-"+V4.
+
+% onlyMagnitudeConsistencyCountLag(X,Y,Lag,Count):- /\50 no_date magnitudeConsistentLag(X,Y,K,Lag),Count = mcount(K).
+% onlyMagnitudeConsistencyMaxLag(X,Y, Lag, Max):- onlyMagnitudeConsistencyCountLag(X,Y, Lag, Count), Max = max(Count).
+% onlyMagnitudeConsistencyPctLag(X,Y,Lag,Pct):- onlyMagnitudeConsistencyMaxLag(X,Y, Lag, Max), maxSign(X,TS), Pct = (Max * 100.0) / TS.
+
+
+
+% %% SIGN AND MAGNITUDE
+
+
+% isSameSignMagnitudeConsistentLag(X,Y,K,Lag):- magnitudeConsistentLag(X,Y,K,Lag), signLag(X,Y,S,Lag), S > 0.0.
+
+% isDiffSignMagnitudeConsistentLag(X,Y,K,Lag):- magnitudeConsistentLag(X,Y,K,Lag), signLag(X,Y,S,Lag), S < 0.0.
+
+
+% magnitudeSameSignConsistencyCountLag(X,Y,Lag,Count):- /\50 no_date isSameSignMagnitudeConsistentLag(X,Y,K,Lag),Count = mcount(K).
+% magnitudeSameSignConsistencyMaxLag(X,Y, Lag, Max):- magnitudeSameSignConsistencyCountLag(X,Y, Lag, Count), Max = max(Count).
+% magnitudeSameSignConsistencyPctLag(X,Y,Lag,Pct):- magnitudeSameSignConsistencyMaxLag(X,Y, Lag, Max), maxSign(X,TS), Pct = (Max * 100.0) / TS.
+
+
+% magnitudeDiffSignConsistencyCountLag(X,Y,Lag,Count):- /\50 no_date isDiffSignMagnitudeConsistentLag(X,Y,K,Lag),Count = mcount(K).
+% magnitudeDiffSignConsistencyMaxLag(X,Y, Lag, Max):- magnitudeDiffSignConsistencyCountLag(X,Y, Count,Lag), Max = max(Count).
+% magnitudeDiffSignConsistencyPctLag(X,Y,Lag,Pct):- magnitudeDiffSignConsistencyMaxLag(X,Y, Lag, Max), maxSign(X, TS), Pct = (Max * 100.0) / TS.
+
+
+% leadsPositively(X,Y,Lag):- magnitudeSameSignConsistencyPctLag(X,Y,Lag,P), P > 50.0.
+% leadsNegatively(X,Y,Lag):- magnitudeDiffSignConsistencyPctLag(X,Y,Lag,P), P > 50.0.
+
+
+% noLead1(X,Y,Lag):- maxSign(X,TS), maxSign(Y,TS), lagValue(Lag), not leadsPositively(X,Y,Lag).
+% noLead(X,Y,Lag):- noLead1(X,Y,Lag), not leadsNegatively(X,Y,Lag).
+
+%% ======== RULESET: 3. VOLATILITY REGIME ======== %%
+
+
+bigMove(X,K):- tau(X,T), flow(X,K,V), Abs = math:abs(V), Abs > T.
+
+bigMoveCount(X,C):- /\50 no_date bigMove(X,K), C = mcount(K). 
+bigMoveCount(X,0):- /\50 no_date flow(X,K,V). 
+bigMoveMax(X,Max):- bigMoveCount(X,C), Max= max(C). 
+
+totalCount(X,C):- /\50 no_date flow(X,K,V), C=mcount(K).
+maxCount(X,Max):- totalCount(X,C), Max = max(C).
+
+
+bigMovePct(X,Pct):- bigMoveMax(X,Max), maxCount(X,TotalMax), Pct = Max * 100.0 / TotalMax.
+highVol(X,Pct):- bigMovePct(X,Pct), Pct >= 30.0.
+lowVol(X,Pct):- bigMovePct(X,Pct), Pct <= 5.0.
+
+
+
+%% ======== RULESET: 4. TREND ======== %%
+
+sumFlow(X,Sum):- /\50 no_date flow(X,K,V), Sum = sum(V).
+
+
+trendUp(X, Sum):- sumFlow(X,Sum), Sum >= 0.02.
+trendDown(X,Sum):- sumFlow(X,Sum), Sum <= -0.02.
+deadZone(X,Sum):- sumFlow(X,Sum), Sum < 0.02, Sum > -0.02.
+
+%% ======== RULESET: 5. CO-EXCEEDANCE ======== %%
+
+
+crash(X,K,V):- flow(X,K,V), qLow(X,Q), V <= Q.
+
+coCrash(X,Y,K1,K2):- crash(X,K1,_), crash(Y,K2,_), X<>Y.
+
+coCrashCount(X,Y,C):- /\50 no_date coCrash(X,Y,K1,K2), C=count(K1).
+coCrashMax(X,Y,Max):- coCrashCount(X,Y,C), Max = max(C).
+
+% (2026-10-27) totalCount / maxCount were defined a second time here, identical to
+% section 3. The engine summed both copies: maxCount came out 100 for 50-day windows, so
+% bigMovePct was half the true share and highVol never fired. Removed; section 3 keeps
+% the only definition.
+
+tailDependent(X,Y):- coCrashMax(X,Y,Max), Max >= 2. % this has to be calculated depending on the window size but
+
+%% ======== OUTPUT ======== %%
+
+
+%% Linear Correlation
+
+@output("magnitudeSameSignConsistencyPercentage").
+@bind("magnitudeSameSignConsistencyPercentage","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","magnitudeSameSignConsistencyPercentage_${I}.csv").
+@mapping("magnitudeSameSignConsistencyPercentage",0,"X","string").
+@mapping("magnitudeSameSignConsistencyPercentage",1,"Y","string").
+@mapping("magnitudeSameSignConsistencyPercentage",2,"Pct","double").
+@mapping("magnitudeSameSignConsistencyPercentage",3,"Start","int").
+@mapping("magnitudeSameSignConsistencyPercentage",4,"End","int").
+@temporalMappings("magnitudeSameSignConsistencyPercentage",3,4,-1,-1,"[_,_]").
+
+@output("magnitudeDiffSignConsistencyPercentage").
+@bind("magnitudeDiffSignConsistencyPercentage","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","magnitudeDiffSignConsistencyPercentage_${I}.csv").
+@mapping("magnitudeDiffSignConsistencyPercentage",0,"X","string").
+@mapping("magnitudeDiffSignConsistencyPercentage",1,"Y","string").
+@mapping("magnitudeDiffSignConsistencyPercentage",2,"Pct","double").
+@mapping("magnitudeDiffSignConsistencyPercentage",3,"Start","int").
+@mapping("magnitudeDiffSignConsistencyPercentage",4,"End","int").
+@temporalMappings("magnitudeDiffSignConsistencyPercentage",3,4,-1,-1,"[_,_]").
+
+@output("onlyMagnitudeConsistencyPercentage").
+@bind("onlyMagnitudeConsistencyPercentage","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","onlyMagnitudeConsistencyPercentage_${I}.csv").
+@mapping("onlyMagnitudeConsistencyPercentage",0,"X","string").
+@mapping("onlyMagnitudeConsistencyPercentage",1,"Y","string").
+@mapping("onlyMagnitudeConsistencyPercentage",2,"Pct","double").
+@mapping("onlyMagnitudeConsistencyPercentage",3,"Start","int").
+@mapping("onlyMagnitudeConsistencyPercentage",4,"End","int").
+@temporalMappings("onlyMagnitudeConsistencyPercentage",3,4,-1,-1,"[_,_]").
+
+@output("percentagePositive").
+@bind("percentagePositive","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","percentagePositive_${I}.csv").
+@mapping("percentagePositive",0,"X","string").
+@mapping("percentagePositive",1,"Y","string").
+@mapping("percentagePositive",2,"Pct","double").
+@mapping("percentagePositive",3,"Start","int").
+@mapping("percentagePositive",4,"End","int").
+@temporalMappings("percentagePositive",3,4,-1,-1,"[_,_]").
+
+@output("magnitudeSameSignConsistencyMax").
+@bind("magnitudeSameSignConsistencyMax","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","magnitudeSameSignConsistencyMax_${I}.csv").
+@mapping("magnitudeSameSignConsistencyMax",0,"X","string").
+@mapping("magnitudeSameSignConsistencyMax",1,"Y","string").
+@mapping("magnitudeSameSignConsistencyMax",2,"Max","double").
+@mapping("magnitudeSameSignConsistencyMax",3,"Start","int").
+@mapping("magnitudeSameSignConsistencyMax",4,"End","int").
+@temporalMappings("magnitudeSameSignConsistencyMax",3,4,-1,-1,"[_,_]").
+
+@output("magnitudeDiffSignConsistencyMax").
+@bind("magnitudeDiffSignConsistencyMax","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","magnitudeDiffSignConsistencyMax_${I}.csv").
+@mapping("magnitudeDiffSignConsistencyMax",0,"X","string").
+@mapping("magnitudeDiffSignConsistencyMax",1,"Y","string").
+@mapping("magnitudeDiffSignConsistencyMax",2,"Max","double").
+@mapping("magnitudeDiffSignConsistencyMax",3,"Start","int").
+@mapping("magnitudeDiffSignConsistencyMax",4,"End","int").
+@temporalMappings("magnitudeDiffSignConsistencyMax",3,4,-1,-1,"[_,_]").
+
+@output("isPositiveCorrelation").
+@bind("isPositiveCorrelation","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","isPositiveCorrelation_${I}.csv").
+@mapping("isPositiveCorrelation",0,"X","string").
+@mapping("isPositiveCorrelation",1,"Y","string").
+@mapping("isPositiveCorrelation",2,"Start","int").
+@mapping("isPositiveCorrelation",3,"End","int").
+@temporalMappings("isPositiveCorrelation",2,3,-1,-1,"[_,_]").
+
+@output("isNegativeCorrelation").
+@bind("isNegativeCorrelation","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","isNegativeCorrelation_${I}.csv").
+@mapping("isNegativeCorrelation",0,"X","string").
+@mapping("isNegativeCorrelation",1,"Y","string").
+@mapping("isNegativeCorrelation",2,"Start","int").
+@mapping("isNegativeCorrelation",3,"End","int").
+@temporalMappings("isNegativeCorrelation",2,3,-1,-1,"[_,_]").
+
+@output("isNoCorrelation").
+@bind("isNoCorrelation","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","isNoCorrelation_${I}.csv").
+@mapping("isNoCorrelation",0,"X","string").
+@mapping("isNoCorrelation",1,"Y","string").
+@mapping("isNoCorrelation",2,"Start","int").
+@mapping("isNoCorrelation",3,"End","int").
+@temporalMappings("isNoCorrelation",2,3,-1,-1,"[_,_]").
+
+@output("isNonLinearCorrelation").
+@bind("isNonLinearCorrelation","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","isNonLinearCorrelation_${I}.csv").
+@mapping("isNonLinearCorrelation",0,"X","string").
+@mapping("isNonLinearCorrelation",1,"Y","string").
+@mapping("isNonLinearCorrelation",2,"Start","int").
+@mapping("isNonLinearCorrelation",3,"End","int").
+@temporalMappings("isNonLinearCorrelation",2,3,-1,-1,"[_,_]").
+
+% Lag/Lead
+
+% @output("magnitudeSameSignConsistencyPctLag").
+% @bind("magnitudeSameSignConsistencyPctLag","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","magnitudeSameSignConsistencyPctLag_${I}.csv").
+% @mapping("magnitudeSameSignConsistencyPctLag",0,"X","string").
+% @mapping("magnitudeSameSignConsistencyPctLag",1,"Y","string").
+% @mapping("magnitudeSameSignConsistencyPctLag",2,"Lag","int").
+% @mapping("magnitudeSameSignConsistencyPctLag",3,"Pct","double").
+% @mapping("magnitudeSameSignConsistencyPctLag",4,"Start","int").
+% @mapping("magnitudeSameSignConsistencyPctLag",5,"End","int").
+% @temporalMappings("magnitudeSameSignConsistencyPctLag",4,5,-1,-1,"[_,_]").
+
+% @output("magnitudeDiffSignConsistencyPctLag").
+% @bind("magnitudeDiffSignConsistencyPctLag","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","magnitudeDiffSignConsistencyPctLag_${I}.csv").
+% @mapping("magnitudeDiffSignConsistencyPctLag",0,"X","string").
+% @mapping("magnitudeDiffSignConsistencyPctLag",1,"Y","string").
+% @mapping("magnitudeDiffSignConsistencyPctLag",2,"Lag","int").
+% @mapping("magnitudeDiffSignConsistencyPctLag",3,"Pct","double").
+% @mapping("magnitudeDiffSignConsistencyPctLag",4,"Start","int").
+% @mapping("magnitudeDiffSignConsistencyPctLag",5,"End","int").
+% @temporalMappings("magnitudeDiffSignConsistencyPctLag",4,5,-1,-1,"[_,_]").
+
+% @output("onlyMagnitudeConsistencyPctLag").
+% @bind("onlyMagnitudeConsistencyPctLag","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","onlyMagnitudeConsistencyPctLag_${I}.csv").
+% @mapping("onlyMagnitudeConsistencyPctLag",0,"X","string").
+% @mapping("onlyMagnitudeConsistencyPctLag",1,"Y","string").
+% @mapping("onlyMagnitudeConsistencyPctLag",2,"Lag","int").
+% @mapping("onlyMagnitudeConsistencyPctLag",3,"Pct","double").
+% @mapping("onlyMagnitudeConsistencyPctLag",4,"Start","int").
+% @mapping("onlyMagnitudeConsistencyPctLag",5,"End","int").
+% @temporalMappings("onlyMagnitudeConsistencyPctLag",4,5,-1,-1,"[_,_]").
+
+% @output("positivePctLag").
+% @bind("positivePctLag","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","positivePctLag_${I}.csv").
+% @mapping("positivePctLag",0,"X","string").
+% @mapping("positivePctLag",1,"Y","string").
+% @mapping("positivePctLag",2,"Lag","int").
+% @mapping("positivePctLag",3,"Pct","double").
+% @mapping("positivePctLag",4,"Start","int").
+% @mapping("positivePctLag",5,"End","int").
+% @temporalMappings("positivePctLag",4,5,-1,-1,"[_,_]").
+
+% @output("leadsPositively").
+% @bind("leadsPositively","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","leadsPositively_${I}.csv").
+% @mapping("leadsPositively",0,"X","string").
+% @mapping("leadsPositively",1,"Y","string").
+% @mapping("leadsPositively",2,"Lag","int").
+% @mapping("leadsPositively",3,"Start","int").
+% @mapping("leadsPositively",4,"End","int").
+% @temporalMappings("leadsPositively",3,4,-1,-1,"[_,_]").
+
+% @output("leadsNegatively").
+% @bind("leadsNegatively","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","leadsNegatively_${I}.csv").
+% @mapping("leadsNegatively",0,"X","string").
+% @mapping("leadsNegatively",1,"Y","string").
+% @mapping("leadsNegatively",2,"Lag","int").
+% @mapping("leadsNegatively",3,"Start","int").
+% @mapping("leadsNegatively",4,"End","int").
+% @temporalMappings("leadsNegatively",3,4,-1,-1,"[_,_]").
+
+% @output("noLead").
+% @bind("noLead","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","noLead_${I}.csv").
+% @mapping("noLead",0,"X","string").
+% @mapping("noLead",1,"Y","string").
+% @mapping("noLead",2,"Lag","int").
+% @mapping("noLead",3,"Start","int").
+% @mapping("noLead",4,"End","int").
+% @temporalMappings("noLead",3,4,-1,-1,"[_,_]").
+
+% Volatility Regime
+
+@output("bigMoveCount").
+@bind("bigMoveCount","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","bigMoveCount_${I}.csv").
+@mapping("bigMoveCount",0,"X","string").
+@mapping("bigMoveCount",1,"Count","int").
+@mapping("bigMoveCount",2,"Start","int").
+@mapping("bigMoveCount",3,"End","int").
+@temporalMappings("bigMoveCount",2,3,-1,-1,"[_,_]").
+
+@output("bigMovePct").
+@bind("bigMovePct","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","bigMovePct_${I}.csv").
+@mapping("bigMovePct",0,"X","string").
+@mapping("bigMovePct",1,"Pct","double").
+@mapping("bigMovePct",2,"Start","int").
+@mapping("bigMovePct",3,"End","int").
+@temporalMappings("bigMovePct",2,3,-1,-1,"[_,_]").
+
+@output("highVol").
+@bind("highVol","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","highVol_${I}.csv").
+@mapping("highVol",0,"X","string").
+@mapping("highVol",1,"Pct","double").
+@mapping("highVol",2,"Start","int").
+@mapping("highVol",3,"End","int").
+@temporalMappings("highVol",2,3,-1,-1,"[_,_]").
+
+@output("lowVol").
+@bind("lowVol","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","lowVol_${I}.csv").
+@mapping("lowVol",0,"X","string").
+@mapping("lowVol",1,"Pct","double").
+@mapping("lowVol",2,"Start","int").
+@mapping("lowVol",3,"End","int").
+@temporalMappings("lowVol",2,3,-1,-1,"[_,_]").
+
+%% Trend
+
+@output("sumFlow").
+@bind("sumFlow","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","sumFlow_${I}.csv").
+@mapping("sumFlow",0,"X","string").
+@mapping("sumFlow",1,"Sum","double").
+@mapping("sumFlow",2,"Start","int").
+@mapping("sumFlow",3,"End","int").
+@temporalMappings("sumFlow",2,3,-1,-1,"[_,_]").
+
+@output("trendUp").
+@bind("trendUp","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","trendUp_${I}.csv").
+@mapping("trendUp",0,"X","string").
+@mapping("trendUp",1,"Sum","double").
+@mapping("trendUp",2,"Start","int").
+@mapping("trendUp",3,"End","int").
+@temporalMappings("trendUp",2,3,-1,-1,"[_,_]").
+
+@output("trendDown").
+@bind("trendDown","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","trendDown_${I}.csv").
+@mapping("trendDown",0,"X","string").
+@mapping("trendDown",1,"Sum","double").
+@mapping("trendDown",2,"Start","int").
+@mapping("trendDown",3,"End","int").
+@temporalMappings("trendDown",2,3,-1,-1,"[_,_]").
+
+@output("deadZone").
+@bind("deadZone","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","deadZone_${I}.csv").
+@mapping("deadZone",0,"X","string").
+@mapping("deadZone",1,"Sum","double").
+@mapping("deadZone",2,"Start","int").
+@mapping("deadZone",3,"End","int").
+@temporalMappings("deadZone",2,3,-1,-1,"[_,_]").
+
+%% Co-Exceedance
+
+@output("crash").
+@bind("crash","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","crash_${I}.csv").
+@mapping("crash",0,"X","string").
+@mapping("crash",1,"K","int").
+@mapping("crash",2,"Value","double").
+@mapping("crash",3,"Start","int").
+@mapping("crash",4,"End","int").
+@temporalMappings("crash",3,4,-1,-1,"[_,_]").
+
+@output("coCrash").
+@bind("coCrash","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","coCrash_${I}.csv").
+@mapping("coCrash",0,"X","string").
+@mapping("coCrash",1,"Y","string").
+@mapping("coCrash",2,"K1","int").
+@mapping("coCrash",3,"K2","int").
+@mapping("coCrash",4,"Start","int").
+@mapping("coCrash",5,"End","int").
+@temporalMappings("coCrash",4,5,-1,-1,"[_,_]").
+
+@output("tailDependent").
+@bind("tailDependent","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","tailDependent_${I}.csv").
+@mapping("tailDependent",0,"X","string").
+@mapping("tailDependent",1,"Y","string").
+@mapping("tailDependent",2,"Start","int").
+@mapping("tailDependent",3,"End","int").
+@temporalMappings("tailDependent",2,3,-1,-1,"[_,_]").
+
+
+% check
+
+ok(X):- lagValue(X).
+
+@output("ok").
+
+%% ======== ANNOTATIONS ======== %%
+
+@timeGranularity("no_date").
+@temporalType("int").
+
+@library("math:","math").

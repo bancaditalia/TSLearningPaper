@@ -1,0 +1,39 @@
+%% ======== EDB: derived predicate facts, real timeline ======== %%
+
+@input("isNegativeCorrelation").
+@bind("isNegativeCorrelation","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","edb_isNegativeCorrelation.csv").
+@mapping("isNegativeCorrelation",0,"X","string").
+@mapping("isNegativeCorrelation",1,"Y","string").
+@mapping("isNegativeCorrelation",2,"Start","int").
+@mapping("isNegativeCorrelation",3,"End","int").
+@temporalMappings("isNegativeCorrelation",2,3,-1,-1,"[_,_)").
+
+@input("isPositiveCorrelation").
+@bind("isPositiveCorrelation","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","edb_isPositiveCorrelation.csv").
+@mapping("isPositiveCorrelation",0,"X","string").
+@mapping("isPositiveCorrelation",1,"Y","string").
+@mapping("isPositiveCorrelation",2,"Start","int").
+@mapping("isPositiveCorrelation",3,"End","int").
+@temporalMappings("isPositiveCorrelation",2,3,-1,-1,"[_,_)").
+
+%% ======== MINED RULE UNDER VERIFICATION ======== %%
+% template : T6_regimeReversal
+% pair     : sp500_bitcoin
+% constants: {'d_neg': 2, 'a': 238, 'b': 247}
+% fitted on: 2015-01-01..2021-12-31
+regimeReversal(X,Y) :- [-](0,2] isNegativeCorrelation(X,Y), [+][238,247] isPositiveCorrelation(X,Y).
+
+@output("regimeReversal").
+@bind("regimeReversal","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","regimeReversal_${I}.csv").
+@mapping("regimeReversal",0,"X","string").
+@mapping("regimeReversal",1,"Y","string").
+@mapping("regimeReversal",2,"Start","int").
+@mapping("regimeReversal",3,"End","int").
+@temporalMappings("regimeReversal",2,3,-1,-1,"[_,_]").
+
+%% ======== ANNOTATIONS ======== %%
+
+@timeGranularity("no_date").
+@temporalType("int").
+
+@library("math:","math").

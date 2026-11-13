@@ -1,0 +1,10 @@
+X,Y,Lag,Start,End
+sp500,bitcoin,3,1536,1635
+sp500,bitcoin,3,1690,1782
+sp500,bitcoin,5,1532,1636
+sp500,bitcoin,5,1784,1842
+sp500,bitcoin,2,1532,1606
+sp500,bitcoin,2,1696,1747
+sp500,bitcoin,2,1748,1798
+sp500,bitcoin,1,1534,1630
+sp500,bitcoin,1,1713,1848

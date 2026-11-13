@@ -1,0 +1,10 @@
+X,Y,Start,End
+sp500_synth_300,btc_synth_300,15000,15050
+sp500_synth_306,btc_synth_306,15300,15350
+sp500_synth_309,btc_synth_309,15450,15500
+sp500_synth_310,btc_synth_310,15500,15550
+sp500_synth_312,btc_synth_312,15600,15650
+sp500_synth_314,btc_synth_314,15700,15750
+sp500_synth_315,btc_synth_315,15750,15800
+sp500_synth_319,btc_synth_319,15950,16000
+sp500_synth_320,btc_synth_320,16000,16050

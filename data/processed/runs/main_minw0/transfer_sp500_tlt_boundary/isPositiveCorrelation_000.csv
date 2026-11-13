@@ -1,0 +1,13 @@
+X,Y,Start,End
+sp500_synth_0,tlt_synth_0,0,50
+sp500_synth_1,tlt_synth_1,50,100
+sp500_synth_5,tlt_synth_5,250,300
+sp500_synth_6,tlt_synth_6,300,350
+sp500_synth_7,tlt_synth_7,350,400
+sp500_synth_11,tlt_synth_11,550,600
+sp500_synth_13,tlt_synth_13,650,700
+sp500_synth_16,tlt_synth_16,800,850
+sp500_synth_18,tlt_synth_18,900,950
+sp500_synth_19,tlt_synth_19,950,1000
+sp500_synth_20,tlt_synth_20,1000,1050
+sp500_synth_23,tlt_synth_23,1150,1200

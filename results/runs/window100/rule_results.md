@@ -1,0 +1,62 @@
+| Rule | Pair | Constants | Train | Test | Base | Lift | CI | n | Verdict |
+|---|---|---|---|---|---|---|---|---|---|
+| T1 | S&P 500 – US 10y Treasury | w=1 | 0.81 | 0.00 | 0.07 | -0.065 | [-0.065, -0.065] | 209 | negative |
+| T1 | S&P 500 – US Treasury 20y+ (TLT) | w=1 | 1.00 | 0.10 | 0.03 | 0.069 | [-0.027, 0.073] | 209 | positive lift |
+| T2 | S&P 500 – Bitcoin | w=1 | 1.00 | 1.00 | 0.58 | 0.419 | [0.419, 0.419] | 211 | positive lift |
+| T2b | S&P 500 – Bitcoin | w=1 | 0.19 | 0.49 | 0.28 | 0.204 | [-0.242, 0.663] | 436 | positive lift |
+| T3 | S&P 500 – Bitcoin | w=1 | 0.80 | 0.87 | 0.42 | 0.445 | [0.365, 0.578] | 352 | significant |
+| T3b | S&P 500 – Bitcoin | w=1 | 0.39 | 0.97 | 0.47 | 0.496 | [0.497, 0.531] | 316 | significant |
+| T4 | S&P 500 – Bitcoin | w=1, k=1 | 0.68 | 0.00 | 0.16 | -0.162 | [-0.162, -0.162] | 209 | negative |
+| T4 | S&P 500 – Gold | w=1, k=5 | 0.99 | 0.48 | 0.13 | 0.349 | [-0.084, 0.751] | 209 | positive lift |
+| T4 | S&P 500 – US 10y Treasury | w=1, k=2 | 1.00 | 0.36 | 0.51 | -0.152 | [-0.511, 0.119] | 209 | negative |
+| T4 | S&P 500 – US 10y zero-coupon (GSW) | w=1, k=1 | 0.95 | 0.58 | 0.36 | 0.213 | [-0.138, 0.637] | 210 | positive lift |
+| T4 | S&P 500 – US Treasury 20y+ (TLT) | w=1, k=1 | 0.99 | 0.86 | 0.43 | 0.423 | [0.266, 0.426] | 209 | significant |
+| T4b | S&P 500 – Bitcoin | w=1, k=1 | 0.33 | 0.00 | 0.28 | -0.279 | — | 121 | negative |
+| T4b | S&P 500 – Gold | w=1, k=1 | 0.17 | 0.29 | 0.28 | 0.006 | [-0.279, 0.371] | 473 | negligible |
+| T4b | S&P 500 – US 10y Treasury | w=1, k=2 | 0.16 | 0.20 | 0.28 | -0.083 | [-0.279, 0.094] | 383 | negative |
+| T4b | S&P 500 – US 10y zero-coupon (GSW) | w=1, k=1 | 0.16 | 0.45 | 0.28 | 0.166 | [-0.282, 0.693] | 270 | positive lift |
+| T4b | S&P 500 – US Treasury 20y+ (TLT) | w=1, k=1 | 0.20 | 0.55 | 0.28 | 0.272 | [-0.199, 0.721] | 325 | positive lift |
+| T7 | S&P 500 – Bitcoin | w=1 | 0.71 | 0.71 | 0.58 | 0.127 | [-0.484, 0.416] | 288 | positive lift |
+| T7 | S&P 500 – Gold | w=1 | 0.33 | 0.12 | 0.13 | -0.003 | [-0.125, 0.347] | 369 | negligible |
+| T7 | S&P 500 – US 10y Treasury | w=1 | 0.05 | 0.14 | 0.27 | -0.126 | [-0.270, 0.182] | 369 | negative |
+| T7b | S&P 500 – Bitcoin | w=1 | 0.49 | 0.47 | 0.39 | 0.083 | [-0.252, 0.423] | 436 | positive lift |
+| T7b | S&P 500 – Gold | w=50 | 0.94 | 1.00 | 0.79 | 0.213 | — | 93 | positive lift |
+| T7b | S&P 500 – US 10y Treasury | w=1 | 1.00 | 0.26 | 0.50 | -0.235 | [-0.497, -0.152] | 202 | negative |
+| T1 | S&P 500 – Bitcoin | — | — | — | — | — | — | — | not fitted: missing predicates: ['isNegativeCorrelation'] |
+| T1 | S&P 500 – Gold | — | — | — | — | — | — | — | not fitted: no signal (best gap -15.91pp <= 0) |
+| T1 | S&P 500 – US 10y zero-coupon (GSW) | w=1 | 0.93 | — | — | — | — | — | ineligible (conclusion never holds on test) |
+| T1b | S&P 500 – Bitcoin | — | — | — | — | — | — | — | not fitted: missing predicates: ['isNegativeCorrelation'] |
+| T1b | S&P 500 – Gold | — | — | — | — | — | — | — | not fitted: no signal (best gap -10.06pp <= 0) |
+| T1b | S&P 500 – US 10y Treasury | w=1 | 0.14 | — | — | — | — | — | ineligible (only 48 condition days (< 60)) |
+| T1b | S&P 500 – US 10y zero-coupon (GSW) | w=1 | 0.15 | — | — | — | — | — | ineligible (no condition days) |
+| T1b | S&P 500 – US Treasury 20y+ (TLT) | w=1 | 0.22 | — | — | — | — | — | ineligible (only 20 condition days (< 60)) |
+| T2 | S&P 500 – Gold | — | — | — | — | — | — | — | not fitted: no signal (best gap -1.88pp <= 0) |
+| T2 | S&P 500 – US 10y Treasury | — | — | — | — | — | — | — | not fitted: no signal (best gap -1.36pp <= 0) |
+| T2 | S&P 500 – US 10y zero-coupon (GSW) | — | — | — | — | — | — | — | not fitted: no signal (best gap 0.00pp <= 0) |
+| T2 | S&P 500 – US Treasury 20y+ (TLT) | — | — | — | — | — | — | — | not fitted: no signal (best gap 0.00pp <= 0) |
+| T2b | S&P 500 – Gold | — | — | — | — | — | — | — | not fitted: no signal (best gap -1.89pp <= 0) |
+| T2b | S&P 500 – US 10y Treasury | — | — | — | — | — | — | — | not fitted: no signal (best gap -0.80pp <= 0) |
+| T2b | S&P 500 – US 10y zero-coupon (GSW) | — | — | — | — | — | — | — | not fitted: no condition episodes |
+| T2b | S&P 500 – US Treasury 20y+ (TLT) | — | — | — | — | — | — | — | not fitted: no condition episodes |
+| T3 | S&P 500 – Gold | — | — | — | — | — | — | — | not fitted: no signal (best gap -4.73pp <= 0) |
+| T3 | S&P 500 – US 10y Treasury | w=1 | 0.51 | — | — | — | — | — | ineligible (no condition days) |
+| T3 | S&P 500 – US 10y zero-coupon (GSW) | — | — | — | — | — | — | — | not fitted: no signal (best gap -11.59pp <= 0) |
+| T3 | S&P 500 – US Treasury 20y+ (TLT) | w=1 | 0.79 | — | — | — | — | — | ineligible (no condition days) |
+| T3b | S&P 500 – Gold | — | — | — | — | — | — | — | not fitted: no signal (best gap -3.20pp <= 0) |
+| T3b | S&P 500 – US 10y Treasury | w=1 | 0.50 | — | — | — | — | — | ineligible (conclusion never holds on test) |
+| T3b | S&P 500 – US 10y zero-coupon (GSW) | — | — | — | — | — | — | — | not fitted: no signal (best gap -10.88pp <= 0) |
+| T3b | S&P 500 – US Treasury 20y+ (TLT) | w=1 | 0.52 | — | — | — | — | — | ineligible (conclusion never holds on test) |
+| T5 | S&P 500 – Bitcoin | — | — | — | — | — | — | — | not fitted: missing predicates: ['isNegativeCorrelation'] |
+| T5 | S&P 500 – Gold | d=108 | 0.33 | — | — | — | — | — | ineligible (no episodes) |
+| T5 | S&P 500 – US 10y Treasury | d=180 | 0.42 | — | — | — | — | — | ineligible (only 1 episodes) |
+| T5 | S&P 500 – US 10y zero-coupon (GSW) | d=170 | 0.54 | — | — | — | — | — | ineligible (no episodes) |
+| T5 | S&P 500 – US Treasury 20y+ (TLT) | d=150 | 0.35 | — | — | — | — | — | ineligible (only 1 episodes) |
+| T6 | S&P 500 – Bitcoin | — | — | — | — | — | — | — | not fitted: missing predicates: ['isNegativeCorrelation'] |
+| T6 | S&P 500 – Gold | — | — | — | — | — | — | — | not fitted: no common window (a=590 >= b=554) |
+| T6 | S&P 500 – US 10y Treasury | — | — | — | — | — | — | — | not fitted: no common window (a=891 >= b=452) |
+| T6 | S&P 500 – US 10y zero-coupon (GSW) | — | — | — | — | — | — | — | not fitted: no matched transitions |
+| T6 | S&P 500 – US Treasury 20y+ (TLT) | — | — | — | — | — | — | — | not fitted: no matched transitions |
+| T7 | S&P 500 – US 10y zero-coupon (GSW) | — | — | — | — | — | — | — | not fitted: no signal (best gap 0.00pp <= 0) |
+| T7 | S&P 500 – US Treasury 20y+ (TLT) | — | — | — | — | — | — | — | not fitted: no signal (best gap 0.00pp <= 0) |
+| T7b | S&P 500 – US 10y zero-coupon (GSW) | — | — | — | — | — | — | — | not fitted: no condition episodes |
+| T7b | S&P 500 – US Treasury 20y+ (TLT) | — | — | — | — | — | — | — | not fitted: no condition episodes |

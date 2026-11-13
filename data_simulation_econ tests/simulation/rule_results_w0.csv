@@ -1,0 +1,61 @@
+Rule,Pair,Constants,Train,Test,Base,Lift,CI,n,Verdict
+T1,S&P 500 – US 10y Treasury,w=0,0.81,0.00,0.14,-0.142,"[-0.142, -0.142]",224,negative
+T1,S&P 500 – US 10y zero-coupon (GSW),w=0,0.83,0.00,0.06,-0.060,"[-0.060, -0.060]",224,negative
+T1,S&P 500 – US Treasury 20y+ (TLT),w=0,0.73,0.08,0.02,0.056,"[-0.024, 0.081]",224,positive lift
+T1b,S&P 500 – US 10y Treasury,w=0,0.25,0.00,0.30,-0.298,"[-0.298, -0.298]",107,negative
+T1b,S&P 500 – US 10y zero-coupon (GSW),w=0,0.23,0.00,0.30,-0.300,—,45,negative
+T2,S&P 500 – Bitcoin,w=0,0.46,1.00,0.65,0.346,"[0.346, 0.346]",219,positive lift
+T2,S&P 500 – Gold,w=0,0.22,0.66,0.21,0.443,"[0.216, 0.786]",134,significant
+T2b,S&P 500 – Bitcoin,w=0,0.26,0.45,0.29,0.154,"[-0.180, 0.464]",492,positive lift
+T2b,S&P 500 – Gold,w=0,0.17,0.55,0.18,0.368,"[-0.105, 0.822]",161,positive lift
+T3,S&P 500 – Bitcoin,w=0,0.63,0.58,0.35,0.230,"[-0.083, 0.540]",368,positive lift
+T3,S&P 500 – Gold,w=0,0.72,0.78,0.72,0.053,"[-0.362, 0.278]",227,positive lift
+T3b,S&P 500 – Bitcoin,w=0,0.32,0.82,0.49,0.326,"[0.231, 0.511]",260,significant
+T3b,S&P 500 – Gold,w=0,0.48,0.32,0.30,0.022,"[-0.176, 0.264]",543,negligible
+T3b,S&P 500 – US Treasury 20y+ (TLT),w=0,0.55,0.04,0.03,0.013,"[-0.028, 0.202]",508,negligible
+T4,S&P 500 – Bitcoin,"w=0, k=1",0.35,0.00,0.31,-0.307,"[-0.307, -0.307]",238,negative
+T4,S&P 500 – Gold,"w=0, k=5",0.66,0.40,0.28,0.117,"[-0.282, 0.508]",238,positive lift
+T4,S&P 500 – US 10y Treasury,"w=0, k=2",0.96,0.42,0.47,-0.051,"[-0.467, 0.283]",238,negative
+T4,S&P 500 – US 10y zero-coupon (GSW),"w=2, k=1",0.94,0.69,0.51,0.177,"[-0.289, 0.461]",239,positive lift
+T4,S&P 500 – US Treasury 20y+ (TLT),"w=0, k=1",0.79,0.75,0.56,0.185,"[-0.258, 0.438]",238,positive lift
+T4b,S&P 500 – Bitcoin,"w=0, k=1",0.25,0.00,0.32,-0.316,"[-0.316, -0.316]",231,negative
+T4b,S&P 500 – Gold,"w=0, k=5",0.21,0.45,0.32,0.132,"[-0.316, 0.559]",212,positive lift
+T4b,S&P 500 – US 10y Treasury,"w=0, k=1",0.21,0.42,0.32,0.101,"[-0.211, 0.538]",494,positive lift
+T4b,S&P 500 – US 10y zero-coupon (GSW),"w=0, k=1",0.23,0.44,0.32,0.116,"[-0.320, 0.537]",372,positive lift
+T4b,S&P 500 – US Treasury 20y+ (TLT),"w=0, k=1",0.29,0.42,0.32,0.104,"[-0.192, 0.434]",423,positive lift
+T7,S&P 500 – Bitcoin,w=0,0.76,0.82,0.65,0.162,"[-0.242, 0.346]",288,positive lift
+T7,S&P 500 – Gold,w=0,0.28,0.31,0.21,0.098,"[-0.167, 0.579]",369,positive lift
+T7,S&P 500 – US 10y Treasury,w=0,0.15,0.38,0.32,0.062,"[-0.248, 0.492]",369,positive lift
+T7,S&P 500 – US 10y zero-coupon (GSW),w=0,0.05,0.09,0.18,-0.088,"[-0.181, 0.153]",367,negative
+T7,S&P 500 – US Treasury 20y+ (TLT),w=0,0.12,0.17,0.30,-0.127,"[-0.276, 0.109]",369,negative
+T7b,S&P 500 – Bitcoin,w=0,0.50,0.48,0.38,0.095,"[-0.163, 0.333]",492,positive lift
+T7b,S&P 500 – Gold,w=0,0.52,0.71,0.49,0.224,"[-0.118, 0.456]",161,positive lift
+T7b,S&P 500 – US 10y Treasury,w=0,0.54,0.58,0.49,0.094,"[-0.396, 0.404]",243,positive lift
+T7b,S&P 500 – US 10y zero-coupon (GSW),w=0,1.00,0.25,0.49,-0.239,"[-0.491, -0.001]",135,negative
+T7b,S&P 500 – US Treasury 20y+ (TLT),w=0,1.00,0.28,0.49,-0.208,"[-0.450, 0.279]",226,negative
+T1,S&P 500 – Bitcoin,—,—,—,—,—,—,—,not fitted: no signal (best gap -2.94pp <= 0)
+T1,S&P 500 – Gold,—,—,—,—,—,—,—,not fitted: no signal (best gap -8.48pp <= 0)
+T1b,S&P 500 – Bitcoin,—,—,—,—,—,—,—,not fitted: no signal (best gap -18.67pp <= 0)
+T1b,S&P 500 – Gold,—,—,—,—,—,—,—,not fitted: no signal (best gap -6.87pp <= 0)
+T1b,S&P 500 – US Treasury 20y+ (TLT),w=0,0.27,—,—,—,—,—,ineligible (only 18 condition days (< 30))
+T2,S&P 500 – US 10y Treasury,—,—,—,—,—,—,—,not fitted: no signal (best gap -7.22pp <= 0)
+T2,S&P 500 – US 10y zero-coupon (GSW),—,—,—,—,—,—,—,not fitted: no signal (best gap -1.31pp <= 0)
+T2,S&P 500 – US Treasury 20y+ (TLT),—,—,—,—,—,—,—,not fitted: no signal (best gap -3.12pp <= 0)
+T2b,S&P 500 – US 10y Treasury,—,—,—,—,—,—,—,not fitted: no signal (best gap -1.25pp <= 0)
+T2b,S&P 500 – US 10y zero-coupon (GSW),—,—,—,—,—,—,—,not fitted: no signal (best gap -6.69pp <= 0)
+T2b,S&P 500 – US Treasury 20y+ (TLT),—,—,—,—,—,—,—,not fitted: no signal (best gap -6.58pp <= 0)
+T3,S&P 500 – US 10y Treasury,w=0,0.43,—,—,—,—,—,ineligible (no condition days)
+T3,S&P 500 – US 10y zero-coupon (GSW),w=0,0.42,—,—,—,—,—,ineligible (no condition days)
+T3,S&P 500 – US Treasury 20y+ (TLT),w=0,0.55,—,—,—,—,—,ineligible (only 21 condition days (< 30))
+T3b,S&P 500 – US 10y Treasury,w=0,0.48,—,—,—,—,—,ineligible (conclusion never holds on test)
+T3b,S&P 500 – US 10y zero-coupon (GSW),w=0,0.47,—,—,—,—,—,ineligible (conclusion never holds on test)
+T5,S&P 500 – Bitcoin,d=37,0.00,—,—,—,—,—,ineligible (no episodes)
+T5,S&P 500 – Gold,d=37,0.25,—,—,—,—,—,ineligible (only 1 episodes)
+T5,S&P 500 – US 10y Treasury,d=58,0.54,—,—,—,—,—,ineligible (only 2 episodes)
+T5,S&P 500 – US 10y zero-coupon (GSW),d=25,0.84,—,—,—,—,—,ineligible (only 1 episodes)
+T5,S&P 500 – US Treasury 20y+ (TLT),d=41,0.48,—,—,—,—,—,ineligible (only 1 episodes)
+T6,S&P 500 – Bitcoin,"d⁻=37, a=26, b=115",1.00,—,—,—,—,—,ineligible (no episode reaches d_from=37)
+T6,S&P 500 – Gold,—,—,—,—,—,—,—,not fitted: no common window (a=415 >= b=220)
+T6,S&P 500 – US 10y Treasury,—,—,—,—,—,—,—,not fitted: no common window (a=983 >= b=364)
+T6,S&P 500 – US 10y zero-coupon (GSW),—,—,—,—,—,—,—,not fitted: no common window (a=1036 >= b=414)
+T6,S&P 500 – US Treasury 20y+ (TLT),—,—,—,—,—,—,—,not fitted: no common window (a=1129 >= b=431)

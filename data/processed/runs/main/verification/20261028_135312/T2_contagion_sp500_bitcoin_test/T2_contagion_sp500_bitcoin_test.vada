@@ -1,0 +1,39 @@
+%% ======== EDB: derived predicate facts, real timeline ======== %%
+
+@input("tailDependent").
+@bind("tailDependent","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","edb_tailDependent.csv").
+@mapping("tailDependent",0,"X","string").
+@mapping("tailDependent",1,"Y","string").
+@mapping("tailDependent",2,"Start","int").
+@mapping("tailDependent",3,"End","int").
+@temporalMappings("tailDependent",2,3,-1,-1,"[_,_)").
+
+@input("isPositiveCorrelation").
+@bind("isPositiveCorrelation","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","edb_isPositiveCorrelation.csv").
+@mapping("isPositiveCorrelation",0,"X","string").
+@mapping("isPositiveCorrelation",1,"Y","string").
+@mapping("isPositiveCorrelation",2,"Start","int").
+@mapping("isPositiveCorrelation",3,"End","int").
+@temporalMappings("isPositiveCorrelation",2,3,-1,-1,"[_,_)").
+
+%% ======== MINED RULE UNDER VERIFICATION ======== %%
+% template : T2_contagion
+% pair     : sp500_bitcoin
+% constants: {'w': 1}
+% fitted on: 2015-01-01..2021-12-31
+contagion(X,Y) :- tailDependent(X,Y), <+>[0,1] isPositiveCorrelation(X,Y).
+
+@output("contagion").
+@bind("contagion","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","contagion_${I}.csv").
+@mapping("contagion",0,"X","string").
+@mapping("contagion",1,"Y","string").
+@mapping("contagion",2,"Start","int").
+@mapping("contagion",3,"End","int").
+@temporalMappings("contagion",2,3,-1,-1,"[_,_]").
+
+%% ======== ANNOTATIONS ======== %%
+
+@timeGranularity("no_date").
+@temporalType("int").
+
+@library("math:","math").

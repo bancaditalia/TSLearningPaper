@@ -1,0 +1,12 @@
+# Label agreement: Python labeler vs reasoner, real test windows
+
+FILTERED to the pairs reported in the paper: sp500_gold, sp500_bitcoin, sp500_tlt, sp500_ust10z.
+
+| pair | windows | regime_agree | highVol_agree | lowVol_agree | tailDependent_agree |
+|---|---|---|---|---|---|
+| sp500_gold | 141 | 141 | 282/282 | 282/282 | 136/141 |
+| sp500_bitcoin | 71 | 71 | 142/142 | 142/142 | 58/71 |
+| sp500_tlt | 141 | 140 | 282/282 | 282/282 | 136/141 |
+| sp500_ust10z | 140 | 140 | 280/280 | 280/280 | 132/140 |
+
+Correlation regime, total: 492 of 493 windows.

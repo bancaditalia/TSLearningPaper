@@ -1,0 +1,17 @@
+pair,window,variant,neg_to_pos,pos_to_neg,neg_to_pos_since_2022,pos_to_neg_since_2022,long_reversals_250
+SP500-GOLD_FUT,50,deadband,28,28,4,3,
+SP500-GOLD_FUT,50,hysteresis,18,18,3,2,
+SP500-GOLD_FUT,250,deadband,3,2,0,0,
+SP500-GOLD_FUT,250,hysteresis,2,1,0,0,pos->neg 2014-12-09
+SP500-BTC,50,deadband,8,7,1,1,
+SP500-BTC,50,hysteresis,6,6,1,1,
+SP500-BTC,250,deadband,1,1,0,0,
+SP500-BTC,250,hysteresis,1,0,0,0,
+SP500-ZCB10Y,50,deadband,28,28,3,2,
+SP500-ZCB10Y,50,hysteresis,22,22,3,2,
+SP500-ZCB10Y,250,deadband,3,3,1,0,
+SP500-ZCB10Y,250,hysteresis,2,2,1,0,
+GOLD_FUT-ZCB10Y,50,deadband,17,17,0,0,
+GOLD_FUT-ZCB10Y,50,hysteresis,11,11,0,0,
+GOLD_FUT-ZCB10Y,250,deadband,2,2,0,0,
+GOLD_FUT-ZCB10Y,250,hysteresis,1,1,0,0,

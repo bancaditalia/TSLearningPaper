@@ -1,0 +1,9 @@
+X,Y,Start,End
+ust10y_real_675,sp500_real_675,500,550
+ust10y_real_695,sp500_real_695,700,750
+sp500_real_690,ust10y_real_690,650,700
+sp500_real_700,ust10y_real_700,750,800
+ust10y_real_700,sp500_real_700,750,800
+ust10y_real_690,sp500_real_690,650,700
+sp500_real_695,ust10y_real_695,700,750
+sp500_real_675,ust10y_real_675,500,550

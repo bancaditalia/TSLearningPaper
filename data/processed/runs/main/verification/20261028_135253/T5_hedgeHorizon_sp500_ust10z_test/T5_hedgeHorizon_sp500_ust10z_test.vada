@@ -1,0 +1,31 @@
+%% ======== EDB: derived predicate facts, real timeline ======== %%
+
+@input("isNegativeCorrelation").
+@bind("isNegativeCorrelation","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","edb_isNegativeCorrelation.csv").
+@mapping("isNegativeCorrelation",0,"X","string").
+@mapping("isNegativeCorrelation",1,"Y","string").
+@mapping("isNegativeCorrelation",2,"Start","int").
+@mapping("isNegativeCorrelation",3,"End","int").
+@temporalMappings("isNegativeCorrelation",2,3,-1,-1,"[_,_)").
+
+%% ======== MINED RULE UNDER VERIFICATION ======== %%
+% template : T5_hedgeHorizon
+% pair     : sp500_ust10z
+% constants: {'d': 25}
+% fitted on: 2015-01-01..2021-12-31
+hedgeHorizon(X,Y) :- isNegativeCorrelation(X,Y), [+][0,25] isNegativeCorrelation(X,Y).
+
+@output("hedgeHorizon").
+@bind("hedgeHorizon","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","hedgeHorizon_${I}.csv").
+@mapping("hedgeHorizon",0,"X","string").
+@mapping("hedgeHorizon",1,"Y","string").
+@mapping("hedgeHorizon",2,"Start","int").
+@mapping("hedgeHorizon",3,"End","int").
+@temporalMappings("hedgeHorizon",2,3,-1,-1,"[_,_]").
+
+%% ======== ANNOTATIONS ======== %%
+
+@timeGranularity("no_date").
+@temporalType("int").
+
+@library("math:","math").

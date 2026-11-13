@@ -1,0 +1,284 @@
+{
+  "meta": {
+    "pair": "sp500_gold",
+    "source": "py",
+    "input_mode": "series",
+    "provider": "ollama",
+    "model": "llama3.1",
+    "temperature": 0.3,
+    "seconds": 481.08205704099964,
+    "json_mode": true,
+    "num_ctx": 32768,
+    "train": [
+      "2015-01-01",
+      "2021-12-31"
+    ],
+    "test": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "n_proposed": 6,
+    "n_parsed": 5,
+    "n_rejected": 1,
+    "prompt_hash": "745252cf4a57",
+    "prompt_chars": 59321
+  },
+  "accepted": [
+    {
+      "template": "LLM_correlation",
+      "head": "myCorrelation({X},{Y})",
+      "body": "highVol({X}), highVol({Y}), <+>[0,20] isPositiveCorrelation({X},{Y})",
+      "constants": {
+        "w": 20
+      },
+      "scores": {
+        "rule": "[LLM_correlation] sp500_gold: myCorrelation(\"sp500\",\"gold\") :- highVol(\"sp500\"), highVol(\"gold\"), <+>[0,20] isPositiveCorrelation(\"sp500\",\"gold\").  (w=20)",
+        "train": {
+          "confidence": 0.0,
+          "condition_days": 95,
+          "hit_days": 0,
+          "baseline": 0.1965909090909091,
+          "lift": -0.1965909090909091,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": null,
+          "condition_days": 0,
+          "hit_days": 0,
+          "baseline": null,
+          "lift": null,
+          "eligible": false,
+          "reason": "no condition days"
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "a correlation between two assets",
+        "rationale": "when both assets have high volatility and a positive correlation",
+        "declared_constants": {
+          "w": 20
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    },
+    {
+      "template": "LLM_trend",
+      "head": "myTrend({X})",
+      "body": "lowVol({X}), <+>[0,30] trendUp({X})",
+      "constants": {
+        "w": 30
+      },
+      "scores": {
+        "rule": "[LLM_trend] sp500_gold: myTrend(\"sp500\") :- lowVol(\"sp500\"), <+>[0,30] trendUp(\"sp500\").  (w=30)",
+        "train": {
+          "confidence": 1.0,
+          "condition_days": 1275,
+          "hit_days": 1275,
+          "baseline": 1.0,
+          "lift": 0.0,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": 1.0,
+          "condition_days": 381,
+          "hit_days": 381,
+          "baseline": 0.9986702127659575,
+          "lift": 0.0013297872340425343,
+          "eligible": true,
+          "reason": null
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "a trend in an asset's returns",
+        "rationale": "when the asset has low volatility and a strong upward trend",
+        "declared_constants": {
+          "w": 30
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    },
+    {
+      "template": "LLM_tail",
+      "head": "myTailDependence({X},{Y})",
+      "body": "lowVol({X}), lowVol({Y}), <+>[0,20] tailDependent({X},{Y})",
+      "constants": {
+        "w": 20
+      },
+      "scores": {
+        "rule": "[LLM_tail] sp500_gold: myTailDependence(\"sp500\",\"gold\") :- lowVol(\"sp500\"), lowVol(\"gold\"), <+>[0,20] tailDependent(\"sp500\",\"gold\").  (w=20)",
+        "train": {
+          "confidence": 0.07227332457293036,
+          "condition_days": 761,
+          "hit_days": 55,
+          "baseline": 0.12727272727272726,
+          "lift": -0.054999402699796904,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": 0.0,
+          "condition_days": 227,
+          "hit_days": 0,
+          "baseline": 0.2047872340425532,
+          "lift": -0.2047872340425532,
+          "eligible": true,
+          "reason": null
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "a tail dependence between two assets",
+        "rationale": "when both assets have low volatility and a strong tail dependence",
+        "declared_constants": {
+          "w": 20
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    },
+    {
+      "template": "LLM_correlation_lag",
+      "head": "myCorrelationLag({X},{Y},k)",
+      "body": "highVol({X}), highVol({Y}), <+>[0,20] leadsPositively({X},{Y},k)",
+      "constants": {
+        "w": 20
+      },
+      "scores": {
+        "rule": "[LLM_correlation_lag] sp500_gold: myCorrelationLag(\"sp500\",\"gold\",k) :- highVol(\"sp500\"), highVol(\"gold\"), <+>[0,20] leadsPositively(\"sp500\",\"gold\",k).  (w=20)",
+        "train": {
+          "confidence": 1.0,
+          "condition_days": 95,
+          "hit_days": 95,
+          "baseline": 0.9784090909090909,
+          "lift": 0.021590909090909105,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": null,
+          "condition_days": 0,
+          "hit_days": 0,
+          "baseline": null,
+          "lift": null,
+          "eligible": false,
+          "reason": "no condition days"
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "a correlation between two assets with a lag",
+        "rationale": "when both assets have high volatility and a positive correlation with a lag",
+        "declared_constants": {
+          "k": 5
+        },
+        "constants_mismatch": {
+          "k": 5
+        },
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    },
+    {
+      "template": "LLM_no_correlation",
+      "head": "myNoCorrelation({X},{Y})",
+      "body": "highVol({X}), highVol({Y}), <+>[0,20] isNoCorrelation({X},{Y})",
+      "constants": {
+        "w": 20
+      },
+      "scores": {
+        "rule": "[LLM_no_correlation] sp500_gold: myNoCorrelation(\"sp500\",\"gold\") :- highVol(\"sp500\"), highVol(\"gold\"), <+>[0,20] isNoCorrelation(\"sp500\",\"gold\").  (w=20)",
+        "train": {
+          "confidence": 1.0,
+          "condition_days": 95,
+          "hit_days": 95,
+          "baseline": 0.7909090909090909,
+          "lift": 0.2090909090909091,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": null,
+          "condition_days": 0,
+          "hit_days": 0,
+          "baseline": null,
+          "lift": null,
+          "eligible": false,
+          "reason": "no condition days"
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "a lack of correlation between two assets",
+        "rationale": "when both assets have high volatility and no correlation",
+        "declared_constants": {
+          "w": 20
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    }
+  ],
+  "rejected": [
+    {
+      "name": "LLM_correlation_switch",
+      "body": "highVol(X), highVol(Y), <+>[0,20] isPositiveCorrelation(X,Y) -> isNoCorrelation(X,Y)",
+      "reason": "cannot parse atom '<+>[0,20] isPositiveCorrelation(X,Y) -> isNoCorrelation(X,Y)'",
+      "phenomenon": "a switch in the correlation between two assets",
+      "rationale": "when both assets have high volatility and a switch in correlation"
+    }
+  ]
+}

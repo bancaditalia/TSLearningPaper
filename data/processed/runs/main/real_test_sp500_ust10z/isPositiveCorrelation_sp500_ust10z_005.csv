@@ -1,0 +1,5 @@
+X,Y,Start,End
+sp500_real_625,ust10z_real_625,0,50
+sp500_real_630,ust10z_real_630,50,100
+ust10z_real_630,sp500_real_630,50,100
+ust10z_real_625,sp500_real_625,0,50

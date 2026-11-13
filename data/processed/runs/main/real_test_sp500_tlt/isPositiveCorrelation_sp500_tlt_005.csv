@@ -1,0 +1,11 @@
+X,Y,Start,End
+sp500_real_690,tlt_real_690,650,700
+sp500_real_700,tlt_real_700,750,800
+sp500_real_630,tlt_real_630,50,100
+sp500_real_625,tlt_real_625,0,50
+tlt_real_700,sp500_real_700,750,800
+tlt_real_625,sp500_real_625,0,50
+tlt_real_630,sp500_real_630,50,100
+tlt_real_690,sp500_real_690,650,700
+sp500_real_695,tlt_real_695,700,750
+tlt_real_695,sp500_real_695,700,750

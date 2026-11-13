@@ -1,0 +1,27 @@
+{
+  "generator": "transfer_realistic.generate_realistic",
+  "pair": "sp500_ust10y",
+  "n_pairs": 525,
+  "strength": "boundary",
+  "extreme_frac": null,
+  "seed": 42,
+  "reference_pairs": [
+    "sp500_gold",
+    "sp500_bitcoin",
+    "sp500_ust10y",
+    "sp500_tlt",
+    "sp500_ust10z"
+  ],
+  "reference_period": [
+    "2015-01-01",
+    "2021-12-31"
+  ],
+  "real_info_used": "per-series return distributions only (tail mapping)",
+  "labels": "python (compute_concordance)",
+  "label_counts": {
+    "isPositiveCorrelation": 175,
+    "isNegativeCorrelation": 175,
+    "isNoCorrelation": 175
+  },
+  "relaxed_tolerance": 0
+}

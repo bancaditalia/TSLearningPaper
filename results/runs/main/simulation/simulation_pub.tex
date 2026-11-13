@@ -1,0 +1,28 @@
+% run 'main': train 2015-01-01..2021-12-31, test 2022-01-01..2024-12-31, window 50, real-pair stride 1
+\begin{figure}[t]
+\centering
+{\setbox0=\hbox{%
+\begin{tabular}{llrrrrrrrr}
+\toprule
+ & & \multicolumn{4}{c}{False alarms (\%)} & \multicolumn{4}{c}{Power (\%)} \\
+\cmidrule(lr){3-6}\cmidrule(lr){7-10}
+ & & \multicolumn{2}{c}{10 years} & \multicolumn{2}{c}{40 years} & \multicolumn{2}{c}{10 years} & \multicolumn{2}{c}{40 years} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}\cmidrule(lr){9-10}
+Phenomenon & Rule & rules & econ. & rules & econ. & rules & econ. & rules & econ. \\
+\midrule
+Safe haven & T1 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 31.0 & 0.5 & 67.0 \\
+ & T1b & 0.0 &  & 0.0 &  & 0.0 &  & 2.5 &  \\
+Contagion & T2 & 3.5 & 6.0 & 12.5 & 3.0 & 10.5 & 9.0 & 34.0 & 8.0 \\
+ & T2b & 0.0 &  & 0.0 &  & 1.0 &  & 0.0 &  \\
+Decoupling & T3 & 0.0 & 0.0 & 0.0 & 0.0 & 6.5 & 42.0 & 17.5 & 38.0 \\
+ & T3b & 0.0 &  & 5.0 &  & 17.0 &  & 77.5 &  \\
+Lead under stress & T4 & 1.0 & 8.0 & 2.0 & 7.0 & 2.5 & 36.0 & 1.0 & 66.0 \\
+ & T4b & 1.0 &  & 0.5 &  & 1.5 &  & 0.0 &  \\
+Macro (inflation) & T7 & 4.0 & 1.0 & 3.0 & 2.0 & 20.5 & 72.0 & 59.5 & 99.0 \\
+ & T7b & 1.0 &  & 0.0 &  & 0.0 &  & 0.5 &  \\
+\bottomrule
+\end{tabular}}%
+\resizebox{0.7\textwidth}{!}{\box0}\par}
+\caption{\small{Share (\%) of 200 simulated samples where the rule is significant (lift $\geq 0.05$, CI excl.\ zero) vs the econometric test. False alarms: nothing planted; power: phenomenon planted (safe haven $\theta=0.45$, $\rho_0=0.3$; contagion $\theta=0.4$, $\rho_0=0.3$; decoupling $\theta=1$, $\rho_0=0.6$; lead under stress $\theta=0.2$, $\rho_0=0.3$; macro (inflation) $\theta=0.2$, $\rho_0=0.3$). 70/30 fit/test; unscorable = not detected.}}
+\label{fig:simulation}
+\end{figure}

@@ -1,0 +1,7 @@
+| Pair | n | Accuracy | Baseline acc. | Macro-F1 | Baseline F1 | Majority class |
+|---|---|---|---|---|---|---|
+| S&P 500 – Gold | 141 | 0.70 | 0.72 | 0.63 | 0.28 | none |
+| S&P 500 – Bitcoin | 71 | 0.89 | 0.63 | 0.59 | 0.26 | positive |
+| S&P 500 – US 10y Treasury | 141 | 0.49 | 0.55 | 0.49 | 0.24 | none |
+| S&P 500 – US Treasury 20y+ (TLT) | 141 | 0.70 | 0.72 | 0.54 | 0.28 | none |
+| S&P 500 – US 10y zero-coupon (GSW) | 140 | 0.54 | 0.67 | 0.54 | 0.27 | none |

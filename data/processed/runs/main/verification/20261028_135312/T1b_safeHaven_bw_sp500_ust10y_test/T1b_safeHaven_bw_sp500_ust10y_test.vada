@@ -1,0 +1,46 @@
+%% ======== EDB: derived predicate facts, real timeline ======== %%
+
+@input("isNegativeCorrelation").
+@bind("isNegativeCorrelation","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","edb_isNegativeCorrelation.csv").
+@mapping("isNegativeCorrelation",0,"X","string").
+@mapping("isNegativeCorrelation",1,"Y","string").
+@mapping("isNegativeCorrelation",2,"Start","int").
+@mapping("isNegativeCorrelation",3,"End","int").
+@temporalMappings("isNegativeCorrelation",2,3,-1,-1,"[_,_)").
+
+@input("highVol").
+@bind("highVol","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","edb_highVol.csv").
+@mapping("highVol",0,"X","string").
+@mapping("highVol",1,"Start","int").
+@mapping("highVol",2,"End","int").
+@temporalMappings("highVol",1,2,-1,-1,"[_,_)").
+
+@input("trendDown").
+@bind("trendDown","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","edb_trendDown.csv").
+@mapping("trendDown",0,"X","string").
+@mapping("trendDown",1,"Start","int").
+@mapping("trendDown",2,"End","int").
+@temporalMappings("trendDown",1,2,-1,-1,"[_,_)").
+
+%% ======== MINED RULE UNDER VERIFICATION ======== %%
+% template : T1b_safeHaven_bw
+% pair     : sp500_ust10y
+% constants: {'w': 1}
+% fitted on: 2015-01-01..2021-12-31
+stressedDown(X) :- highVol(X), trendDown(X).
+safeHavenEpisodeBw(Y,X) :- isNegativeCorrelation(X,Y), <->[0,1] stressedDown(X).
+
+@output("safeHavenEpisodeBw").
+@bind("safeHavenEpisodeBw","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","safeHavenEpisodeBw_${I}.csv").
+@mapping("safeHavenEpisodeBw",0,"X","string").
+@mapping("safeHavenEpisodeBw",1,"Y","string").
+@mapping("safeHavenEpisodeBw",2,"Start","int").
+@mapping("safeHavenEpisodeBw",3,"End","int").
+@temporalMappings("safeHavenEpisodeBw",2,3,-1,-1,"[_,_]").
+
+%% ======== ANNOTATIONS ======== %%
+
+@timeGranularity("no_date").
+@temporalType("int").
+
+@library("math:","math").

@@ -1,0 +1,39 @@
+%% ======== EDB: derived predicate facts, real timeline ======== %%
+
+@input("isNoCorrelation").
+@bind("isNoCorrelation","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","edb_isNoCorrelation.csv").
+@mapping("isNoCorrelation",0,"X","string").
+@mapping("isNoCorrelation",1,"Y","string").
+@mapping("isNoCorrelation",2,"Start","int").
+@mapping("isNoCorrelation",3,"End","int").
+@temporalMappings("isNoCorrelation",2,3,-1,-1,"[_,_)").
+
+@input("lowVol").
+@bind("lowVol","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","edb_lowVol.csv").
+@mapping("lowVol",0,"X","string").
+@mapping("lowVol",1,"Start","int").
+@mapping("lowVol",2,"End","int").
+@temporalMappings("lowVol",1,2,-1,-1,"[_,_)").
+
+%% ======== MINED RULE UNDER VERIFICATION ======== %%
+% template : T3b_decoupled_bw
+% pair     : sp500_tlt
+% constants: {'w': 1}
+% fitted on: 2015-01-01..2021-12-31
+bothCalm(X,Y) :- lowVol(X), lowVol(Y).
+decoupledBw(X,Y) :- isNoCorrelation(X,Y), <->[0,1] bothCalm(X,Y).
+
+@output("decoupledBw").
+@bind("decoupledBw","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","decoupledBw_${I}.csv").
+@mapping("decoupledBw",0,"X","string").
+@mapping("decoupledBw",1,"Y","string").
+@mapping("decoupledBw",2,"Start","int").
+@mapping("decoupledBw",3,"End","int").
+@temporalMappings("decoupledBw",2,3,-1,-1,"[_,_]").
+
+%% ======== ANNOTATIONS ======== %%
+
+@timeGranularity("no_date").
+@temporalType("int").
+
+@library("math:","math").

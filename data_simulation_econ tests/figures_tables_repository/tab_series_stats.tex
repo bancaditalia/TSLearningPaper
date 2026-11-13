@@ -1,0 +1,28 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\caption{Daily log returns: moments, autocorrelation, stationarity}
+\label{tab:tab_series_stats}
+\begin{tabular}{lrrrr}
+\toprule
+Statistic & S\&P 500 & Gold & Bitcoin & Bond \\
+\midrule
+From & 1962 & 2000 & 2014 & 1971 \\
+N & 15,857 & 6,083 & 2,589 & 13,301 \\
+Mean (\% p.a.) & 7.02 & 9.10 & 51.78 & 7.11 \\
+Vol (\% p.a.) & 16.50 & 17.25 & 69.15 & 10.38 \\
+Skew & -0.99 & -0.29 & -0.60 & 0.13 \\
+Ex. kurt. & 24.92 & 5.36 & 9.06 & 6.24 \\
+Min (\%) & -22.90 & -9.82 & -46.47 & -5.33 \\
+Max (\%) & 10.96 & 8.64 & 22.51 & 7.67 \\
+AC1 r & -0.007 & -0.015 & -0.009 & 0.059 \\
+AC1 r$^2$ & 0.192 & 0.134 & 0.104 & 0.139 \\
+LB(10) r p & $<$0.001 & 0.049 & 0.035 & $<$0.001 \\
+LB(10) r$^2$ p & $<$0.001 & $<$0.001 & $<$0.001 & $<$0.001 \\
+JB & 412,815 & 7,378 & 9,000 & 21,601 \\
+ADF p & $<$0.001 & $<$0.001 & $<$0.001 & $<$0.001 \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\parbox{\linewidth}{\footnotesize Daily log returns over each series' full available sample, ending 31 Dec 2024. Bond = 10-year zero-coupon Treasury (G\"urkaynak--Sack--Wright). p.a. = per annum: the mean is annualised as 252 $\times$ the daily mean and the volatility as $\sqrt{252}$ $\times$ the daily standard deviation, both in \%. Min and Max are the smallest and largest daily returns (\%). Ex. kurt. = excess kurtosis. AC1 = first-order autocorrelation of returns (r) and squared returns (r$^2$). LB(10) = p-value of the Ljung--Box test of no autocorrelation up to 10 lags. JB = Jarque--Bera statistic for normality. ADF = p-value of the augmented Dickey--Fuller test with a constant and 20 lags; the null hypothesis is a unit root (non-stationarity).}
+\end{table}

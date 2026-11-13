@@ -1,0 +1,31 @@
+@input("flow").
+@bind("flow","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","","${X}").
+@mapping("flow",0,"var3","string").
+@mapping("flow",1,"var3","int").
+@mapping("flow",2,"var3","double").
+@mapping("flow",3,"var3","int").
+@mapping("flow",4,"var3","int").
+@temporalMappings("flow",3,4,-1,-1,"[_,_)").
+
+@input("qLow").
+@bind("qLow","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","","${Q}").
+@mapping("qLow",0,"var3","string").
+@mapping("qLow",1,"var3","double").
+@temporalMappings("qLow",-1,-1,-1,-1,"[0,infty)").
+
+crash(X,K,V):- flow(X,K,V), qLow(X,Q), V <= Q.
+
+coCrash(X,Y,K1,K2):- crash(X,K1,_), crash(Y,K2,_), X<>Y.
+
+coCrashCount(X,Y,C):- /\50 no_date coCrash(X,Y,K1,K2), C=count(K1).
+coCrashMax(X,Y,Max):- coCrashCount(X,Y,C), Max = max(C). 
+
+
+totalCount(X,C):- /\50 no_date flow(X,K,V), C=mcount(K).
+maxCount(X,Max):- totalCount(X,C), Max = max(C).
+
+tailDependent(X,Y):- coCrashMax(X,Y,Max), Max >= 2. % this has to be calculated depending on the window size but
+
+@output("crash").
+@output("coCrash").
+@output("tailDependent").

@@ -1,0 +1,236 @@
+# run 'window100': complete configuration (configs/config.yaml + configs/runs/window100.yaml).
+# Written by tslearning/runs.py; do not edit — change the run's YAML instead.
+seed: 42
+reasoner_endpoint: http://localhost:8080/evaluateFromRepoWithParams
+reasoner_repository: .
+windows:
+  financial:
+    length: 100
+    step: 1
+  macro_monthly:
+    length: 12
+    step: 1
+  macro_quarterly:
+    length: 8
+    step: 1
+  airline:
+    length: 12
+    step: 1
+  electricity:
+    length: 336
+    step: 48
+series_freq:
+  SP500: financial
+  NASDAQ: financial
+  Bitcoin: financial
+  VIX: financial
+  Gold: financial
+  UST10Y: financial
+  TLT: financial
+  UST10Z: financial
+  US_Inflation: macro_monthly
+  US_Rate: macro_monthly
+  US_Unemployment: macro_monthly
+  US_Credit: macro_monthly
+  US_Money: macro_monthly
+  US_GDP: macro_quarterly
+  Airline: airline
+  Electricity: electricity
+  DE_Unemployment: macro_monthly
+  DE_Inflation: macro_monthly
+  DE_GDP: macro_quarterly
+  FR_Unemployment: macro_monthly
+  FR_Inflation: macro_monthly
+  FR_GDP: macro_quarterly
+  IT_Unemployment: macro_monthly
+  IT_Inflation: macro_monthly
+  IT_GDP: macro_quarterly
+  ES_Unemployment: macro_monthly
+  ES_Inflation: macro_monthly
+  ES_GDP: macro_quarterly
+  NL_Unemployment: macro_monthly
+  NL_Inflation: macro_monthly
+  NL_GDP: macro_quarterly
+  BE_Unemployment: macro_monthly
+  BE_Inflation: macro_monthly
+  BE_GDP: macro_quarterly
+  AT_Unemployment: macro_monthly
+  AT_Inflation: macro_monthly
+  AT_GDP: macro_quarterly
+  PT_Unemployment: macro_monthly
+  PT_Inflation: macro_monthly
+  PT_GDP: macro_quarterly
+  GR_Unemployment: macro_monthly
+  GR_Inflation: macro_monthly
+  GR_GDP: macro_quarterly
+  IE_Unemployment: macro_monthly
+  IE_Inflation: macro_monthly
+  IE_GDP: macro_quarterly
+  FI_Unemployment: macro_monthly
+  FI_Inflation: macro_monthly
+  FI_GDP: macro_quarterly
+  PL_Unemployment: macro_monthly
+  PL_Inflation: macro_monthly
+  PL_GDP: macro_quarterly
+  SE_Unemployment: macro_monthly
+  SE_Inflation: macro_monthly
+  SE_GDP: macro_quarterly
+  DK_Unemployment: macro_monthly
+  DK_Inflation: macro_monthly
+  DK_GDP: macro_quarterly
+data:
+  financial_start: '2002-01-01'
+  financial_end: '2024-12-31'
+split:
+  train:
+  - '2015-01-01'
+  - '2021-12-31'
+  test:
+  - '2022-01-01'
+  - '2024-12-31'
+real_pairs:
+  date_from: '2015-01-01'
+  date_to: '2024-12-31'
+  stride: 1
+  lags:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  macro_states:
+  - US_Inflation
+labels:
+  deadband: 10.0
+  trend: 0.0283
+  high_vol_pct: 30.0
+  low_vol_pct: 5.0
+  tail_min: auto
+  tail_alpha: 0.01
+  thresholds: train
+  rolling_days: 500
+  rolling_min_days: 250
+  pos_threshold: 60.0
+  neg_threshold: 40.0
+rules:
+  min_condition_days: 60
+  max_w: 50
+  min_w: 1
+synth:
+  split: date
+  train_until: null
+segmentation:
+  method: hmm
+  hmm_stickiness: 0.98
+predicates:
+  vol_percentile: 90.0
+  crash_percentile: 5.0
+  lags:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  kind:
+    isPositiveCorrelation: pair_bin
+    isNegativeCorrelation: pair_bin
+    isNoCorrelation: pair_bin
+    isNonLinearCorrelation: pair_bin
+    tailDependent: pair_bin
+    percentagePositive: pair_cont:Pct
+    magnitudeSameSignConsistencyPercentage: pair_cont:Pct
+    magnitudeDiffSignConsistencyPercentage: pair_cont:Pct
+    onlyMagnitudeConsistencyPercentage: pair_cont:Pct
+    magnitudeSameSignConsistencyMax: pair_cont:Max
+    magnitudeDiffSignConsistencyMax: pair_cont:Max
+    trendUp: unary_bin
+    trendDown: unary_bin
+    deadZone: unary_bin
+    highVol: unary_bin
+    lowVol: unary_bin
+    bigMovePct: unary_cont:Pct
+    sumFlow: unary_cont:Sum
+    positivePctLag: lag_cont:Pct
+    magnitudeSameSignConsistencyPctLag: lag_cont:Pct
+    magnitudeDiffSignConsistencyPctLag: lag_cont:Pct
+    onlyMagnitudeConsistencyPctLag: lag_cont:Pct
+    leadsPositively: lag_bin
+    leadsNegatively: lag_bin
+    noLead: lag_bin
+    inflationHigh: unary_bin
+    inflationLow: unary_bin
+    market: pair_static
+markets:
+  sp500: us
+  nasdaq: us
+  vix: us
+  ust10y: us
+  tlt: us
+  ust10z: us
+paper_final:
+  run: main
+  pairs:
+  - sp500_gold
+  - sp500_bitcoin
+  - sp500_tlt
+  - sp500_ust10z
+paper:
+  pairs:
+  - sp500_gold
+  - sp500_bitcoin
+  - sp500_ust10y
+  - sp500_tlt
+  - sp500_ust10z
+  fidelity:
+    sp500_gold:
+      step: 5
+    sp500_bitcoin:
+      step: 10
+      results: data/processed/real_test_results_dominance
+    sp500_ust10y:
+      step: 5
+    sp500_tlt:
+      step: 5
+    sp500_ust10z:
+      step: 5
+  llm:
+    pool: true
+    top_k: 5
+    box_top_k: 3
+  chosen_templates:
+  - T1b_safeHaven_bw
+  - T2_contagion
+  - T3b_decoupled_bw
+  - T4_leadsUnderStress
+  - T5_hedgeHorizon
+  - T6_regimeReversal
+  - T7_macroConditioned
+classifier:
+  weights: data/processed/classifier_v7p3_s42.pt
+  softmax_group:
+  - isPositiveCorrelation
+  - isNegativeCorrelation
+  - isNoCorrelation
+  multilabel:
+  - trendUp
+  - trendDown
+  - highVol
+  - lowVol
+  - tailDependent
+  aux:
+  - percentagePositive
+  - magnitudeSameSignConsistencyPercentage
+  - magnitudeDiffSignConsistencyPercentage
+  - onlyMagnitudeConsistencyPercentage
+  - magnitudeSameSignConsistencyMax
+  - magnitudeDiffSignConsistencyMax
+  - bigMovePct
+  - sumFlow
+  - isNonLinearCorrelation
+  - positivePctLag
+  - magnitudeSameSignConsistencyPctLag
+  - magnitudeDiffSignConsistencyPctLag
+  - onlyMagnitudeConsistencyPctLag
+  - leadsPositively
+  - leadsNegatively
+  - noLead

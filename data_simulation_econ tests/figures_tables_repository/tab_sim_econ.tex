@@ -1,0 +1,31 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\caption{Simulation: size and power of the econometric tests}
+\label{tab:sim_econ}
+\begin{tabular}{llrrrrrr}
+\toprule
+ & & \multicolumn{3}{c}{Size ($\theta = 0$)} & \multicolumn{3}{c}{Power (largest $\theta$)} \\
+\cmidrule(lr){3-5}\cmidrule(lr){6-8}
+Template & $\rho_0$ & 10 years & 20 years & 40 years & 10 years & 20 years & 40 years \\
+\midrule
+T1b safe haven & 0.0 & 0.12 & 0.08 & 0.10 & 1.00 & 1.00 & 1.00 \\
+ & 0.3 & 0.00 & 0.00 & 0.00 & 0.81 & 0.94 & 1.00 \\
+ & 0.6 & 0.00 & 0.00 & 0.00 & 0.07 & 0.04 & 0.01 \\
+T2 contagion & 0.0 & 0.01 & 0.04 & 0.03 & 0.09 & 0.18 & 0.28 \\
+ & 0.3 & 0.03 & 0.09 & 0.04 & 0.08 & 0.12 & 0.10 \\
+ & 0.6 & 0.02 & 0.03 & 0.01 & 0.04 & 0.03 & 0.04 \\
+T3b decoupling & 0.3 & 0.14 & 0.11 & 0.01 & 0.57 & 0.72 & 0.67 \\
+ & 0.6 & 0.01 & 0.00 & 0.00 & 0.41 & 0.48 & 0.35 \\
+T4 lead in stress & 0.0 & 0.04 & 0.07 & 0.03 & 0.24 & 0.53 & 0.71 \\
+ & 0.3 & 0.05 & 0.04 & 0.08 & 0.36 & 0.55 & 0.66 \\
+ & 0.6 & 0.06 & 0.07 & 0.05 & 0.28 & 0.46 & 0.73 \\
+T7 macro (inflation) & 0.0 & 0.05 & 0.01 & 0.02 & 0.92 & 0.98 & 1.00 \\
+ & 0.3 & 0.05 & 0.04 & 0.04 & 0.93 & 0.98 & 1.00 \\
+ & 0.6 & 0.04 & 0.05 & 0.01 & 0.94 & 0.98 & 1.00 \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\parbox{\linewidth}{\footnotesize Share of 200 simulated samples in which the econometric test of each phenomenon detects it at the 5\% level on the test part (30\% of the sample). Size: no phenomenon planted (target 0.05). Power: largest strength of the grid (T1b: correlation 0.6 lower on extreme-down days; T2: 0.4 higher in high volatility; T3b: correlation removed in calm; T4: lead loading 0.2; T7: 0.4 higher in high inflation). $\rho_0$: background correlation. Samples of 10, 20 and 40 years of daily returns calibrated on the S\&P 500 and gold (GJR-GARCH/GARCH with Student-t innovations). Replications with too few trigger days count as not detected.}
+\end{table}

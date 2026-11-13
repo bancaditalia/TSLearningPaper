@@ -1,0 +1,13 @@
+Pair,Daily label,same trend,opposite trend,no common trend
+S&P 500 – Bond,pos,37%,12%,51%
+,no,26%,20%,54%
+,neg,19%,29%,53%
+S&P 500 – Gold,pos,40%,22%,38%
+,no,30%,31%,38%
+,neg,29%,26%,44%
+S&P 500 – Bitcoin,pos,56%,19%,25%
+,no,51%,22%,26%
+,neg,45%,19%,36%
+Gold – Bond,pos,36%,14%,50%
+,no,27%,20%,53%
+,neg,24%,18%,58%

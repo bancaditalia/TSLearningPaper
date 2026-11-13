@@ -1,0 +1,235 @@
+{
+  "meta": {
+    "pair": "sp500_gold",
+    "source": "py",
+    "input_mode": "series",
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "temperature": null,
+    "seconds": 17.300564124947414,
+    "json_mode": true,
+    "num_ctx": 32768,
+    "train": [
+      "2015-01-01",
+      "2021-12-31"
+    ],
+    "test": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "n_proposed": 5,
+    "n_parsed": 4,
+    "n_rejected": 1,
+    "prompt_hash": "745252cf4a57",
+    "prompt_chars": 59321
+  },
+  "accepted": [
+    {
+      "template": "LLM_crash_rebound",
+      "head": "reboundAfterTurbulentDecline({X})",
+      "body": "highVol({X}), trendDown({X}), <+>[0,30] trendUp({X})",
+      "constants": {
+        "w": 30
+      },
+      "scores": {
+        "rule": "[LLM_crash_rebound] sp500_gold: reboundAfterTurbulentDecline(\"sp500\") :- highVol(\"sp500\"), trendDown(\"sp500\"), <+>[0,30] trendUp(\"sp500\").  (w=30)",
+        "train": {
+          "confidence": 1.0,
+          "condition_days": 304,
+          "hit_days": 304,
+          "baseline": 1.0,
+          "lift": 0.0,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": 1.0,
+          "condition_days": 224,
+          "hit_days": 224,
+          "baseline": 0.9986702127659575,
+          "lift": 0.0013297872340425343,
+          "eligible": true,
+          "reason": null
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "Post-selloff rebound after a turbulent decline",
+        "rationale": "After a window that was both turbulent and net negative for X, as in Q4 2015, Q1 2016, Q4 2018 and March 2020, the following 50-day window often flips to a net gain. The pullbacks in this sample tended to be V-shaped.",
+        "declared_constants": {
+          "w": 30
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": [
+          "Y"
+        ],
+        "head_reuses_vocabulary": null
+      }
+    },
+    {
+      "template": "LLM_joint_tail_then_calm",
+      "head": "calmFollowsJointCrash({X},{Y})",
+      "body": "tailDependent({X},{Y}), highVol({X}), <+>[0,60] lowVol({X})",
+      "constants": {
+        "w": 60
+      },
+      "scores": {
+        "rule": "[LLM_joint_tail_then_calm] sp500_gold: calmFollowsJointCrash(\"sp500\",\"gold\") :- tailDependent(\"sp500\",\"gold\"), highVol(\"sp500\"), <+>[0,60] lowVol(\"sp500\").  (w=60)",
+        "train": {
+          "confidence": 0.5568862275449101,
+          "condition_days": 167,
+          "hit_days": 93,
+          "baseline": 0.8647727272727272,
+          "lift": -0.3078864997278171,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": 0.0,
+          "condition_days": 90,
+          "hit_days": 0,
+          "baseline": 0.6316489361702128,
+          "lift": -0.6316489361702128,
+          "eligible": true,
+          "reason": null
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "Volatility mean reversion after joint tail events",
+        "rationale": "When both assets had extreme down days on the same days during a turbulent phase, the stress episode tends to burn out. X then returns to a calm regime within about three months.",
+        "declared_constants": {
+          "w": 60
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    },
+    {
+      "template": "LLM_calm_before_storm",
+      "head": "complacencyBreaks({X},{Y})",
+      "body": "lowVol({X}), lowVol({Y}), trendUp({X}), <+>[0,40] highVol({X})",
+      "constants": {
+        "w": 40
+      },
+      "scores": {
+        "rule": "[LLM_calm_before_storm] sp500_gold: complacencyBreaks(\"sp500\",\"gold\") :- lowVol(\"sp500\"), lowVol(\"gold\"), trendUp(\"sp500\"), <+>[0,40] highVol(\"sp500\").  (w=40)",
+        "train": {
+          "confidence": 0.190224570673712,
+          "condition_days": 757,
+          "hit_days": 144,
+          "baseline": 0.3119318181818182,
+          "lift": -0.12170724750810619,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": 0.0,
+          "condition_days": 223,
+          "hit_days": 0,
+          "baseline": 0.31648936170212766,
+          "lift": -0.31648936170212766,
+          "eligible": true,
+          "reason": null
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "Volatility clustering reversal, complacency before a shock",
+        "rationale": "A joint calm regime with X rising has been followed by sudden turbulence, e.g. the February 2018 selloff. The condition is selective and the conclusion is rare in general.",
+        "declared_constants": {
+          "w": 40
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    },
+    {
+      "template": "LLM_stress_correlation_flip",
+      "head": "diversifierFailsInStress({X},{Y})",
+      "body": "isNegativeCorrelation({X},{Y}), highVol({X}), <+>[0,20] tailDependent({X},{Y})",
+      "constants": {
+        "w": 20
+      },
+      "scores": {
+        "rule": "[LLM_stress_correlation_flip] sp500_gold: diversifierFailsInStress(\"sp500\",\"gold\") :- isNegativeCorrelation(\"sp500\",\"gold\"), highVol(\"sp500\"), <+>[0,20] tailDependent(\"sp500\",\"gold\").  (w=20)",
+        "train": {
+          "confidence": 0.0,
+          "condition_days": 39,
+          "hit_days": 0,
+          "baseline": 0.12727272727272726,
+          "lift": -0.12727272727272726,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": 0.0,
+          "condition_days": 48,
+          "hit_days": 0,
+          "baseline": 0.2047872340425532,
+          "lift": -0.2047872340425532,
+          "eligible": true,
+          "reason": null
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "Correlation breakdown in stress, with diversification failing",
+        "rationale": "In a turbulent phase where the two assets have been moving oppositely, a flip to joint extreme losses (dash-for-cash episodes) is not the usual case. When it does occur, it clusters in the following weeks.",
+        "declared_constants": {
+          "w": 20
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    }
+  ],
+  "rejected": [
+    {
+      "name": "LLM_safe_haven_trend_persistence",
+      "body": "highVol(X), trendDown(X), trendUp(Y), <+>[0,25] trendUp(Y)",
+      "reason": "vacuous: the conclusion trendUp restates a condition atom within the window length (50 days), so the same episode satisfies it",
+      "phenomenon": "Safe-haven bid persisting through equity turbulence",
+      "rationale": "When equities are turbulent and falling while Y is trending up, the Y uptrend tends to still be in place weeks later, since flight-to-safety flows are slow to unwind. This is conditioned on a specific stress situation."
+    }
+  ]
+}

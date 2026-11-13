@@ -1,0 +1,3 @@
+Proposer,rules,mean lift,positive,best,worst
+LLM llama3.1,2,-0.013,0/2,-0.012,-0.013
+template,8,+0.182,8/8,+0.446,+0.024

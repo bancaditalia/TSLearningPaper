@@ -1,0 +1,74 @@
+{
+  "run": "main",
+  "fingerprint": "6f599c953d11",
+  "created": "2026-10-26T16:19:40",
+  "config": "configs/runs/main.yaml",
+  "parameters": {
+    "split": {
+      "train": [
+        "2015-01-01",
+        "2021-12-31"
+      ],
+      "test": [
+        "2022-01-01",
+        "2024-12-31"
+      ]
+    },
+    "window": {
+      "length": 50,
+      "step": 1
+    },
+    "real_pairs": {
+      "date_from": "2015-01-01",
+      "date_to": "2024-12-31",
+      "stride": 1,
+      "lags": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "macro_states": [
+        "US_Inflation"
+      ]
+    },
+    "labels": {
+      "deadband": 10.0,
+      "trend": 0.02,
+      "high_vol_pct": 30.0,
+      "low_vol_pct": 5.0,
+      "tail_min": 2,
+      "tail_alpha": 0.01,
+      "thresholds": "train",
+      "rolling_days": 500,
+      "rolling_min_days": 250
+    },
+    "rules": {
+      "min_condition_days": 30,
+      "max_w": 25,
+      "min_w": 1
+    },
+    "synth": {
+      "split": "date",
+      "train_until": null
+    },
+    "data": {
+      "financial_start": "2002-01-01",
+      "financial_end": "2024-12-31"
+    },
+    "seed": 42
+  },
+  "info": {
+    "classifier_weights": "base:data/processed/runs/main_minw0/classifier_v7p3_s42.pt",
+    "pairs": [
+      "sp500_gold",
+      "sp500_bitcoin",
+      "sp500_ust10y",
+      "sp500_tlt",
+      "sp500_ust10z"
+    ]
+  },
+  "history": [],
+  "long_name": "tr2015-2021_te2022-2024_w50_s1_minw1_gold-bitcoin-ust10y-tlt-ust10z"
+}

@@ -1,0 +1,7 @@
+X,Y,Start,End
+sp500_real_360,gold_real_360,1100,1150
+gold_real_360,sp500_real_360,1100,1150
+sp500_real_370,gold_real_370,1200,1250
+gold_real_365,sp500_real_365,1150,1200
+sp500_real_365,gold_real_365,1150,1200
+gold_real_370,sp500_real_370,1200,1250

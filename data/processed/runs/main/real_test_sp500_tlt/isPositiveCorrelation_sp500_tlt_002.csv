@@ -1,0 +1,17 @@
+X,Y,Start,End
+tlt_real_360,sp500_real_360,1100,1150
+tlt_real_335,sp500_real_335,850,900
+sp500_real_360,tlt_real_360,1100,1150
+sp500_real_335,tlt_real_335,850,900
+tlt_real_345,sp500_real_345,950,1000
+tlt_real_370,sp500_real_370,1200,1250
+sp500_real_365,tlt_real_365,1150,1200
+sp500_real_350,tlt_real_350,1000,1050
+tlt_real_355,sp500_real_355,1050,1100
+tlt_real_340,sp500_real_340,900,950
+sp500_real_355,tlt_real_355,1050,1100
+sp500_real_340,tlt_real_340,900,950
+tlt_real_350,sp500_real_350,1000,1050
+tlt_real_365,sp500_real_365,1150,1200
+sp500_real_370,tlt_real_370,1200,1250
+sp500_real_345,tlt_real_345,950,1000

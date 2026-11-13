@@ -1,0 +1,40 @@
+\begin{figure}[t]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lllllll}
+\toprule
+Rule & Pair & test 2022--2024 (train 2015--2021, train thr.) & test 2016--2024 (train 2005--2015, rolling thr.) & verdict 1 & verdict 2 & same sign \\
+\midrule
+T1 & S\&P 500 -- US 10y Treasury & +0.069 [-0.227, 0.308] & +0.135 [-0.235, 0.335] & positive lift & positive lift & yes \\
+T1 & S\&P 500 -- US 10y zero-coupon (GSW) & +0.106 [-0.205, 0.395] & +0.165 [-0.204, 0.366] & positive lift & positive lift & yes \\
+T1 & S\&P 500 -- US Treasury 20y+ (TLT) & +0.277 [-0.096, 0.639] & +0.223 [-0.032, 0.361] & positive lift & positive lift & yes \\
+T1b & S\&P 500 -- US 10y Treasury & +0.080 [-0.298, 0.515] & +0.038 [-0.095, 0.164] & positive lift & negligible & yes \\
+T1b & S\&P 500 -- US 10y zero-coupon (GSW) & +0.123 [-0.300, 0.600] & +0.049 [-0.091, 0.186] & positive lift & negligible & yes \\
+T1b & S\&P 500 -- US Treasury 20y+ (TLT) & +0.253 [-0.178, 0.702] & +0.065 [-0.129, 0.178] & positive lift & positive lift & yes \\
+T2 & S\&P 500 -- Gold & +0.318 [0.318, 0.318] & +0.354 [0.300, 0.600] & positive lift & significant & yes \\
+T2b & S\&P 500 -- Gold & +0.122 [-0.156, 0.457] & +0.048 [-0.054, 0.304] & positive lift & negligible & yes \\
+T3 & S\&P 500 -- Gold & +0.049 [-0.211, 0.475] & -0.041 [-0.097, 0.038] & negligible & negligible & no \\
+T3b & S\&P 500 -- Gold & +0.069 [-0.162, 0.578] & -0.169 [-0.376, 0.171] & positive lift & negative & no \\
+T3b & S\&P 500 -- US Treasury 20y+ (TLT) & +0.098 & +0.313 & positive lift & positive lift & yes \\
+T4 & S\&P 500 -- Gold & +0.117 [-0.282, 0.508] & -0.180 [-0.411, 0.080] & positive lift & negative & no \\
+T4 & S\&P 500 -- US 10y Treasury & -0.051 [-0.467, 0.283] & +0.073 [-0.213, 0.354] & negative & positive lift & no \\
+T4 & S\&P 500 -- US 10y zero-coupon (GSW) & +0.177 [-0.289, 0.461] & -0.007 [-0.307, 0.282] & positive lift & negligible & no \\
+T4 & S\&P 500 -- US Treasury 20y+ (TLT) & +0.185 [-0.258, 0.438] & -0.024 [-0.373, 0.325] & positive lift & negligible & no \\
+T4b & S\&P 500 -- Gold & +0.132 [-0.316, 0.559] & -0.024 [-0.134, 0.126] & positive lift & negligible & no \\
+T4b & S\&P 500 -- US 10y Treasury & +0.101 [-0.211, 0.538] & +0.013 [-0.092, 0.148] & positive lift & negligible & yes \\
+T4b & S\&P 500 -- US 10y zero-coupon (GSW) & +0.116 [-0.320, 0.537] & +0.034 [-0.136, 0.218] & positive lift & negligible & yes \\
+T4b & S\&P 500 -- US Treasury 20y+ (TLT) & +0.104 [-0.192, 0.434] & +0.025 [-0.141, 0.226] & positive lift & negligible & yes \\
+T7 & S\&P 500 -- Gold & -0.166 [-0.426, 0.284] & +0.061 [-0.130, 0.366] & negative & positive lift & no \\
+T7 & S\&P 500 -- US 10y Treasury & -0.123 [-0.401, 0.310] & +0.242 [0.023, 0.544] & negative & significant & no \\
+T7 & S\&P 500 -- US 10y zero-coupon (GSW) & -0.131 [-0.414, 0.309] & +0.268 [0.040, 0.563] & negative & significant & no \\
+T7 & S\&P 500 -- US Treasury 20y+ (TLT) & -0.127 [-0.461, 0.345] & +0.251 [0.011, 0.532] & negative & significant & no \\
+T7b & S\&P 500 -- Gold & -0.137 [-0.346, 0.087] & +0.042 [-0.162, 0.228] & negative & negligible & no \\
+T7b & S\&P 500 -- US 10y Treasury & -0.101 [-0.286, 0.124] & +0.217 [0.016, 0.415] & negative & significant & no \\
+T7b & S\&P 500 -- US 10y zero-coupon (GSW) & -0.108 [-0.286, 0.119] & +0.258 [0.052, 0.449] & negative & significant & no \\
+T7b & S\&P 500 -- US Treasury 20y+ (TLT) & -0.103 [-0.280, 0.140] & +0.216 [0.007, 0.587] & negative & significant & no \\
+\bottomrule
+\end{tabular}
+}
+\caption{Robustness of the rule results across windows (classifier labels). Test-period lift with its 95\% bootstrap CI in each window: (1) train 2015–2021, test 2022–2024, tau/qLow fitted on train; (2) train 2005–2015, test 2016–2024, tau/qLow rolling (past 2 years). Constants are refitted in each window on its own training period, and each window has its own classifier. Only rules scored on the test period in every window are shown. Pairs absent from a window (e.g.\ Bitcoin before 2017) do not appear.}
+\label{tab:robustness_classifier}
+\end{figure}

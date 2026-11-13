@@ -1,0 +1,14 @@
+% run 'main': train 2015-01-01..2021-12-31, test 2022-01-01..2024-12-31, window 50, real-pair stride 1
+\begin{figure}[t]
+\centering
+\begin{tabular}{lllll}
+\toprule
+Run & Window-pairs & Reasoner (s) & Classifier (ms) & Speedup \\
+\midrule
+timing & 75 & 19.0 & 0.065 & 293,862$\times$ \\
+all runs & 750 & 16.8 & 0.060 & 278,680$\times$ \\
+\bottomrule
+\end{tabular}
+\caption{\small{Labelling time per window-pair, reasoner vs classifier. \emph{timing}: dedicated run, warm-up discarded; \emph{all runs}: average over all labeling runs. Classifier: \texttt{classifier\_v7p3\_s42.pt}.}}
+\label{fig:speedup_pub}
+\end{figure}

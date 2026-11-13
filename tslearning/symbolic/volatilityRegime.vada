@@ -1,0 +1,44 @@
+@input("flow").
+@bind("flow","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","","${X}").
+@mapping("flow",0,"var3","string").
+@mapping("flow",1,"var3","int").
+@mapping("flow",2,"var3","double").
+@mapping("flow",3,"var3","int").
+@mapping("flow",4,"var3","int").
+@temporalMappings("flow",3,4,-1,-1,"[_,_)").
+
+@input("tau").
+@bind("tau","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","","${T}").
+@mapping("tau",0,"var3","string").
+@mapping("tau",1,"var3","double").
+@temporalMappings("tau",-1,-1,-1,-1,"[0,infty)").
+
+@library("math:","math").
+
+bigMove(X,K):- tau(X,T), flow(X,K,V), Abs = math:abs(V), Abs > T.
+
+bigMoveCount(X,C):- /\50 no_date bigMove(X,K), C = mcount(K). 
+bigMoveCount(X,0):- /\50 no_date flow(X,K,V). 
+bigMoveMax(X,Max):- bigMoveCount(X,C), Max= max(C). 
+
+totalCount(X,C):- /\50 no_date flow(X,K,V), C=mcount(K).
+maxCount(X,Max):- totalCount(X,C), Max = max(C).
+
+
+bigMovePct(X,Pct):- bigMoveMax(X,Max), maxCount(X,TotalMax), Pct = Max * 100.0 / TotalMax.
+highVol(X,Pct):- bigMovePct(X,Pct), Pct >= 30.0.
+lowVol(X,Pct):- bigMovePct(X,Pct), Pct <= 5.0.
+%lowVol(X):- bigMoveMax(X,Max), maxCount(X,TotalMax) Max <= 10. 
+
+@output("bigMove").
+%@output("bigMoveCount").
+@output("bigMovePct").
+
+%@output("totalCount").
+@output("maxCount").
+
+@output("highVol").
+@output("lowVol").
+
+@timeGranularity("no_date").
+@temporalType("int").

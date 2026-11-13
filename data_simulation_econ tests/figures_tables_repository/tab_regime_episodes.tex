@@ -1,0 +1,38 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.8pt}
+\caption{Correlation-regime episodes}
+\label{tab:regime_episodes}
+\begin{tabular}{llcrrrrrrrrr}
+\toprule
+ & & & \multicolumn{3}{c}{Positive} & \multicolumn{3}{c}{None} & \multicolumn{3}{c}{Negative} \\
+\cmidrule(lr){4-6}\cmidrule(lr){7-9}\cmidrule(lr){10-12}
+Pair & Window & Sample & Share & Ep. & Med. & Share & Ep. & Med. & Share & Ep. & Med. \\
+\midrule
+\multicolumn{12}{l}{\textit{Panel A: hysteresis labels (enter at $\pm$15, leave inside $\pm$5)}} \\
+\addlinespace[2pt]
+S\&P 500 -- Bond & 50 d & 1971--2024 & 0.46 & 68 & 39 & 0.23 & 109 & 24 & 0.30 & 42 & 39 \\
+ & 250 d & 1972--2024 & 0.44 & 7 & 504 & 0.25 & 11 & 176 & 0.31 & 4 & 298 \\
+S\&P 500 -- Gold & 50 d & 2000--2024 & 0.28 & 34 & 34 & 0.42 & 72 & 26 & 0.30 & 39 & 31 \\
+ & 250 d & 2001--2024 & 0.18 & 4 & 235 & 0.57 & 7 & 360 & 0.24 & 2 & 722 \\
+S\&P 500 -- Bitcoin & 50 d & 2014--2024 & 0.57 & 16 & 46 & 0.30 & 25 & 23 & 0.13 & 9 & 28 \\
+ & 250 d & 2015--2024 & 0.52 & 2 & 626 & 0.38 & 3 & 218 & 0.10 & 1 & 235 \\
+Gold -- Bond & 50 d & 2000--2024 & 0.59 & 43 & 47 & 0.31 & 60 & 24 & 0.10 & 17 & 31 \\
+ & 250 d & 2001--2024 & 0.73 & 5 & 525 & 0.25 & 5 & 200 & 0.03 & 1 & 163 \\
+\midrule
+\multicolumn{12}{l}{\textit{Panel B: deadband labels ($\pm$10)}} \\
+\addlinespace[2pt]
+S\&P 500 -- Bond & 50 d & 1971--2024 & 0.47 & 170 & 5 & 0.23 & 287 & 6 & 0.30 & 118 & 4 \\
+ & 250 d & 1972--2024 & 0.44 & 48 & 4 & 0.25 & 61 & 11 & 0.31 & 14 & 8 \\
+S\&P 500 -- Gold & 50 d & 2000--2024 & 0.30 & 102 & 4 & 0.40 & 230 & 6 & 0.31 & 129 & 3 \\
+ & 250 d & 2001--2024 & 0.21 & 38 & 3 & 0.54 & 67 & 4 & 0.25 & 29 & 4 \\
+S\&P 500 -- Bitcoin & 50 d & 2014--2024 & 0.57 & 51 & 5 & 0.30 & 79 & 5 & 0.13 & 28 & 6 \\
+ & 250 d & 2015--2024 & 0.58 & 17 & 3 & 0.35 & 21 & 4 & 0.07 & 5 & 33 \\
+Gold -- Bond & 50 d & 2000--2024 & 0.60 & 135 & 3 & 0.30 & 187 & 4 & 0.10 & 52 & 3 \\
+ & 250 d & 2001--2024 & 0.71 & 32 & 16 & 0.26 & 38 & 4 & 0.03 & 7 & 3 \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\parbox{\linewidth}{\footnotesize Correlation regime of each pair from the sign concordance score S = 100 $\times$ (share of days on which both returns have the same sign $-$ share with opposite signs), computed on rolling windows (Win.) of 50 or 250 trading days. Share = share of labelled days in the regime, which is the baseline of a rule whose hypothesis is that regime. Ep.\ = number of episodes (runs of consecutive days with the same label). Med.\ = median episode length in trading days. Sample = first and last labelled year. Bond = 10-year zero-coupon Treasury (G\"urkaynak--Sack--Wright). Sample ends 31 Dec 2024.}
+\end{table}

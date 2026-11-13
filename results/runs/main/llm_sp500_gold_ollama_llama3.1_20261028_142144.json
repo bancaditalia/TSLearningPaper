@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "pair": "sp500_gold",
+    "source": "py",
+    "input_mode": "series",
+    "provider": "ollama",
+    "model": "llama3.1",
+    "temperature": 0.3,
+    "seconds": 509.41531612491235,
+    "json_mode": true,
+    "num_ctx": 32768,
+    "train": [
+      "2015-01-01",
+      "2021-12-31"
+    ],
+    "test": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "n_proposed": 6,
+    "n_parsed": 0,
+    "n_rejected": 6,
+    "prompt_hash": "745252cf4a57",
+    "prompt_chars": 59321
+  },
+  "accepted": [],
+  "rejected": [
+    {
+      "name": "LLM_highVolFollows",
+      "body": "highVol(X), highVol(Y), <+>[0,10] trendUp(X) and trendDown(Y)",
+      "reason": "cannot parse atom '<+>[0,10] trendUp(X) and trendDown(Y)'",
+      "phenomenon": "a high volatility regime is followed by a trend up in both series",
+      "rationale": "a high volatility regime is often followed by a trend up in both series"
+    },
+    {
+      "name": "LLM_tailDependentFollows",
+      "body": "tailDependent(X,Y), <+>[0,15] trendDown(X) and trendUp(Y)",
+      "reason": "cannot parse atom '<+>[0,15] trendDown(X) and trendUp(Y)'",
+      "phenomenon": "tail dependency between two series leads to a trend down in the first and up in the second",
+      "rationale": "when two series are tail dependent, a trend down in the first often leads to a trend up in the second"
+    },
+    {
+      "name": "LLM_isPositiveCorrelation",
+      "body": "isPositiveCorrelation(X,Y), <+>[0,5] P(X) and P(Y)",
+      "reason": "cannot parse atom '<+>[0,5] P(X) and P(Y)'",
+      "phenomenon": "a positive correlation regime is followed by an increase in both series",
+      "rationale": "in a positive correlation regime, both series often increase"
+    },
+    {
+      "name": "LLM_leadsPositively",
+      "body": "isPositiveCorrelation(X,Y), leadsPositively(X,Y,1), <+>[0,10] P(Y) and P(X)",
+      "reason": "cannot parse atom '<+>[0,10] P(Y) and P(X)'",
+      "phenomenon": "a lead in one series is followed by an increase in the other",
+      "rationale": "when one series leads the other in a positive correlation regime, an increase in the first often follows"
+    },
+    {
+      "name": "LLM_lowVolFollows",
+      "body": "lowVol(X), lowVol(Y), <+>[0,10] trendDown(X) and trendDown(Y)",
+      "reason": "cannot parse atom '<+>[0,10] trendDown(X) and trendDown(Y)'",
+      "phenomenon": "a low volatility regime is followed by a trend down in both series",
+      "rationale": "a low volatility regime is often followed by a trend down in both series"
+    },
+    {
+      "name": "LLM_isNoCorrelation",
+      "body": "isNoCorrelation(X,Y), <+>[0,5] P(X) and trendDown(Y)",
+      "reason": "cannot parse atom '<+>[0,5] P(X) and trendDown(Y)'",
+      "phenomenon": "a no correlation regime is followed by an increase in one series and a decrease in the other",
+      "rationale": "in a no correlation regime, an increase in one series often follows a decrease in the other"
+    }
+  ]
+}

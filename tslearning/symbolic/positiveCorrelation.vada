@@ -1,0 +1,84 @@
+@input("flow").
+@bind("flow","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","","${X}").
+@mapping("flow",0,"var3","string").
+@mapping("flow",1,"var3","int").
+@mapping("flow",2,"var3","double").
+@mapping("flow",3,"var3","int").
+@mapping("flow",4,"var3","int").
+@temporalMappings("flow",3,4,-1,-1,"[_,_)").
+
+flowShifted(X,Y,Z):- <->[1,1] flow(X,Y,Z).
+
+flowRowAbs(X,Y):- flow(X,Y,V).
+flowShiftedAbs(X,Y):- flowShifted(X,Y,V).
+
+% SIGN AGREEMENT
+
+sign(X1,X2,S):- flow(X1,Y1,V1), flow(X2,Y2,V2),  X1<>X2,S = V1 * V2.
+
+totalSign(X1,X2, TS):- /\50 no_date sign(X1,X2,S), TS = mcount(S).
+maxSign(X1,X2, MS):- totalSign(X1,X2, TS), MS = max(TS).
+
+positiveCorrelationTA(X1,X2,C):- /\50 no_date sign(X1,X2,S), S>0.0, C = mcount(S).
+positiveMax(X1, X2, Max):- positiveCorrelationTA(X1,X2,C), Max = max(C).
+percentagePositive(X1,X2,P):- maxSign(X1,X2, TS), positiveMax(X1,X2, PC), P = (PC * 100.0) / TS.
+
+
+% MAGNITUDE AGREEMENT
+
+magnitudeConsistent(X,Y,K):- flowRowAbs(X,V1), flowShiftedAbs(X,V2), flowRowAbs(Y,V3), flowShiftedAbs(Y,V4),X<>Y,V1>V2, V3>V4, K = V1+"-"+V2+"-"+V3+"-"+V4.
+
+magnitudeConsistent(X,Y,K):- flowRowAbs(X,V1), flowShiftedAbs(X,V2), flowRowAbs(Y,V3), flowShiftedAbs(Y,V4),X<>Y,V1<V2, V3<V4, K = V1+"-"+V2+"-"+V3+"-"+V4.
+
+onlyMagnitudeConsistencyCount(X,Y,Count):- /\50 no_date magnitudeConsistent(X,Y,K),Count = mcount(K).
+onlyMagnitudeConsistencyMax(X,Y, Max):- onlyMagnitudeConsistencyCount(X,Y, Count), Max = max(Count).
+onlyMagnitudeConsistencyPercentage(X,Y,P):- onlyMagnitudeConsistencyMax(X,Y, Max), maxSign(X,Y, TS), P = (Max * 100.0) / TS.
+
+
+% SIGN and MAGNITUDE together
+% why at this point? because we want to know where the sign and the strength of the change are in agreement at the same time;
+% we can't say that there is positive correlation if the sign is in agreement for 50% of the sample while the magnitude is in agreement for the other 50% of the sample
+
+isSameSignMagnitudeConsistent(X,Y,K):- magnitudeConsistent(X,Y,K), sign(X,Y,S), S > 0.0.
+
+isDiffSignMagnitudeConsistent(X,Y,K):- magnitudeConsistent(X,Y,K), sign(X,Y,S), S < 0.0.
+
+
+magnitudeSameSignConsistencyCount(X,Y,Count):- /\50 no_date isSameSignMagnitudeConsistent(X,Y,K),Count = mcount(K).
+magnitudeSameSignConsistencyMax(X,Y, Max):- magnitudeSameSignConsistencyCount(X,Y, Count), Max = max(Count).
+magnitudeSameSignConsistencyPercentage(X,Y,P):- magnitudeSameSignConsistencyMax(X,Y, Max), maxSign(X,Y, TS), P = (Max * 100.0) / TS.
+
+
+magnitudeDiffSignConsistencyCount(X,Y,Count):- /\50 no_date isDiffSignMagnitudeConsistent(X,Y,K),Count = mcount(K).
+magnitudeDiffSignConsistencyMax(X,Y, Max):- magnitudeDiffSignConsistencyCount(X,Y, Count), Max = max(Count).
+magnitudeDiffSignConsistencyPercentage(X,Y,P):- magnitudeDiffSignConsistencyMax(X,Y, Max), maxSign(X,Y, TS), P = (Max * 100.0) / TS.
+
+
+
+isPositiveCorrelation(X1,X2):- magnitudeSameSignConsistencyPercentage(X1,X2,P), P > 60.0.
+isNegativeCorrelation(X1,X2):- magnitudeDiffSignConsistencyPercentage(X1,X2,P), P > 40.0.
+isNoCorrelation1(X1,X2):- totalSign(X1,X2,S), not isNegativeCorrelation(X1,X2).
+isNoCorrelation(X1,X2):- isNoCorrelation1(X1,X2), not isPositiveCorrelation(X1,X2).
+
+
+isNonLinearCorrelation(X1,X2):- onlyMagnitudeConsistencyPercentage(X1,X2,K), percentagePositive(X1,X2,P), P > 40.0, P < 60.0.
+
+
+@output("magnitudeSameSignConsistencyPercentage").
+@output("magnitudeDiffSignConsistencyPercentage").
+@output("onlyMagnitudeConsistencyPercentage").
+@output("isSameSignMagnitudeConsistent").
+@output("isDiffSignMagnitudeConsistent").
+@output("percentagePositive").
+
+
+@output("magnitudeSameSignConsistencyMax").
+@output("magnitudeDiffSignConsistencyMax").
+@output("isPositiveCorrelation").
+@output("isNegativeCorrelation").
+@output("isNoCorrelation").
+
+@output("isNonLinearCorrelation").
+
+@timeGranularity("no_date").
+@temporalType("int").

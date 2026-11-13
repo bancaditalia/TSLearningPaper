@@ -1,0 +1,28 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\caption{Daily co-movement by period and inflation state}
+\label{tab:tab_comovement}
+\begin{tabular}{lrrrrrr}
+\toprule
+Pair & Full & Start–1999 & 2000–2021 & 2022–2024 & Infl. high & Infl. low \\
+\midrule
+\multicolumn{7}{l}{\textit{Panel A: Pearson correlation}} \\
+\addlinespace[2pt]
+S\&P 500 – Bond & 0.00 & +0.28 & -0.36 & +0.13 & +0.11 & -0.20 \\
+S\&P 500 – Gold & 0.00 &  & -0.02 & +0.10 & -0.01 & 0.00 \\
+S\&P 500 – Bitcoin & +0.22 &  & +0.16 & +0.42 & +0.39 & +0.16 \\
+Gold – Bond & +0.17 &  & +0.15 & +0.35 & +0.17 & +0.17 \\
+\midrule
+\multicolumn{7}{l}{\textit{Panel B: sign concordance S}} \\
+\addlinespace[2pt]
+S\&P 500 – Bond & +4 & +21 & -20 & +10 & +13 & -12 \\
+S\&P 500 – Gold & +1 &  & 0 & +5 & +3 & 0 \\
+S\&P 500 – Bitcoin & +13 &  & +6 & +31 & +28 & +6 \\
+Gold – Bond & +15 &  & +14 & +17 & +12 & +16 \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\parbox{\linewidth}{\footnotesize Panel A: Pearson correlation of daily log returns. Panel B: sign concordance score S = 100 $\times$ (share of days on which both returns have the same sign $-$ share with opposite signs), zero returns excluded; for Gaussian returns S = 200 arcsin($\rho$)/$\pi$. Start--1999 runs from the first observation of each pair (S\&P 500 -- Bond: 1971). Infl. high/low: days in and out of the high-inflation state (12-month CPI inflation, entering at 3.0\% and leaving below 2.5\%; CPI for month m used from month m+2). Empty cells: fewer than 250 joint observations. Bond = 10-year zero-coupon Treasury (G\"urkaynak--Sack--Wright). Sample ends 31 Dec 2024.}
+\end{table}

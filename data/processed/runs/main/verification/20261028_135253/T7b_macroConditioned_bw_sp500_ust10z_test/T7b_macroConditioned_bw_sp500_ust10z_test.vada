@@ -1,0 +1,46 @@
+%% ======== EDB: derived predicate facts, real timeline ======== %%
+
+@input("isPositiveCorrelation").
+@bind("isPositiveCorrelation","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","edb_isPositiveCorrelation.csv").
+@mapping("isPositiveCorrelation",0,"X","string").
+@mapping("isPositiveCorrelation",1,"Y","string").
+@mapping("isPositiveCorrelation",2,"Start","int").
+@mapping("isPositiveCorrelation",3,"End","int").
+@temporalMappings("isPositiveCorrelation",2,3,-1,-1,"[_,_)").
+
+@input("market").
+@bind("market","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","edb_market.csv").
+@mapping("market",0,"X","string").
+@mapping("market",1,"Y","string").
+@mapping("market",2,"Start","int").
+@mapping("market",3,"End","int").
+@temporalMappings("market",2,3,-1,-1,"[_,_)").
+
+@input("inflationHigh").
+@bind("inflationHigh","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","edb_inflationHigh.csv").
+@mapping("inflationHigh",0,"X","string").
+@mapping("inflationHigh",1,"Start","int").
+@mapping("inflationHigh",2,"End","int").
+@temporalMappings("inflationHigh",1,2,-1,-1,"[_,_)").
+
+%% ======== MINED RULE UNDER VERIFICATION ======== %%
+% template : T7b_macroConditioned_bw
+% pair     : sp500_ust10z
+% constants: {'w': 1}
+% fitted on: 2015-01-01..2021-12-31
+riskOffRegimeBw(X,Y) :- isPositiveCorrelation(X,Y), market(X,C), <->[0,1] inflationHigh(C).
+
+@output("riskOffRegimeBw").
+@bind("riskOffRegimeBw","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","${R}","riskOffRegimeBw_${I}.csv").
+@mapping("riskOffRegimeBw",0,"X","string").
+@mapping("riskOffRegimeBw",1,"Y","string").
+@mapping("riskOffRegimeBw",2,"Start","int").
+@mapping("riskOffRegimeBw",3,"End","int").
+@temporalMappings("riskOffRegimeBw",2,3,-1,-1,"[_,_]").
+
+%% ======== ANNOTATIONS ======== %%
+
+@timeGranularity("no_date").
+@temporalType("int").
+
+@library("math:","math").

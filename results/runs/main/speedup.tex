@@ -1,0 +1,21 @@
+% run 'main': train 2015-01-01..2021-12-31, test 2022-01-01..2024-12-31, window 50, real-pair stride 1
+\begin{figure}[t]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lllll}
+\toprule
+Run & Window-pairs & Reasoner (s) & Classifier (ms) & Speedup \\
+\midrule
+timing & 75 & 19.0 & 0.065 & 293,862$\times$ \\
+real\_test\_results & 75 & 16.3 & 0.065 & 250,297$\times$ \\
+real\_test\_sp500\_gold & 150 & 16.4 & 0.058 & 283,000$\times$ \\
+real\_test\_sp500\_tlt & 150 & 15.8 & 0.058 & 272,904$\times$ \\
+real\_test\_sp500\_ust10y & 150 & 17.2 & 0.060 & 286,954$\times$ \\
+real\_test\_sp500\_ust10z & 150 & 16.9 & 0.060 & 279,070$\times$ \\
+all runs & 750 & 16.8 & 0.060 & 278,680$\times$ \\
+\bottomrule
+\end{tabular}
+}
+\caption{\small{Labelling time per window-pair, reasoner vs classifier. \emph{timing}: dedicated run, warm-up discarded; other rows: the reasoner's labeling runs, timed as they ran. Classifier: \texttt{classifier\_v7p3\_s42.pt}.}}
+\label{fig:speedup}
+\end{figure}

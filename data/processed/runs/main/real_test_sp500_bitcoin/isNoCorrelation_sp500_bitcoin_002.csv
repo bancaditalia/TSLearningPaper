@@ -1,0 +1,15 @@
+X,Y,Start,End
+bitcoin_real_540,sp500_real_540,200,250
+bitcoin_real_520,sp500_real_520,100,150
+bitcoin_real_560,sp500_real_560,300,350
+bitcoin_real_500,sp500_real_500,0,50
+sp500_real_520,bitcoin_real_520,100,150
+sp500_real_500,bitcoin_real_500,0,50
+sp500_real_540,bitcoin_real_540,200,250
+sp500_real_560,bitcoin_real_560,300,350
+bitcoin_real_530,sp500_real_530,150,200
+bitcoin_real_550,sp500_real_550,250,300
+bitcoin_real_510,sp500_real_510,50,100
+sp500_real_510,bitcoin_real_510,50,100
+sp500_real_550,bitcoin_real_550,250,300
+sp500_real_530,bitcoin_real_530,150,200

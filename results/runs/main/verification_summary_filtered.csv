@@ -1,0 +1,3 @@
+labels,verified,scored_by_both,identical,differ,max_abs_delta,source
+exact labels,37,34,25,9,0.0081,verification_filtered.csv
+classifier labels,34,31,26,5,0.0062,verification_classifier_filtered.csv

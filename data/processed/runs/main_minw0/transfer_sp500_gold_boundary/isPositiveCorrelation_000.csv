@@ -1,0 +1,13 @@
+X,Y,Start,End
+sp500_synth_0,gold_synth_0,0,50
+sp500_synth_1,gold_synth_1,50,100
+sp500_synth_5,gold_synth_5,250,300
+sp500_synth_6,gold_synth_6,300,350
+sp500_synth_7,gold_synth_7,350,400
+sp500_synth_11,gold_synth_11,550,600
+sp500_synth_13,gold_synth_13,650,700
+sp500_synth_16,gold_synth_16,800,850
+sp500_synth_18,gold_synth_18,900,950
+sp500_synth_19,gold_synth_19,950,1000
+sp500_synth_20,gold_synth_20,1000,1050
+sp500_synth_23,gold_synth_23,1150,1200

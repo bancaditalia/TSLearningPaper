@@ -1,0 +1,401 @@
+file,n,rho0,theta,sim_template,rep,template,accepted,reason,const_w,train_confidence,test_confidence,test_baseline,test_lift,test_condition_days,test_eligible,ci_lo,ci_hi,ci_spans_zero,ci_degenerate,ci_n_episodes,ci_method,verdict,thresholds,detected,const_k
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,0,T4_leadsUnderStress,True,,1.0,0.29457364341085274,0.3696969696969697,0.1349206349206349,0.23477633477633478,165.0,True,,,,,,,positive lift,train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,0,T4b_leadsUnderStress_bw,True,,1.0,0.76,0.6039603960396039,0.21957671957671956,0.3843836764628844,101.0,True,,,,,,,positive lift,train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,1,T4_leadsUnderStress,True,,50.0,0.9931506849315068,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,1,T4b_leadsUnderStress_bw,True,,1.0,1.0,0.0,0.0,0.0,105.0,True,,,,,,,ineligible (conclusion never holds on test),train,False,3.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,2,T4_leadsUnderStress,True,,50.0,0.8313953488372093,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,2,T4b_leadsUnderStress_bw,True,,50.0,0.7231638418079096,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,3,T4_leadsUnderStress,True,,1.0,0.23684210526315788,0.0,0.0,0.0,335.0,True,0.0,0.0,True,True,2.0,block,ineligible (conclusion never holds on test),train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,3,T4b_leadsUnderStress_bw,True,,33.0,1.0,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,4,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,4,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,5,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,5,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,6,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,6,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,7,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,7,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,8,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,8,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,9,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,9,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,10,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,10,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,11,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,11,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,12,T4_leadsUnderStress,True,,15.0,1.0,1.0,0.0992063492063492,0.9007936507936508,52.0,False,,,,,,,ineligible (only 52 condition days (< 60)),train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,12,T4b_leadsUnderStress_bw,True,,1.0,0.39490445859872614,1.0,0.0701058201058201,0.9298941798941799,39.0,False,,,,,,,ineligible (only 39 condition days (< 60)),train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,13,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,13,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,14,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,14,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,15,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,15,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,16,T4_leadsUnderStress,True,,28.0,1.0,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,16,T4b_leadsUnderStress_bw,True,,1.0,0.29605263157894735,0.0,0.0,0.0,165.0,True,,,,,,,ineligible (conclusion never holds on test),train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,17,T4_leadsUnderStress,True,,37.0,0.9204545454545454,0.0,0.2328042328042328,-0.2328042328042328,19.0,False,,,,,,,ineligible (only 19 condition days (< 60)),train,False,3.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,17,T4b_leadsUnderStress_bw,True,,1.0,0.5555555555555556,0.0,0.026455026455026454,-0.026455026455026454,100.0,True,,,,,,,negligible,train,False,5.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,18,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,18,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,19,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,19,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,20,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,20,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,21,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,21,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,22,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,22,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,23,T4_leadsUnderStress,True,,1.0,0.7168141592920354,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,23,T4b_leadsUnderStress_bw,True,,1.0,0.81,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,24,T4_leadsUnderStress,True,,50.0,0.8698630136986302,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,24,T4b_leadsUnderStress_bw,True,,28.0,1.0,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,25,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,25,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,26,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,26,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,27,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,27,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,28,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,28,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,29,T4_leadsUnderStress,False,missing predicates: ['leadsPositively'],,,,,,,,,,,,,,not fitted: missing predicates: ['leadsPositively'],train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,29,T4b_leadsUnderStress_bw,False,missing predicates: ['leadsPositively'],,,,,,,,,,,,,,not fitted: missing predicates: ['leadsPositively'],train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,30,T4_leadsUnderStress,True,,1.0,0.4139344262295082,0.0,0.0,0.0,134.0,True,,,,,,,ineligible (conclusion never holds on test),train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,30,T4b_leadsUnderStress_bw,True,,1.0,1.0,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,31,T4_leadsUnderStress,True,,27.0,1.0,0.0,0.0,0.0,159.0,True,,,,,,,ineligible (conclusion never holds on test),train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,31,T4b_leadsUnderStress_bw,True,,50.0,0.927007299270073,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,32,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,32,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,33,T4_leadsUnderStress,False,missing predicates: ['leadsPositively'],,,,,,,,,,,,,,not fitted: missing predicates: ['leadsPositively'],train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,33,T4b_leadsUnderStress_bw,False,missing predicates: ['leadsPositively'],,,,,,,,,,,,,,not fitted: missing predicates: ['leadsPositively'],train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,34,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,34,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,35,T4_leadsUnderStress,False,missing predicates: ['leadsPositively'],,,,,,,,,,,,,,not fitted: missing predicates: ['leadsPositively'],train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,35,T4b_leadsUnderStress_bw,False,missing predicates: ['leadsPositively'],,,,,,,,,,,,,,not fitted: missing predicates: ['leadsPositively'],train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,36,T4_leadsUnderStress,False,missing predicates: ['leadsPositively'],,,,,,,,,,,,,,not fitted: missing predicates: ['leadsPositively'],train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,36,T4b_leadsUnderStress_bw,False,missing predicates: ['leadsPositively'],,,,,,,,,,,,,,not fitted: missing predicates: ['leadsPositively'],train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,37,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,37,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,38,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,38,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,39,T4_leadsUnderStress,False,missing predicates: ['highVol'],,,,,,,,,,,,,,not fitted: missing predicates: ['highVol'],train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,39,T4b_leadsUnderStress_bw,False,missing predicates: ['highVol'],,,,,,,,,,,,,,not fitted: missing predicates: ['highVol'],train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,40,T4_leadsUnderStress,True,,1.0,0.1827956989247312,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,40,T4b_leadsUnderStress_bw,True,,1.0,0.5151515151515151,0.0,0.0,0.0,149.0,True,,,,,,,ineligible (conclusion never holds on test),train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,41,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,41,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,42,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,42,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,43,T4_leadsUnderStress,True,,50.0,0.6125,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,43,T4b_leadsUnderStress_bw,True,,1.0,0.18352059925093633,0.0,0.0,0.0,196.0,True,,,,,,,ineligible (conclusion never holds on test),train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,44,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,44,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,45,T4_leadsUnderStress,False,missing predicates: ['highVol'],,,,,,,,,,,,,,not fitted: missing predicates: ['highVol'],train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,45,T4b_leadsUnderStress_bw,False,missing predicates: ['highVol'],,,,,,,,,,,,,,not fitted: missing predicates: ['highVol'],train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,46,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,46,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,47,T4_leadsUnderStress,True,,50.0,0.684931506849315,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,3.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,47,T4b_leadsUnderStress_bw,True,,1.0,0.32362459546925565,0.0,0.0,0.0,103.0,True,,,,,,,ineligible (conclusion never holds on test),train,False,3.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,48,T4_leadsUnderStress,True,,1.0,0.3695652173913043,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,48,T4b_leadsUnderStress_bw,True,,1.0,1.0,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,49,T4_leadsUnderStress,True,,1.0,0.2603092783505155,0.0,0.0,0.0,130.0,True,,,,,,,ineligible (conclusion never holds on test),train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,49,T4b_leadsUnderStress_bw,True,,8.0,1.0,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,50,T4_leadsUnderStress,True,,1.0,0.08080808080808081,0.0,0.1335978835978836,-0.1335978835978836,155.0,True,,,,,,,negative,train,False,3.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,50,T4b_leadsUnderStress_bw,True,,1.0,0.13008130081300814,0.0,0.20634920634920634,-0.20634920634920634,100.0,True,,,,,,,negative,train,False,3.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,51,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,51,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,52,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,52,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,53,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,53,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,54,T4_leadsUnderStress,True,,47.0,1.0,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,54,T4b_leadsUnderStress_bw,True,,20.0,1.0,0.0,0.0,0.0,100.0,True,,,,,,,ineligible (conclusion never holds on test),train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,55,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,55,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,56,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,56,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,57,T4_leadsUnderStress,True,,1.0,0.5737704918032787,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,57,T4b_leadsUnderStress_bw,True,,1.0,0.9545454545454546,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,58,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,58,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,59,T4_leadsUnderStress,True,,50.0,0.4803921568627451,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,59,T4b_leadsUnderStress_bw,True,,50.0,0.8909090909090909,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,60,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,60,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,61,T4_leadsUnderStress,True,,50.0,0.6666666666666666,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,61,T4b_leadsUnderStress_bw,True,,1.0,0.24040920716112532,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,62,T4_leadsUnderStress,True,,7.0,1.0,0.987012987012987,0.10052910052910052,0.8864838864838864,77.0,True,,,,,,,positive lift,train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,62,T4b_leadsUnderStress_bw,True,,1.0,0.39520958083832336,1.0,0.10317460317460317,0.8968253968253969,76.0,True,,,,,,,positive lift,train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,63,T4_leadsUnderStress,True,,1.0,0.46473029045643155,0.0,0.0,0.0,136.0,True,,,,,,,ineligible (conclusion never holds on test),train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,63,T4b_leadsUnderStress_bw,True,,11.0,1.0,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,64,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,64,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,65,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,65,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,66,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,66,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,67,T4_leadsUnderStress,False,missing predicates: ['highVol'],,,,,,,,,,,,,,not fitted: missing predicates: ['highVol'],train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,67,T4b_leadsUnderStress_bw,False,missing predicates: ['highVol'],,,,,,,,,,,,,,not fitted: missing predicates: ['highVol'],train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,68,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,68,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,69,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,69,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,70,T4_leadsUnderStress,True,,1.0,0.28940568475452194,0.30523255813953487,0.16005291005291006,0.1451796480866248,344.0,True,-0.09680291005291004,0.6466137566137566,True,False,2.0,block,positive lift,train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,70,T4b_leadsUnderStress_bw,True,,1.0,0.5045454545454545,0.875,0.4576719576719577,0.4173280423280423,120.0,True,,,,,,,positive lift,train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,71,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,71,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,72,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,72,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,73,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,73,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,74,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,74,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,75,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,75,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,76,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,76,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,77,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,77,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,78,T4_leadsUnderStress,True,,1.0,0.6449511400651465,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,3.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,78,T4b_leadsUnderStress_bw,True,,11.0,0.9047619047619048,0.0,0.0,0.0,122.0,True,,,,,,,ineligible (conclusion never holds on test),train,False,3.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,79,T4_leadsUnderStress,True,,1.0,0.35,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,3.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,79,T4b_leadsUnderStress_bw,True,,1.0,0.5341880341880342,0.0,0.0,0.0,100.0,True,,,,,,,ineligible (conclusion never holds on test),train,False,3.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,80,T4_leadsUnderStress,True,,50.0,0.578125,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,5.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,80,T4b_leadsUnderStress_bw,True,,1.0,0.45374449339207046,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,81,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,81,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,82,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,82,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,83,T4_leadsUnderStress,True,,50.0,0.2611111111111111,0.0,0.0,0.0,170.0,True,,,,,,,ineligible (conclusion never holds on test),train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,83,T4b_leadsUnderStress_bw,True,,50.0,0.22169811320754718,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,84,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,84,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,85,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,85,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,86,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,86,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,87,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,87,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,88,T4_leadsUnderStress,True,,1.0,1.0,0.0,0.0,0.0,144.0,True,,,,,,,ineligible (conclusion never holds on test),train,False,5.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,88,T4b_leadsUnderStress_bw,True,,1.0,0.2844311377245509,0.0,0.1917989417989418,-0.1917989417989418,13.0,False,,,,,,,ineligible (only 13 condition days (< 60)),train,False,3.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,89,T4_leadsUnderStress,True,,1.0,0.23809523809523808,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,3.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,89,T4b_leadsUnderStress_bw,True,,1.0,0.0744047619047619,0.0,0.0,0.0,284.0,True,0.0,0.0,True,True,2.0,block,ineligible (conclusion never holds on test),train,False,3.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,90,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,90,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,91,T4_leadsUnderStress,True,,1.0,0.5925925925925926,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,5.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,91,T4b_leadsUnderStress_bw,True,,1.0,0.2549800796812749,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,5.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,92,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,92,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,93,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,93,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,94,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,94,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,95,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,95,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,96,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,96,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,97,T4_leadsUnderStress,True,,50.0,0.6979166666666666,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,97,T4b_leadsUnderStress_bw,True,,50.0,0.8220858895705522,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,98,T4_leadsUnderStress,True,,1.0,0.34759358288770054,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,98,T4b_leadsUnderStress_bw,True,,1.0,0.4961832061068702,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,99,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,99,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,100,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,100,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,101,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,101,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,102,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,102,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,103,T4_leadsUnderStress,True,,1.0,0.25872093023255816,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,103,T4b_leadsUnderStress_bw,True,,32.0,1.0,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,104,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,104,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,105,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,105,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,106,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,106,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,107,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,107,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,108,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,108,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,109,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,109,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,110,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,110,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,111,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,111,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,112,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,112,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,113,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,113,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,114,T4_leadsUnderStress,False,missing predicates: ['highVol'],,,,,,,,,,,,,,not fitted: missing predicates: ['highVol'],train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,114,T4b_leadsUnderStress_bw,False,missing predicates: ['highVol'],,,,,,,,,,,,,,not fitted: missing predicates: ['highVol'],train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,115,T4_leadsUnderStress,True,,1.0,0.19130434782608696,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,115,T4b_leadsUnderStress_bw,True,,1.0,0.2693877551020408,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,116,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,116,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,117,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,117,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,118,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,118,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,119,T4_leadsUnderStress,True,,50.0,0.8170731707317073,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,119,T4b_leadsUnderStress_bw,True,,25.0,0.5317073170731708,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,120,T4_leadsUnderStress,True,,1.0,0.0,0.0,0.0,0.0,267.0,True,0.0,0.0,True,True,1.0,block,ineligible (conclusion never holds on test),train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,120,T4b_leadsUnderStress_bw,True,,50.0,0.39,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,121,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,121,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,122,T4_leadsUnderStress,True,,50.0,0.2561576354679803,0.0,0.0,0.0,123.0,True,,,,,,,ineligible (conclusion never holds on test),train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,122,T4b_leadsUnderStress_bw,True,,50.0,0.3069306930693069,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,123,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,123,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,124,T4_leadsUnderStress,True,,33.0,0.029850746268656716,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,124,T4b_leadsUnderStress_bw,True,,50.0,0.7326732673267327,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,5.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,125,T4_leadsUnderStress,True,,1.0,1.0,0.5714285714285714,0.14417989417989419,0.4272486772486772,182.0,True,,,,,,,positive lift,train,False,5.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,125,T4b_leadsUnderStress_bw,True,,1.0,0.1592920353982301,0.9629629629629629,0.24206349206349206,0.7208994708994708,108.0,True,,,,,,,positive lift,train,False,5.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,126,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,126,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,127,T4_leadsUnderStress,True,,50.0,0.5778894472361809,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,127,T4b_leadsUnderStress_bw,True,,37.0,1.0,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,128,T4_leadsUnderStress,True,,1.0,0.8092485549132948,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,128,T4b_leadsUnderStress_bw,True,,1.0,0.36939313984168864,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,129,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,129,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,130,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,130,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,131,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,131,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,132,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,132,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,133,T4_leadsUnderStress,True,,50.0,0.6507936507936508,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,133,T4b_leadsUnderStress_bw,True,,35.0,1.0,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,134,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,134,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,135,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,135,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,136,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,136,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,137,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,137,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,138,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,138,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,139,T4_leadsUnderStress,True,,47.0,1.0,0.0049261083743842365,0.26455026455026454,-0.2596241561758803,203.0,True,-0.26455026455026454,-0.26455026455026454,False,True,1.0,block,negative,train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,139,T4b_leadsUnderStress_bw,True,,1.0,0.21138211382113822,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,140,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,140,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,141,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,141,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,142,T4_leadsUnderStress,False,missing predicates: ['leadsPositively'],,,,,,,,,,,,,,not fitted: missing predicates: ['leadsPositively'],train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,142,T4b_leadsUnderStress_bw,False,missing predicates: ['leadsPositively'],,,,,,,,,,,,,,not fitted: missing predicates: ['leadsPositively'],train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,143,T4_leadsUnderStress,False,missing predicates: ['highVol'],,,,,,,,,,,,,,not fitted: missing predicates: ['highVol'],train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,143,T4b_leadsUnderStress_bw,False,missing predicates: ['highVol'],,,,,,,,,,,,,,not fitted: missing predicates: ['highVol'],train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,144,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,144,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,145,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,145,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,146,T4_leadsUnderStress,True,,50.0,0.8067885117493473,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,5.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,146,T4b_leadsUnderStress_bw,True,,50.0,0.8141592920353983,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,147,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,147,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,148,T4_leadsUnderStress,True,,1.0,0.1830065359477124,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,5.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,148,T4b_leadsUnderStress_bw,True,,1.0,0.12280701754385964,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,5.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,149,T4_leadsUnderStress,True,,50.0,0.23333333333333334,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,5.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,149,T4b_leadsUnderStress_bw,True,,50.0,0.41397849462365593,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,5.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,150,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,150,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,151,T4_leadsUnderStress,True,,3.0,0.3559322033898305,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,5.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,151,T4b_leadsUnderStress_bw,True,,1.0,1.0,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,5.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,152,T4_leadsUnderStress,True,,50.0,0.654434250764526,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,152,T4b_leadsUnderStress_bw,True,,1.0,0.323943661971831,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,153,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,153,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,154,T4_leadsUnderStress,True,,50.0,0.9111111111111111,0.0,0.0,0.0,225.0,True,0.0,0.0,True,True,2.0,block,ineligible (conclusion never holds on test),train,False,5.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,154,T4b_leadsUnderStress_bw,True,,1.0,0.2834008097165992,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,155,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,155,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,156,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,156,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,157,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,157,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,158,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,158,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,159,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,159,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,160,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,160,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,161,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,161,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,162,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,162,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,163,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,163,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,164,T4_leadsUnderStress,True,,1.0,0.28133704735376047,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,164,T4b_leadsUnderStress_bw,True,,1.0,0.9619047619047619,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,165,T4_leadsUnderStress,True,,1.0,0.16753926701570682,0.24705882352941178,0.08333333333333333,0.16372549019607846,255.0,True,-0.08333333333333333,0.371791666666666,True,False,2.0,block,positive lift,train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,165,T4b_leadsUnderStress_bw,True,,1.0,0.5614035087719298,1.0,0.3386243386243386,0.6613756613756614,63.0,True,,,,,,,positive lift,train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,166,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,166,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,167,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,167,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,168,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,168,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,169,T4_leadsUnderStress,True,,1.0,1.0,0.0,0.0,0.0,411.0,True,0.0,0.0,True,True,2.0,block,ineligible (conclusion never holds on test),train,False,5.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,169,T4b_leadsUnderStress_bw,True,,1.0,0.8064516129032258,0.8991596638655462,0.5462962962962963,0.35286336756924996,119.0,True,,,,,,,positive lift,train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,170,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,170,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,171,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,171,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,172,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,172,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,173,T4_leadsUnderStress,False,missing predicates: ['leadsPositively'],,,,,,,,,,,,,,not fitted: missing predicates: ['leadsPositively'],train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,173,T4b_leadsUnderStress_bw,False,missing predicates: ['leadsPositively'],,,,,,,,,,,,,,not fitted: missing predicates: ['leadsPositively'],train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,174,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,174,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,175,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,175,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,176,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,176,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,177,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,177,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,178,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,178,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,179,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,179,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,180,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,180,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,181,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,181,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,182,T4_leadsUnderStress,True,,1.0,0.2233502538071066,0.0,0.0,0.0,476.0,True,0.0,0.0,True,True,2.0,block,ineligible (conclusion never holds on test),train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,182,T4b_leadsUnderStress_bw,True,,50.0,0.8691588785046729,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,183,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,183,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,184,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,184,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,185,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,185,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,186,T4_leadsUnderStress,True,,1.0,0.43962848297213625,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,186,T4b_leadsUnderStress_bw,True,,1.0,0.4912891986062718,0.0,0.0,0.0,103.0,True,,,,,,,ineligible (conclusion never holds on test),train,False,1.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,187,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,187,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,188,T4_leadsUnderStress,True,,1.0,0.5,0.43059490084985835,0.36772486772486773,0.06287003312499062,353.0,True,-0.2644748677248677,0.4389417989417989,True,False,1.0,block,positive lift,train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,188,T4b_leadsUnderStress_bw,True,,1.0,0.4397590361445783,0.5471014492753623,0.46825396825396826,0.07884748102139405,276.0,True,-0.45825396825396825,0.5317460317460317,True,False,2.0,block,positive lift,train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,189,T4_leadsUnderStress,True,,1.0,0.22580645161290322,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,189,T4b_leadsUnderStress_bw,True,,1.0,0.3431372549019608,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,190,T4_leadsUnderStress,True,,24.0,0.06191950464396285,0.0,0.0,0.0,239.0,True,0.0,0.0,True,True,1.0,block,ineligible (conclusion never holds on test),train,False,3.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,190,T4b_leadsUnderStress_bw,True,,50.0,0.2875,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,3.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,191,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,191,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,192,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,192,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,193,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,193,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,194,T4_leadsUnderStress,True,,1.0,1.0,0.08849557522123894,0.026455026455026454,0.06204054876621248,226.0,True,-0.026455026455026454,0.07354497354497355,True,False,1.0,block,positive lift,train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,194,T4b_leadsUnderStress_bw,True,,1.0,0.2206896551724138,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,5.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,195,T4_leadsUnderStress,True,,1.0,0.32507739938080493,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,2.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,195,T4b_leadsUnderStress_bw,True,,1.0,0.9857142857142858,,,,0.0,False,,,,,,,ineligible (no condition days),train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,196,T4_leadsUnderStress,False,missing predicates: ['leadsPositively'],,,,,,,,,,,,,,not fitted: missing predicates: ['leadsPositively'],train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,196,T4b_leadsUnderStress_bw,False,missing predicates: ['leadsPositively'],,,,,,,,,,,,,,not fitted: missing predicates: ['leadsPositively'],train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,197,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,197,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,198,T4_leadsUnderStress,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,198,T4b_leadsUnderStress_bw,False,no lag yields a positive gap,,,,,,,,,,,,,,not fitted: no lag yields a positive gap,train,False,
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,199,T4_leadsUnderStress,True,,50.0,0.4715447154471545,0.0,0.25132275132275134,-0.25132275132275134,200.0,True,-0.25132275132275134,-0.25132275132275134,False,True,1.0,block,negative,train,False,4.0
+T4_theta0_rho0.3_n2520.csv.gz,2520,0.3,0.0,T4,199,T4b_leadsUnderStress_bw,True,,1.0,0.5742574257425742,0.8260869565217391,0.26587301587301587,0.5602139406487232,115.0,True,,,,,,,positive lift,train,False,2.0

@@ -1,0 +1,137 @@
+{
+  "run": "robust_2016-2024",
+  "fingerprint": "c98cc7acc8c7",
+  "created": "2026-10-21T12:04:34",
+  "config": "configs/runs/robust_2016-2024.yaml",
+  "parameters": {
+    "split": {
+      "train": [
+        "2005-01-01",
+        "2015-12-31"
+      ],
+      "test": [
+        "2016-01-01",
+        "2024-12-31"
+      ]
+    },
+    "window": {
+      "length": 50,
+      "step": 1
+    },
+    "real_pairs": {
+      "date_from": "2005-01-01",
+      "date_to": "2024-12-31",
+      "stride": 1,
+      "lags": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "macro_states": [
+        "US_Inflation"
+      ]
+    },
+    "labels": {
+      "deadband": 10.0,
+      "trend": 0.02,
+      "high_vol_pct": 30.0,
+      "low_vol_pct": 5.0,
+      "tail_min": 2,
+      "tail_alpha": 0.01,
+      "thresholds": "rolling",
+      "rolling_days": 500,
+      "rolling_min_days": 250
+    },
+    "rules": {
+      "min_condition_days": 30,
+      "max_w": 25,
+      "min_w": 0
+    },
+    "synth": {
+      "split": "date",
+      "train_until": null
+    },
+    "data": {
+      "financial_start": "2002-01-01",
+      "financial_end": "2024-12-31"
+    },
+    "seed": 42
+  },
+  "info": {
+    "classifier_weights": "data/processed/classifier_v7p3_s42.pt",
+    "pairs": [
+      "sp500_gold",
+      "sp500_ust10y",
+      "sp500_tlt",
+      "sp500_ust10z"
+    ]
+  },
+  "history": [
+    {
+      "until": "2026-10-26T16:19:48",
+      "fingerprint": "d0001a318c28",
+      "parameters": {
+        "split": {
+          "train": [
+            "2005-01-01",
+            "2015-12-31"
+          ],
+          "test": [
+            "2016-01-01",
+            "2024-12-31"
+          ]
+        },
+        "window": {
+          "length": 50,
+          "step": 1
+        },
+        "real_pairs": {
+          "date_from": "2005-01-01",
+          "date_to": "2024-12-31",
+          "stride": 1,
+          "lags": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "macro_states": [
+            "US_Inflation"
+          ]
+        },
+        "labels": {
+          "deadband": 10.0,
+          "trend": 0.02,
+          "high_vol_pct": 30.0,
+          "low_vol_pct": 5.0,
+          "tail_min": 2,
+          "tail_alpha": 0.01,
+          "thresholds": "rolling",
+          "rolling_days": 500,
+          "rolling_min_days": 250
+        },
+        "rules": {
+          "min_condition_days": 30,
+          "max_w": 25
+        },
+        "synth": {
+          "split": "date",
+          "train_until": null
+        },
+        "data": {
+          "financial_start": "2002-01-01",
+          "financial_end": "2024-12-31"
+        },
+        "seed": 42
+      },
+      "accepted_change": [
+        "rules.min_w: None -> 0"
+      ]
+    }
+  ],
+  "updated": "2026-10-26T16:19:48",
+  "long_name": "tr2005-2015_te2016-2024_w50_s1_roll_gold-ust10y-tlt-ust10z"
+}

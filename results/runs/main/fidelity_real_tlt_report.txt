@@ -1,0 +1,23 @@
+# written by tslearning.eval.fidelity.run, 2026-10-29 10:18
+# dataset=real pair=sp500_tlt step=5 results=None csv=fidelity_real_tlt.csv
+
+classifier weights: classifier_v7p3_s42.pt
+sp500_tlt real test 2022-01-01..2024-12-31: 752 aligned days -> 141 windows (every 5) ~= 6 batches of 25
+===== REAL test 2022-01-01..2024-12-31 · sp500_tlt · correlation regime (n=141) =====
+                       precision    recall  f1-score   support
+
+isPositiveCorrelation      0.564     0.579     0.571        38
+isNegativeCorrelation      0.167     1.000     0.286         2
+      isNoCorrelation      0.822     0.733     0.775       101
+
+             accuracy                          0.695       141
+            macro avg      0.518     0.771     0.544       141
+         weighted avg      0.743     0.695     0.713       141
+
+confusion (rows=true, cols=pred):
+ [[22  0 16]
+ [ 0  2  0]
+ [17 10 74]]
+accuracy 0.695 | macro-F1 0.544
+majority-class baseline (always 'isNoCorrelation'): accuracy 0.716 | macro-F1 0.278
+wrote -> results/runs/tr2015-2021_te2022-2024_w50_s1_minw1_gold-bitcoin-ust10y-tlt-ust10z/fidelity_real_tlt.csv

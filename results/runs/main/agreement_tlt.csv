@@ -1,0 +1,2 @@
+pair,step,deadband,n_windows,n_scored,n_agree,n_disagree,n_unlabelled_by_engine,agreement,engine_isPositiveCorrelation,python_isPositiveCorrelation,engine_isNegativeCorrelation,python_isNegativeCorrelation,engine_isNoCorrelation,python_isNoCorrelation,highVol_agree,highVol_windows,highVol_engine,highVol_python,lowVol_agree,lowVol_windows,lowVol_engine,lowVol_python,tailDependent_agree,tailDependent_windows,tailDependent_engine,tailDependent_python
+sp500_tlt,5,10.0,141,141,140,1,0,0.9929078014184397,38,39,2,2,101,100,282,282,82,82,282,282,48,48,136,141,23,18

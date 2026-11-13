@@ -1,0 +1,27 @@
+% run 'main_mind20': train 2015-01-01..2021-12-31, test 2022-01-01..2024-12-31, window 50, real-pair stride 1
+\begin{figure}[t]
+\centering
+\fbox{\begin{minipage}{0.95\textwidth}\small
+\textbf{T1b}\quad Safe haven (backward)~\cite{baur2010hedge,baur2010safehaven}\hspace{1em plus 1fill}{\footnotesize (fitted constants: $w$)}\\
+\hspace*{1.5em}\mbox{$\mathit{highVol}(X), \mathit{trendDown}(X) \to \mathit{stressedDown}(X)$}\\
+\hspace*{1.5em}\mbox{$\mathit{isNegativeCorrelation}(X,Y), \diamondminus_{[0,w]} \mathit{stressedDown}(X) \to \mathit{safeHavenBw}(X,Y)$}\\[5pt]
+\textbf{T2}\quad Contagion / co-exceedance~\cite{longin2001extreme}\hspace{1em plus 1fill}{\footnotesize (fitted constants: $w$)}\\
+\hspace*{1.5em}\mbox{$\mathit{tailDependent}(X,Y), \diamondplus_{[0,w]} \mathit{isPositiveCorrelation}(X,Y) \to \mathit{contagion}(X,Y)$}\\[5pt]
+\textbf{T3b}\quad Decoupling in calm markets (backward)~\cite{ang2002asymmetric}\hspace{1em plus 1fill}{\footnotesize (fitted constants: $w$)}\\
+\hspace*{1.5em}\mbox{$\mathit{lowVol}(X), \mathit{lowVol}(Y) \to \mathit{bothCalm}(X,Y)$}\\
+\hspace*{1.5em}\mbox{$\mathit{isNoCorrelation}(X,Y), \diamondminus_{[0,w]} \mathit{bothCalm}(X,Y) \to \mathit{decoupledBw}(X,Y)$}\\[5pt]
+\textbf{T4}\quad Lead-lag / price discovery under stress~\cite{hasbrouck1995onesecurity,dejong1997highfrequency}\hspace{1em plus 1fill}{\footnotesize (fitted constants: $w$, $k$)}\\
+\hspace*{1.5em}\mbox{$\mathit{highVol}(X), \diamondplus_{[0,w]} \mathit{leadsPositively}(X,Y,k) \to \mathit{leadsUnderStress}(X,Y,k)$}\\[5pt]
+\textbf{T5}\quad Hedge horizon (regime persistence)~\cite{baur2010hedge}\hspace{1em plus 1fill}{\footnotesize (fitted constants: $d$)}\\
+\hspace*{1.5em}\mbox{$\mathit{isNegativeCorrelation}(X,Y), \boxplus_{[0,d]} \mathit{isNegativeCorrelation}(X,Y)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{hedgeHorizon}(X,Y)$}\\[5pt]
+\textbf{T6}\quad Correlation regime reversal~\cite{ang2002regimeshifts}\hspace{1em plus 1fill}{\footnotesize (fitted constants: $d^{-}$, $a$, $b$)}\\
+\hspace*{1.5em}\mbox{$\boxminus_{[0, d^{-}]}\mathit{isNegativeCorrelation}(X,Y), \boxplus_{[a,b]}\mathit{isPositiveCorrelation}(X,Y)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{regimeReversal}(X,Y)$}\\[5pt]
+\textbf{T7}\quad Macro-conditioned co-movement~\cite{bekaert2013risk}\hspace{1em plus 1fill}{\footnotesize (fitted constants: $w$)}\\
+\hspace*{1.5em}\mbox{$\mathit{market}(X,C), \mathit{inflationHigh}(C), \diamondplus_{[0,w]} \mathit{isPositiveCorrelation}(X,Y)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{macroConditioned}(X,Y)$}
+\end{minipage}}
+\caption{The rule library (selected templates). Each template encodes a named phenomenon from the finance literature; constants are fitted per pair (Fig.~\ref{fig:rule-results_classifier-pub}) by the 1-SE rule on the training period only. Rules are written body $\to$ head; an auxiliary rule, listed first, names a conjunction that a temporal operator applies to, since DatalogMTL operators apply to single atoms.}
+\label{fig:rule-library-pub}
+\end{figure}

@@ -1,0 +1,25 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.8pt}
+\caption{Correlation regimes: baselines, episodes and reversals}
+\label{tab:regimes}
+\begin{tabular}{llrrrrrrrrrrr}
+\toprule
+ & & \multicolumn{3}{c}{Share} & \multicolumn{2}{c}{Episodes} & \multicolumn{2}{c}{Med.\ days} & \multicolumn{2}{c}{Reversals} & \multicolumn{2}{c}{2022--24} \\
+\cmidrule(lr){3-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}\cmidrule(lr){10-11}\cmidrule(lr){12-13}
+Pair & Win. & Pos & None & Neg & Pos & Neg & Pos & Neg & ${-}{\to}{+}$ & ${+}{\to}{-}$ & ${-}{\to}{+}$ & ${+}{\to}{-}$ \\
+\midrule
+S\&P 500 -- Bond & 50 & 0.46 & 0.23 & 0.30 & 68 & 42 & 39 & 39 & 22 & 22 & 3 & 2 \\
+ & 250 & 0.44 & 0.25 & 0.31 & 7 & 4 & 504 & 298 & 2 & 2 & 1 & 0 \\
+S\&P 500 -- Gold & 50 & 0.28 & 0.42 & 0.30 & 34 & 39 & 34 & 31 & 18 & 18 & 3 & 2 \\
+ & 250 & 0.18 & 0.57 & 0.24 & 4 & 2 & 235 & 722 & 2 & 1 & 0 & 0 \\
+S\&P 500 -- Bitcoin & 50 & 0.57 & 0.30 & 0.13 & 16 & 9 & 46 & 28 & 6 & 6 & 1 & 1 \\
+ & 250 & 0.52 & 0.38 & 0.10 & 2 & 1 & 626 & 235 & 1 & 0 & 0 & 0 \\
+Gold -- Bond & 50 & 0.59 & 0.31 & 0.10 & 43 & 17 & 47 & 31 & 11 & 11 & 0 & 0 \\
+ & 250 & 0.73 & 0.25 & 0.03 & 5 & 1 & 525 & 163 & 1 & 1 & 0 & 0 \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\parbox{\linewidth}{\footnotesize Correlation regime of each pair from the sign concordance score S = 100 $\times$ (share of days on which both returns have the same sign $-$ share with opposite signs), computed on rolling windows (Win.) of 50 or 250 trading days, labelled with hysteresis: a regime starts when S reaches $\pm$15 and ends when S falls inside $\pm$5. Share = share of labelled days in each regime, which is the baseline of a rule whose hypothesis is that regime. Episodes = runs of consecutive days with the same label; Med.\ days = median episode length in trading days. Reversals = switches between a negative and a positive episode, possibly through a no-correlation spell; 2022--24 counts switches whose new episode starts in the test period. Samples (50-day windows): S\&P 500 -- Bond: 1971--2024; S\&P 500 -- Gold: 2000--2024; S\&P 500 -- Bitcoin: 2014--2024; Gold -- Bond: 2000--2024. Results with the deadband labels of the original rule ($\pm$10) are in the repository. Bond = 10-year zero-coupon Treasury (G\"urkaynak--Sack--Wright). Sample ends 31 Dec 2024.}
+\end{table}

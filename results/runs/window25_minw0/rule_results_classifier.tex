@@ -1,0 +1,72 @@
+% run 'tr2015-2021_te2022-2024_w25_s1_minw0_gold-bitcoin-ust10y-tlt-ust10z': train 2015-01-01..2021-12-31, test 2022-01-01..2024-12-31, window 25, real-pair stride 1
+\begin{sidewaysfigure}
+\centering
+\begin{tabular}{lllrrrrrrl}
+\toprule
+Rule & Pair & Constants & Train & Test & Base & Lift & CI & n & Verdict \\
+\midrule
+T1 & S\&P 500 -- Gold & w=0 & 0.36 & 0.17 & 0.06 & 0.111 & [-0.064, 0.423] & 172 & positive lift \\
+T1 & S\&P 500 -- US 10y Treasury & w=0 & 0.97 & 0.09 & 0.17 & -0.075 & [-0.168, 0.132] & 172 & negative \\
+T1 & S\&P 500 -- US 10y zero-coupon (GSW) & w=0 & 0.85 & 0.11 & 0.12 & -0.012 & [-0.118, 0.209] & 170 & negligible \\
+T1 & S\&P 500 -- US Treasury 20y+ (TLT) & w=0 & 0.88 & 0.13 & 0.07 & 0.061 & [-0.073, 0.327] & 172 & positive lift \\
+T1b & S\&P 500 -- Gold & w=0 & 0.17 & 0.63 & 0.23 & 0.396 & -- & 48 & positive lift \\
+T1b & S\&P 500 -- US 10y Treasury & w=0 & 0.21 & 0.13 & 0.23 & -0.102 & [-0.229, -0.013] & 126 & negative \\
+T1b & S\&P 500 -- US 10y zero-coupon (GSW) & w=0 & 0.19 & 0.20 & 0.23 & -0.023 & [-0.228, 0.146] & 88 & negligible \\
+T1b & S\&P 500 -- US Treasury 20y+ (TLT) & w=0 & 0.20 & 0.42 & 0.23 & 0.189 & [-0.229, 0.571] & 55 & positive lift \\
+T2 & S\&P 500 -- Bitcoin & w=0 & 0.45 & 1.00 & 0.70 & 0.302 & [0.302, 0.302] & 105 & positive lift \\
+T2 & S\&P 500 -- Gold & w=12 & 0.57 & 0.99 & 0.33 & 0.656 & [0.656, 0.669] & 75 & significant \\
+T2b & S\&P 500 -- Bitcoin & w=0 & 0.14 & 0.20 & 0.14 & 0.060 & [-0.140, 0.172] & 525 & positive lift \\
+T2b & S\&P 500 -- Gold & w=0 & 0.19 & 0.37 & 0.10 & 0.268 & [0.050, 0.605] & 201 & significant \\
+T3 & S\&P 500 -- Bitcoin & w=0 & 0.78 & 0.49 & 0.30 & 0.183 & [-0.115, 0.454] & 435 & positive lift \\
+T3 & S\&P 500 -- US 10y Treasury & w=0 & 0.40 & 0.60 & 0.52 & 0.081 & -- & 45 & positive lift \\
+T3 & S\&P 500 -- US 10y zero-coupon (GSW) & w=0 & 0.35 & 0.32 & 0.56 & -0.237 & -- & 25 & negative \\
+T3 & S\&P 500 -- US Treasury 20y+ (TLT) & w=0 & 0.39 & 0.68 & 0.66 & 0.017 & [-0.214, 0.296] & 119 & negligible \\
+T3b & S\&P 500 -- Bitcoin & w=0 & 0.57 & 0.93 & 0.58 & 0.351 & [0.323, 0.422] & 227 & significant \\
+T3b & S\&P 500 -- US 10y Treasury & w=0 & 0.73 & 0.07 & 0.06 & 0.009 & [-0.060, 0.180] & 390 & negligible \\
+T3b & S\&P 500 -- US 10y zero-coupon (GSW) & w=0 & 0.70 & 0.02 & 0.03 & -0.014 & [-0.033, 0.025] & 416 & negligible \\
+T3b & S\&P 500 -- US Treasury 20y+ (TLT) & w=0 & 0.67 & 0.16 & 0.16 & 0.004 & [-0.140, 0.183] & 499 & negligible \\
+T4 & S\&P 500 -- Bitcoin & w=2, k=2 & 0.78 & 0.15 & 0.24 & -0.092 & [-0.243, 0.180] & 185 & negative \\
+T4 & S\&P 500 -- Gold & w=0, k=1 & 0.76 & 0.61 & 0.68 & -0.073 & [-0.398, 0.225] & 185 & negative \\
+T4 & S\&P 500 -- US 10y Treasury & w=0, k=1 & 0.73 & 0.63 & 0.61 & 0.026 & [-0.292, 0.239] & 185 & negligible \\
+T4 & S\&P 500 -- US 10y zero-coupon (GSW) & w=0, k=1 & 0.84 & 0.83 & 0.58 & 0.256 & [0.196, 0.402] & 184 & significant \\
+T4 & S\&P 500 -- US Treasury 20y+ (TLT) & w=0, k=1 & 0.85 & 0.87 & 0.61 & 0.259 & [0.108, 0.371] & 185 & significant \\
+T4b & S\&P 500 -- Bitcoin & w=0, k=1 & 0.24 & 0.00 & 0.25 & -0.246 & [-0.246, -0.246] & 225 & negative \\
+T4b & S\&P 500 -- Gold & w=0, k=1 & 0.22 & 0.22 & 0.25 & -0.026 & [-0.246, 0.284] & 510 & negligible \\
+T4b & S\&P 500 -- US 10y Treasury & w=0, k=1 & 0.21 & 0.26 & 0.25 & 0.011 & [-0.202, 0.264] & 456 & negligible \\
+T4b & S\&P 500 -- US 10y zero-coupon (GSW) & w=0, k=1 & 0.22 & 0.36 & 0.25 & 0.109 & [-0.163, 0.423] & 430 & positive lift \\
+T4b & S\&P 500 -- US Treasury 20y+ (TLT) & w=0, k=1 & 0.26 & 0.35 & 0.25 & 0.104 & [-0.173, 0.377] & 460 & positive lift \\
+T7 & S\&P 500 -- Bitcoin & w=0 & 0.52 & 0.81 & 0.70 & 0.107 & [-0.311, 0.302] & 288 & positive lift \\
+T7 & S\&P 500 -- Gold & w=0 & 0.10 & 0.25 & 0.27 & -0.013 & [-0.267, 0.465] & 369 & negligible \\
+T7 & S\&P 500 -- US 10y Treasury & w=0 & 0.12 & 0.27 & 0.31 & -0.048 & [-0.271, 0.395] & 369 & negligible \\
+T7 & S\&P 500 -- US 10y zero-coupon (GSW) & w=0 & 0.11 & 0.28 & 0.33 & -0.045 & [-0.296, 0.425] & 367 & negligible \\
+T7 & S\&P 500 -- US Treasury 20y+ (TLT) & w=0 & 0.06 & 0.22 & 0.26 & -0.044 & [-0.185, 0.253] & 369 & negligible \\
+T7b & S\&P 500 -- Bitcoin & w=0 & 0.52 & 0.44 & 0.38 & 0.059 & [-0.354, 0.269] & 525 & positive lift \\
+T7b & S\&P 500 -- Gold & w=0 & 0.38 & 0.47 & 0.49 & -0.023 & [-0.256, 0.299] & 201 & negligible \\
+T7b & S\&P 500 -- US 10y Treasury & w=0 & 1.00 & 0.42 & 0.49 & -0.075 & [-0.372, 0.332] & 236 & negative \\
+T7b & S\&P 500 -- US 10y zero-coupon (GSW) & w=0 & 0.91 & 0.42 & 0.49 & -0.067 & [-0.424, 0.301] & 243 & negative \\
+T7b & S\&P 500 -- US Treasury 20y+ (TLT) & w=0 & 1.00 & 0.41 & 0.49 & -0.082 & [-0.381, 0.318] & 198 & negative \\
+T1 & S\&P 500 -- Bitcoin & -- & -- & -- & -- & -- & -- & -- & not fitted: no signal (best gap -4.77pp $<$= 0) \\
+T1b & S\&P 500 -- Bitcoin & -- & -- & -- & -- & -- & -- & -- & not fitted: no signal (best gap -14.14pp $<$= 0) \\
+T2 & S\&P 500 -- US 10y Treasury & -- & -- & -- & -- & -- & -- & -- & not fitted: no condition episodes \\
+T2 & S\&P 500 -- US 10y zero-coupon (GSW) & -- & -- & -- & -- & -- & -- & -- & not fitted: no signal (best gap -3.03pp $<$= 0) \\
+T2 & S\&P 500 -- US Treasury 20y+ (TLT) & -- & -- & -- & -- & -- & -- & -- & not fitted: no signal (best gap -1.53pp $<$= 0) \\
+T2b & S\&P 500 -- US 10y Treasury & -- & -- & -- & -- & -- & -- & -- & not fitted: no signal (best gap 0.00pp $<$= 0) \\
+T2b & S\&P 500 -- US 10y zero-coupon (GSW) & -- & -- & -- & -- & -- & -- & -- & not fitted: no signal (best gap -2.57pp $<$= 0) \\
+T2b & S\&P 500 -- US Treasury 20y+ (TLT) & -- & -- & -- & -- & -- & -- & -- & not fitted: no signal (best gap -2.50pp $<$= 0) \\
+T3 & S\&P 500 -- Gold & -- & -- & -- & -- & -- & -- & -- & not fitted: no signal (best gap -3.22pp $<$= 0) \\
+T3b & S\&P 500 -- Gold & -- & -- & -- & -- & -- & -- & -- & not fitted: no signal (best gap -1.90pp $<$= 0) \\
+T5 & S\&P 500 -- Bitcoin & d=7 & 0.63 & -- & -- & -- & -- & -- & ineligible (no episodes) \\
+T5 & S\&P 500 -- Gold & d=22 & 0.49 & -- & -- & -- & -- & -- & ineligible (only 2 episodes) \\
+T5 & S\&P 500 -- US 10y Treasury & d=26 & 0.63 & -- & -- & -- & -- & -- & ineligible (too few episodes on the test slice) \\
+T5 & S\&P 500 -- US 10y zero-coupon (GSW) & d=29 & 0.66 & -- & -- & -- & -- & -- & ineligible (too few episodes on the test slice) \\
+T5 & S\&P 500 -- US Treasury 20y+ (TLT) & d=33 & 0.61 & -- & -- & -- & -- & -- & ineligible (only 2 episodes) \\
+T6 & S\&P 500 -- Bitcoin & -- & -- & -- & -- & -- & -- & -- & not fitted: no common window (a=131 $>$= b=72) \\
+T6 & S\&P 500 -- Gold & -- & -- & -- & -- & -- & -- & -- & not fitted: no common window (a=335 $>$= b=125) \\
+T6 & S\&P 500 -- US 10y Treasury & -- & -- & -- & -- & -- & -- & -- & not fitted: no common window (a=998 $>$= b=444) \\
+T6 & S\&P 500 -- US 10y zero-coupon (GSW) & -- & -- & -- & -- & -- & -- & -- & not fitted: no common window (a=972 $>$= b=458) \\
+T6 & S\&P 500 -- US Treasury 20y+ (TLT) & -- & -- & -- & -- & -- & -- & -- & not fitted: no common window (a=1157 $>$= b=527) \\
+\bottomrule
+\end{tabular}
+\caption{Rule results, constants frozen on 2015--2021 and scored on 2022--2024. \emph{Base} is the unconditional rate of the conclusion predicate and \emph{Lift} = Test $-$ Base; a high baseline makes a high confidence vacuous. \emph{CI} is the 95\% bootstrap confidence interval on lift. \emph{n} is the number of condition days; below 15 the rule is not scored (blank, not zero). $|\Delta|$ is the disagreement between the Python scorer and the DatalogMTL reasoner re-evaluating the same frozen rule. Rules that could not be fitted are listed with the reason: these are results, not omissions.}
+\label{tab:rule-results_classifier}
+\end{sidewaysfigure}

@@ -1,0 +1,54 @@
+{
+  "source": "classifier",
+  "all": true,
+  "runs": [
+    {
+      "name": "window25",
+      "file": "results/runs/window25/rule_results_classifier.csv",
+      "train": [
+        "2015-01-01",
+        "2021-12-31"
+      ],
+      "test": [
+        "2022-01-01",
+        "2024-12-31"
+      ],
+      "thresholds": "train",
+      "window": 25,
+      "min_w": 1,
+      "column": "(1) test 2022\u20132024, train 2015\u20132021, train thr., window 25, min_w 1"
+    },
+    {
+      "name": "main",
+      "file": "results/runs/main/rule_results_classifier.csv",
+      "train": [
+        "2015-01-01",
+        "2021-12-31"
+      ],
+      "test": [
+        "2022-01-01",
+        "2024-12-31"
+      ],
+      "thresholds": "train",
+      "window": 50,
+      "min_w": 1,
+      "column": "(2) test 2022\u20132024, train 2015\u20132021, train thr., window 50, min_w 1"
+    },
+    {
+      "name": "window100",
+      "file": "results/runs/window100/rule_results_classifier.csv",
+      "train": [
+        "2015-01-01",
+        "2021-12-31"
+      ],
+      "test": [
+        "2022-01-01",
+        "2024-12-31"
+      ],
+      "thresholds": "train",
+      "window": 100,
+      "min_w": 1,
+      "column": "(3) test 2022\u20132024, train 2015\u20132021, train thr., window 100, min_w 1"
+    }
+  ]
+}

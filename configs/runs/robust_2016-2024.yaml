@@ -1,0 +1,31 @@
+# run 'robust_2016-2024' — created by scripts/runs.py; overrides configs/config.yaml
+split:
+  train:
+  - '2005-01-01'
+  - '2015-12-31'
+  test:
+  - '2016-01-01'
+  - '2024-12-31'
+real_pairs:
+  date_from: '2005-01-01'
+  date_to: '2024-12-31'
+labels:
+  thresholds: rolling
+paper:
+  pairs:
+  - sp500_gold
+  - sp500_ust10y
+  - sp500_tlt
+  - sp500_ust10z
+  fidelity:
+    sp500_bitcoin: null
+    sp500_gold: {step: 10}     # 9-year test period: step 10 halves the engine time
+    sp500_ust10y: {step: 10}   # fidelity targets need the reasoner (REPRODUCIBILITY.md §2)
+    sp500_tlt: {step: 10}
+    sp500_ust10z: {step: 10}
+
+classifier:
+  weights: data/processed/classifier_v7p3_s42.pt
+
+rules:
+  min_w: 0       # this run is the min_w 0 version (config default is 1 since 2026-10-26)

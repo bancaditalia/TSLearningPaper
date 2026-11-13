@@ -1,0 +1,24 @@
+{
+  "run": "main",
+  "window": 50,
+  "labels": {
+    "deadband": 10.0,
+    "trend": 0.02,
+    "high_vol_pct": 30.0,
+    "low_vol_pct": 5.0,
+    "tail_min": 2,
+    "tail_alpha": 0.01,
+    "thresholds": "train",
+    "rolling_days": 500,
+    "rolling_min_days": 250,
+    "pos_threshold": 60.0,
+    "neg_threshold": 40.0
+  },
+  "rules": {
+    "min_condition_days": 30,
+    "max_w": 25,
+    "min_w": 1
+  },
+  "vol_percentile": 90.0,
+  "crash_percentile": 5.0
+}

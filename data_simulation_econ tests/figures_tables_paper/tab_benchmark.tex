@@ -1,0 +1,24 @@
+\begin{table}[t]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.2pt}
+\caption{Rule verdicts against econometric tests (test period 2022--2024)}
+\label{tab:benchmark}
+\begin{tabular}{llllrll}
+\toprule
+ & Asset & Rule lift [CI] & Rule verdict & Test estimate & Test verdict & Agree \\
+\midrule
+T1b & Gold & 0.149 [$-$0.298, 0.692] & positive lift & slope 10\% = 0.17 & weak safe haven & yes \\
+T1b & Bitcoin & $-$0.298 & negative & slope 5\% = 1.59$^{***}$ & not a safe haven & yes \\
+T2 & Gold & 0.293 [0.265, 0.375] & significant & $\rho^{*}$ = 0.32$^{***}$ (0.05) & contagion & yes \\
+T2 & Bitcoin & 0.093 [0.093, 0.093] & near-vacuous & $\rho^{*}$ = 0.41 (0.36) & interdependence & n.a. \\
+T3b & Gold & 0.031 [$-$0.202, 0.338] & negligible & $\rho$ calm = 0.31$^{***}$ & correlated (+) & yes \\
+T4 & Gold & 0.117 [$-$0.282, 0.508] & positive lift & $\beta+\gamma$ = 0.001 & no lead & yes \\
+T4 & Bitcoin & $-$0.307 [$-$0.307, $-$0.307] & negative & $\beta+\gamma$ = $-$0.194 & no lead & partly \\
+T7 & Gold & 0.071 [$-$0.108, 0.320] & positive lift & $\Delta\rho$ = $-$0.06 & no effect & yes \\
+T7 & Bitcoin & 0.093 [0.093, 0.093] & near-vacuous & $\Delta\rho$ = 0.15$^{**}$ & higher in high infl. & n.a. \\
+\bottomrule
+\end{tabular}
+\par\smallskip
+\parbox{\linewidth}{\footnotesize Rule lift and verdict: Fig.~4 of the paper (exact labels, constants fitted on 2015--2021). Each rule is compared with the standard econometric test of the same phenomenon, estimated on 2022--2024 daily returns with the trigger of the rule. T1b safe haven: Baur and Lucey (2010) regression with GARCH errors; slope on the days when the S\&P 500 return is below its $q$\% quantile (nested dummies), shown for the $q$ with the smallest $p$-value. T2 contagion: Forbes and Rigobon (2002) variance-corrected correlation $\rho^{*}$ on tail-dependence days (in brackets: correlation on the other days). T3b decoupling: correlation on days when both series are calm. T4 lead under stress: predictive regression with the lag of the rule, lead coefficient $\beta+\gamma$ on stress days. T7 macro conditioning: difference $\Delta\rho$ in conditional correlation between high- and low-inflation days. Agree: yes when both find significant evidence in the same direction, or neither finds significant evidence; partly when only one does; n.a.\ when the rule is near-vacuous. Second asset vs the S\&P 500. Full estimates for both periods and for the Bond pair are in the repository. $^{*}$, $^{**}$, $^{***}$: significant at 10\%, 5\%, 1\%.}
+\end{table}

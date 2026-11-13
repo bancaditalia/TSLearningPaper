@@ -1,0 +1,287 @@
+{
+  "meta": {
+    "pair": "sp500_gold",
+    "source": "py",
+    "input_mode": "series",
+    "provider": "ollama",
+    "model": "llama3.1",
+    "temperature": 0.3,
+    "seconds": 490.92630645795725,
+    "json_mode": true,
+    "num_ctx": 32768,
+    "train": [
+      "2015-01-01",
+      "2021-12-31"
+    ],
+    "test": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "n_proposed": 6,
+    "n_parsed": 5,
+    "n_rejected": 1,
+    "prompt_hash": "745252cf4a57",
+    "prompt_chars": 59321
+  },
+  "accepted": [
+    {
+      "template": "LLM_highVolFollowsTrend",
+      "head": "myEffect({X})",
+      "body": "trendUp({X}), <+>[10,20] highVol({X})",
+      "constants": {
+        "w": 20,
+        "w_lo": 10
+      },
+      "scores": {
+        "rule": "[LLM_highVolFollowsTrend] sp500_gold: myEffect(\"sp500\") :- trendUp(\"sp500\"), <+>[10,20] highVol(\"sp500\").  (w=20, w_lo=10)",
+        "train": {
+          "confidence": 0.21018354055654234,
+          "condition_days": 1689,
+          "hit_days": 355,
+          "baseline": 0.22727272727272727,
+          "lift": -0.017089186716184923,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": 0.27310924369747897,
+          "condition_days": 714,
+          "hit_days": 195,
+          "baseline": 0.30319148936170215,
+          "lift": -0.030082245664223184,
+          "eligible": true,
+          "reason": null
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "a high volatility period follows a trend up or down",
+        "rationale": "high volatility often indicates a change in market direction",
+        "declared_constants": {
+          "w": 20
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    },
+    {
+      "template": "LLM_tailDependentCorrelation",
+      "head": "myEffect({X},{Y})",
+      "body": "tailDependent({X},{Y}), isPositiveCorrelation({X},{Y}), <+>[10,20] isNoCorrelation({X},{Y})",
+      "constants": {
+        "w": 20,
+        "w_lo": 10
+      },
+      "scores": {
+        "rule": "[LLM_tailDependentCorrelation] sp500_gold: myEffect(\"sp500\",\"gold\") :- tailDependent(\"sp500\",\"gold\"), isPositiveCorrelation(\"sp500\",\"gold\"), <+>[10,20] isNoCorrelation(\"sp500\",\"gold\").  (w=20, w_lo=10)",
+        "train": {
+          "confidence": 0.475,
+          "condition_days": 40,
+          "hit_days": 19,
+          "baseline": 0.7170454545454545,
+          "lift": -0.24204545454545456,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": 0.22727272727272727,
+          "condition_days": 88,
+          "hit_days": 20,
+          "baseline": 0.7486702127659575,
+          "lift": -0.5213974854932302,
+          "eligible": true,
+          "reason": null
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "two series are tail-dependent and have positive correlation",
+        "rationale": "tail dependence often indicates a strong correlation between two series",
+        "declared_constants": {
+          "w": 20
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    },
+    {
+      "template": "LLM_noCorrelationFollowsTrend",
+      "head": "myEffect({X})",
+      "body": "trendUp({X}), <+>[10,20] isNoCorrelation({X},{Y})",
+      "constants": {
+        "w": 20,
+        "w_lo": 10
+      },
+      "scores": {
+        "rule": "[LLM_noCorrelationFollowsTrend] sp500_gold: myEffect(\"sp500\") :- trendUp(\"sp500\"), <+>[10,20] isNoCorrelation(\"sp500\",\"gold\").  (w=20, w_lo=10)",
+        "train": {
+          "confidence": 0.7223208999407934,
+          "condition_days": 1689,
+          "hit_days": 1220,
+          "baseline": 0.7170454545454545,
+          "lift": 0.0052754453953388625,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": 0.7366946778711485,
+          "condition_days": 714,
+          "hit_days": 526,
+          "baseline": 0.7486702127659575,
+          "lift": -0.011975534894808959,
+          "eligible": true,
+          "reason": null
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "a period of no correlation follows a trend up or down",
+        "rationale": "no correlation often indicates a change in market direction",
+        "declared_constants": {
+          "w": 20
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    },
+    {
+      "template": "LLM_highVolFollowsLowVol",
+      "head": "myEffect({X})",
+      "body": "lowVol({X}), <+>[10,20] highVol({X})",
+      "constants": {
+        "w": 20,
+        "w_lo": 10
+      },
+      "scores": {
+        "rule": "[LLM_highVolFollowsLowVol] sp500_gold: myEffect(\"sp500\") :- lowVol(\"sp500\"), <+>[10,20] highVol(\"sp500\").  (w=20, w_lo=10)",
+        "train": {
+          "confidence": 0.08470588235294117,
+          "condition_days": 1275,
+          "hit_days": 108,
+          "baseline": 0.22727272727272727,
+          "lift": -0.1425668449197861,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": 0.0,
+          "condition_days": 381,
+          "hit_days": 0,
+          "baseline": 0.30319148936170215,
+          "lift": -0.30319148936170215,
+          "eligible": true,
+          "reason": null
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "a high volatility period follows a low volatility period",
+        "rationale": "high volatility often indicates a change in market direction",
+        "declared_constants": {
+          "w": 20
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    },
+    {
+      "template": "LLM_tailDependentNoCorrelation",
+      "head": "myEffect({X},{Y})",
+      "body": "tailDependent({X},{Y}), isNoCorrelation({X},{Y}), <+>[10,20] isPositiveCorrelation({X},{Y})",
+      "constants": {
+        "w": 20,
+        "w_lo": 10
+      },
+      "scores": {
+        "rule": "[LLM_tailDependentNoCorrelation] sp500_gold: myEffect(\"sp500\",\"gold\") :- tailDependent(\"sp500\",\"gold\"), isNoCorrelation(\"sp500\",\"gold\"), <+>[10,20] isPositiveCorrelation(\"sp500\",\"gold\").  (w=20, w_lo=10)",
+        "train": {
+          "confidence": 0.1597222222222222,
+          "condition_days": 144,
+          "hit_days": 23,
+          "baseline": 0.16818181818181818,
+          "lift": -0.008459595959595972,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": 0.1956521739130435,
+          "condition_days": 46,
+          "hit_days": 9,
+          "baseline": 0.25398936170212766,
+          "lift": -0.05833718778908417,
+          "eligible": true,
+          "reason": null
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "two series are tail-dependent and have no correlation",
+        "rationale": "tail dependence often indicates a strong correlation between two series",
+        "declared_constants": {
+          "w": 20
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    }
+  ],
+  "rejected": [
+    {
+      "name": "LLM_leadsPositively",
+      "body": "isPositiveCorrelation(X,Y), leadsPositively(X,Y,10)",
+      "reason": "no operator-prefixed conclusion atom found",
+      "phenomenon": "a series leads positively another series with a lag of k days",
+      "rationale": "positive correlation often indicates a lead-lag relationship between two series"
+    }
+  ]
+}

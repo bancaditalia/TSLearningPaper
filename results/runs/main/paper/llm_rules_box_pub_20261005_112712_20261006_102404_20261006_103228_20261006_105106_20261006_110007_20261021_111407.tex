@@ -1,0 +1,33 @@
+\begin{figure}[t]
+\centering
+\fbox{\begin{minipage}{0.95\textwidth}\small
+\textbf{claude-sonnet-5-5}\hspace{1em plus 1fill}{\footnotesize 1 run, default sampling}\\[2pt]
+\textbf{L3}\quad{\footnotesize train lift +0.079; test lift +0.138; positive lift}\\
+\hspace*{1.5em}\mbox{$\mathit{isNegativeCorrelation}(X,Y), \mathit{trendDown}(X), \diamondplus_{[0,20]} \mathit{trendUp}(Y)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{havenBidDuringStress}(X,Y)$}\\[4pt]
+\textbf{L1}\quad{\footnotesize train lift +0.000; test lift +0.001; near-vacuous; one series only}\\
+\hspace*{1.5em}\mbox{$\mathit{highVol}(X), \mathit{trendDown}(X), \diamondplus_{[0,40]} \mathit{trendUp}(X)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{reboundAfterTurbulence}(X)$}\\[4pt]
+\textbf{L2}\quad{\footnotesize train lift +0.000; test lift +0.001; near-vacuous}\\
+\hspace*{1.5em}\mbox{$\mathit{tailDependent}(X,Y), \mathit{trendDown}(X), \diamondplus_{[0,30]} \mathit{trendUp}(X)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{recoveryAfterJointStress}(X,Y)$}\\[4pt]
+\textbf{L4}\quad{\footnotesize train lift -0.157; test lift -0.644; negative; one series only}\\
+\hspace*{1.5em}\mbox{$\mathit{highVol}(X), \mathit{trendDown}(X), \diamondplus_{[0,120]} \mathit{lowVol}(X) \to \mathit{volCalmsAfterStorm}(X)$}\\[8pt]
+\textbf{llama3.1}\hspace{1em plus 1fill}{\footnotesize 5 runs, temperature 0.3}\\[2pt]
+\textbf{L13}\quad{\footnotesize train lift +0.839; test lift n/a; ineligible}\\
+\hspace*{1.5em}\mbox{$\mathit{highVol}(X), \mathit{highVol}(Y), \diamondplus_{[0,50]} \mathit{tailDependent}(X,Y) \to \mathit{myEffect}(X,Y)$}\\[4pt]
+\textbf{L19}\quad{\footnotesize train lift +0.773; test lift n/a; ineligible; head reuses a vocabulary predicate}\\
+\hspace*{1.5em}\mbox{$\mathit{lowVol}(Y), \mathit{tailDependent}(X,Y), \diamondplus_{[0,10]} \mathit{highVol}(X) \to \mathit{highVol}(X)$}\\[4pt]
+\textbf{L18}\quad{\footnotesize train lift +0.400; test lift n/a; ineligible; head reuses a vocabulary predicate}\\
+\hspace*{1.5em}\mbox{$\mathit{isNegativeCorrelation}(X,Y), \mathit{highVol}(X), \mathit{highVol}(Y),$}\\
+\hspace*{1.5em}\hspace*{1.5em}\mbox{$\diamondplus_{[0,10]} \mathit{leadsPositively}(Y,X,3)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{leadsPositively}(Y,X,3)$}\\[4pt]
+\textbf{L14}\quad{\footnotesize train lift +0.393; test lift n/a; ineligible}\\
+\hspace*{1.5em}\mbox{$\mathit{highVol}(X), \mathit{highVol}(Y), \diamondplus_{[0,50]} \mathit{isPositiveCorrelation}(X,Y)$}\\
+\hspace*{1.5em}\hspace*{3em}\mbox{$\to \mathit{myEffect}(X,Y)$}\\[4pt]
+\textbf{L7}\quad{\footnotesize train lift +0.285; test lift +0.432; significant; one series only}\\
+\hspace*{1.5em}\mbox{$\mathit{highVol}(X), \diamondplus_{[0,10]} \mathit{trendDown}(X) \to \mathit{myEffect}(X)$}
+\end{minipage}}
+\caption{Rules proposed by each language model: per model, the 5 rules with the highest \emph{train} lift, pooled over its runs of the same prompt (the rules scored in the comparison table). Rules are written body $\to$ head, with the window exactly as the model wrote it. Train and test lift, verdict and the pair check are computed by the same code as for the templates.}
+\label{fig:llm-rules-pub}
+\end{figure}

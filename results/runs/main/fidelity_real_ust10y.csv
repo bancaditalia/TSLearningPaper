@@ -1,0 +1,2 @@
+dataset,n_windows,n_expected,accuracy,macro_f1,majority_class,baseline_accuracy,baseline_macro_f1,weights
+real,141,141,0.48936170212765956,0.4880006692320562,isNoCorrelation,0.5460992907801419,0.23547400611620795,classifier_v7p3_s42.pt

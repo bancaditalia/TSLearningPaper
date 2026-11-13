@@ -1,0 +1,36 @@
+\begin{figure}[t]
+\centering
+\begin{minipage}[t]{0.64\textwidth}\centering\small\setlength{\tabcolsep}{4pt}
+{\setbox0=\hbox{%
+\begin{tabular}{lrllll}
+\toprule
+S\&P 500 vs & n & Accuracy & Baseline acc. & Macro-F1 & Baseline F1 \\
+\midrule
+Gold & 141 & 0.70 & 0.72 & 0.63 & 0.28 \\
+Bitcoin & 71 & 0.89 & 0.63 & 0.59 & 0.26 \\
+TLT & 141 & 0.70 & 0.72 & 0.54 & 0.28 \\
+10y ZC & 140 & 0.54 & 0.67 & 0.54 & 0.27 \\
+\bottomrule
+\end{tabular}}%
+\ifdim\wd0>\linewidth\resizebox{\linewidth}{!}{\box0}\else\leavevmode\box0\fi\par}
+\vspace{2pt}{\footnotesize (a) Fidelity}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.34\textwidth}\centering\small\setlength{\tabcolsep}{4pt}
+{\setbox0=\hbox{%
+\begin{tabular}{lll}
+\toprule
+  & timing & all runs \\
+\midrule
+Window-pairs & 75 & 750 \\
+Reasoner (s) & 19.0 & 16.8 \\
+Classifier (ms) & 0.065 & 0.060 \\
+Speedup & 293,862$\times$ & 278,680$\times$ \\
+\bottomrule
+\end{tabular}}%
+\ifdim\wd0>\linewidth\resizebox{\linewidth}{!}{\box0}\else\leavevmode\box0\fi\par}
+\vspace{2pt}{\footnotesize (b) Speed}
+\end{minipage}
+\caption{\small{Classifier \texttt{classifier\_v7p3\_s42.pt}. (a) Agreement with the reasoner on the real test windows (2022--2024); \emph{Macro-F1} weighs the regimes equally; baselines: majority class. (b) Time per window-pair; \emph{timing}: dedicated run; \emph{all runs}: average of all labeling runs.}}
+\label{fig:classifier-pub}
+\end{figure}

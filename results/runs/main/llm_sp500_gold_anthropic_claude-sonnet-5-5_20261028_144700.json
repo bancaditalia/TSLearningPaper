@@ -1,0 +1,225 @@
+{
+  "meta": {
+    "pair": "sp500_gold",
+    "source": "py",
+    "input_mode": "series",
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "temperature": null,
+    "seconds": 22.41876712499652,
+    "json_mode": true,
+    "num_ctx": 32768,
+    "train": [
+      "2015-01-01",
+      "2021-12-31"
+    ],
+    "test": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "n_proposed": 4,
+    "n_parsed": 4,
+    "n_rejected": 0,
+    "prompt_hash": "745252cf4a57",
+    "prompt_chars": 59321
+  },
+  "accepted": [
+    {
+      "template": "LLM_turbulent_selloff_rebound",
+      "head": "reboundAfterTurbulentSelloff({X})",
+      "body": "highVol({X}), trendDown({X}), <+>[0,20] trendUp({X})",
+      "constants": {
+        "w": 20
+      },
+      "scores": {
+        "rule": "[LLM_turbulent_selloff_rebound] sp500_gold: reboundAfterTurbulentSelloff(\"sp500\") :- highVol(\"sp500\"), trendDown(\"sp500\"), <+>[0,20] trendUp(\"sp500\").  (w=20)",
+        "train": {
+          "confidence": 0.9671052631578947,
+          "condition_days": 304,
+          "hit_days": 294,
+          "baseline": 0.9920454545454546,
+          "lift": -0.024940191387559874,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": 0.96875,
+          "condition_days": 224,
+          "hit_days": 217,
+          "baseline": 0.9893617021276596,
+          "lift": -0.020611702127659615,
+          "eligible": true,
+          "reason": null
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "Post-selloff rebound (mean reversion after a volatile drawdown)",
+        "rationale": "Turbulent drawdowns in the equity index (Aug-Sep 2015, Jan-Feb 2016, Q4 2018, Mar 2020) were each followed by a recovery that pushed the 50-day sum back above +2%. The condition is narrow and the conclusion is not guaranteed.",
+        "declared_constants": {
+          "w": 20
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    },
+    {
+      "template": "LLM_gold_safe_haven_calm_gold",
+      "head": "safeHavenBid({X},{Y})",
+      "body": "highVol({X}), trendDown({X}), lowVol({Y}), <+>[0,20] trendUp({Y})",
+      "constants": {
+        "w": 20
+      },
+      "scores": {
+        "rule": "[LLM_gold_safe_haven_calm_gold] sp500_gold: safeHavenBid(\"sp500\",\"gold\") :- highVol(\"sp500\"), trendDown(\"sp500\"), lowVol(\"gold\"), <+>[0,20] trendUp(\"gold\").  (w=20)",
+        "train": {
+          "confidence": 1.0,
+          "condition_days": 118,
+          "hit_days": 118,
+          "baseline": 0.9147727272727273,
+          "lift": 0.08522727272727271,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": null,
+          "condition_days": 0,
+          "hit_days": 0,
+          "baseline": null,
+          "lift": null,
+          "eligible": false,
+          "reason": "no condition days"
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "Flight-to-safety rally in a calm gold market while equities are stressed",
+        "rationale": "When equities are turbulent and falling but gold is still calm, gold tends to start a steady uptrend (as in Q4 2018 into 2019). It is a rare joint condition.",
+        "declared_constants": {
+          "w": 20
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    },
+    {
+      "template": "LLM_calm_melt_up_then_reversal",
+      "head": "complacencyReversal({X})",
+      "body": "lowVol({X}), trendUp({X}), <+>[0,40] trendDown({X})",
+      "constants": {
+        "w": 40
+      },
+      "scores": {
+        "rule": "[LLM_calm_melt_up_then_reversal] sp500_gold: complacencyReversal(\"sp500\") :- lowVol(\"sp500\"), trendUp(\"sp500\"), <+>[0,40] trendDown(\"sp500\").  (w=40)",
+        "train": {
+          "confidence": 0.6666666666666666,
+          "condition_days": 1248,
+          "hit_days": 832,
+          "baseline": 0.7352272727272727,
+          "lift": -0.0685606060606061,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": 0.5596816976127321,
+          "condition_days": 377,
+          "hit_days": 211,
+          "baseline": 0.589095744680851,
+          "lift": -0.029414047068118898,
+          "eligible": true,
+          "reason": null
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "Complacency followed by correction",
+        "rationale": "A low-volatility uptrend in the equity index is sometimes followed by a regime flip into a decline (early 2018, Feb 2020). The conclusion is a minority outcome, so it separates informative cases from the base rate.",
+        "declared_constants": {
+          "w": 40
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    },
+    {
+      "template": "LLM_joint_crash_vol_persistence",
+      "head": "contagionVolPersistence({X},{Y})",
+      "body": "tailDependent({X},{Y}), highVol({X}), <+>[0,15] highVol({Y})",
+      "constants": {
+        "w": 15
+      },
+      "scores": {
+        "rule": "[LLM_joint_crash_vol_persistence] sp500_gold: contagionVolPersistence(\"sp500\",\"gold\") :- tailDependent(\"sp500\",\"gold\"), highVol(\"sp500\"), <+>[0,15] highVol(\"gold\").  (w=15)",
+        "train": {
+          "confidence": 0.6107784431137725,
+          "condition_days": 167,
+          "hit_days": 102,
+          "baseline": 0.0625,
+          "lift": 0.5482784431137725,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": 0.0,
+          "condition_days": 90,
+          "hit_days": 0,
+          "baseline": 0.0,
+          "lift": 0.0,
+          "eligible": true,
+          "reason": null
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "Tail contagion with persistent turbulence in the safe-haven asset",
+        "rationale": "When both assets have had extreme days together while X is turbulent (the Mar 2020 liquidation), Y's own volatility regime tends to turn turbulent shortly after, as cross-asset deleveraging spreads.",
+        "declared_constants": {
+          "w": 15
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    }
+  ],
+  "rejected": []
+}

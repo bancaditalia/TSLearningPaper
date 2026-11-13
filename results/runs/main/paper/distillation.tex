@@ -1,0 +1,18 @@
+% run 'main': train 2015-01-01..2021-12-31, test 2022-01-01..2024-12-31, window 50, real-pair stride 1
+\begin{figure}[t]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrlllll}
+\toprule
+Pair & n & Accuracy & Baseline acc. & Macro-F1 & Baseline F1 & Majority class \\
+\midrule
+S\&P 500 -- Gold & 141 & 0.70 & 0.72 & 0.63 & 0.28 & none \\
+S\&P 500 -- Bitcoin & 71 & 0.89 & 0.63 & 0.59 & 0.26 & positive \\
+S\&P 500 -- US Treasury 20y+ (TLT) & 141 & 0.70 & 0.72 & 0.54 & 0.28 & none \\
+S\&P 500 -- US 10y zero-coupon (GSW) & 140 & 0.54 & 0.67 & 0.54 & 0.27 & none \\
+\bottomrule
+\end{tabular}
+}
+\caption{\small{Classifier vs reasoner regimes on the real test windows (2022--2024). \emph{n}: windows (every 5th window; 10th for Bitcoin). \emph{Macro-F1} weighs the three regimes equally. Baseline: majority class. Classifier: \texttt{classifier\_v7p3\_s42.pt}.}}
+\label{fig:distillation}
+\end{figure}

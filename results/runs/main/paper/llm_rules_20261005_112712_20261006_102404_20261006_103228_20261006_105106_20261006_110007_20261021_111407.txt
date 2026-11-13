@@ -1,0 +1,26 @@
+# 6 run(s), 34 proposed, 26 parsed, 25 unique, 23 scorable on train; * = the top 5 by TRAIN lift per model, shown in the comparison
+* L1   claude-sonnet-5-5  train lift +0.000  reboundAfterTurbulence(X) :- highVol(X), trendDown(X), <+>[0,40] trendUp(X)
+* L2   claude-sonnet-5-5  train lift +0.000  recoveryAfterJointStress(X,Y) :- tailDependent(X,Y), trendDown(X), <+>[0,30] trendUp(X)
+* L3   claude-sonnet-5-5  train lift +0.079  havenBidDuringStress(X,Y) :- isNegativeCorrelation(X,Y), trendDown(X), <+>[0,20] trendUp(Y)
+* L4   claude-sonnet-5-5  train lift -0.157  volCalmsAfterStorm(X) :- highVol(X), trendDown(X), <+>[0,120] lowVol(X)
+  L5   llama3.1           train lift -0.069  myEffect(X) :- highVol(X), <+>[5,10] trendUp(X)
+  L6   llama3.1           train lift -0.103  myEffect(X) :- lowVol(X), trendUp(X), <+>[5,10] trendDown(X)
+* L7   llama3.1           train lift +0.285  myEffect(X) :- highVol(X), <+>[0,10] trendDown(X)
+  L8   llama3.1           train lift -0.083  myEffect(X,Y) :- trendDown(X), tailDependent(X,Y), <+>[0,10] trendDown(Y)
+  L9   llama3.1           train lift -0.036  myEffect(X,Y) :- isPositiveCorrelation(X,Y), <+>[0,5] trendUp(Y)
+  L10  llama3.1           train lift -0.027  myEffect(X,Y) :- isNoCorrelation(X,Y), <+>[0,10] trendDown(Y)
+  L11  llama3.1           train lift -0.028  myEffect(X,Y) :- highVol(X), lowVol(Y), <+>[0,10] isPositiveCorrelation(X,Y)
+  L12  llama3.1           train lift -0.176  myEffect(X,Y) :- isPositiveCorrelation(X,Y), <+>[0,5] isNoCorrelation(Y,X,1)
+* L13  llama3.1           train lift +0.839  myEffect(X,Y) :- highVol(X), highVol(Y), <+>[0,50] tailDependent(X,Y)
+* L14  llama3.1           train lift +0.393  myEffect(X,Y) :- highVol(X), highVol(Y), <+>[0,50] isPositiveCorrelation(X,Y)
+  L15  llama3.1           train lift +0.000  myEffect(X) :- highVol(X), <+>[0,50] trendUp(X)
+  L16  llama3.1           train lift -0.177  myEffect(X,Y) :- isPositiveCorrelation(X,Y), <+>[0,10] isNoCorrelation(X,Y)
+  L17  llama3.1           train lift -0.560  leadsPositively(X,Y,3) :- isPositiveCorrelation(X,Y), highVol(X), highVol(Y), <+>[0,10] leadsPositively(X,Y,3)   [head reuses vocabulary predicate leadsPositively]
+* L18  llama3.1           train lift +0.400  leadsPositively(Y,X,3) :- isNegativeCorrelation(X,Y), highVol(X), highVol(Y), <+>[0,10] leadsPositively(Y,X,3)   [head reuses vocabulary predicate leadsPositively]
+* L19  llama3.1           train lift +0.773  highVol(X) :- lowVol(Y), tailDependent(X,Y), <+>[0,10] highVol(X)   [head reuses vocabulary predicate highVol]
+  L20  llama3.1           train lift +0.125  myCorrelation(X,Y) :- highVol(X), highVol(Y), <+>[0,10] isPositiveCorrelation(X,Y)
+  L21  llama3.1           train lift -0.291  myTrend(X) :- highVol(X), trendUp(X), <+>[0,20] lowVol(X)
+  L22  llama3.1           train lift +0.041  myCorrelationLag(X,Y,k) :- highVol(X), highVol(Y), <+>[0,10] leadsPositively(X,Y,k)
+  L23  llama3.1           train lift -0.204  myNoCorrelation(X,Y) :- highVol(X), highVol(Y), <+>[0,10] isNoCorrelation(X,Y)
+  L24  llama3.1           train lift    n/a  myTrendExtreme(X) :- tailDependent(X,X), trendUp(X), <+>[0,20] lowVol(X)
+  L25  llama3.1           train lift    n/a  myCorrelationExtreme(X,Y) :- tailDependent(X,X), tailDependent(Y,Y), <+>[0,10] isPositiveCorrelation(X,Y)

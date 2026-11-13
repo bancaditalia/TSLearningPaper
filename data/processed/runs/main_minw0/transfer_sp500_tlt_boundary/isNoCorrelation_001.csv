@@ -1,0 +1,7 @@
+X,Y,Start,End
+sp500_synth_30,tlt_synth_30,1500,1550
+sp500_synth_32,tlt_synth_32,1600,1650
+sp500_synth_34,tlt_synth_34,1700,1750
+sp500_synth_35,tlt_synth_35,1750,1800
+sp500_synth_41,tlt_synth_41,2050,2100
+sp500_synth_47,tlt_synth_47,2350,2400

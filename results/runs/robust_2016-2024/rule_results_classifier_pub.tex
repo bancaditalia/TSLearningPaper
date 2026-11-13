@@ -1,0 +1,30 @@
+% run 'tr2005-2015_te2016-2024_w50_s1_roll_gold-ust10y-tlt-ust10z': train 2005-01-01..2015-12-31, test 2016-01-01..2024-12-31, window 50, real-pair stride 1
+\begin{figure}[t]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lllrrrrrrl}
+\toprule
+Rule & Pair & Constants & Train & Test & Base & Lift & CI & n & Verdict \\
+\midrule
+T1b & S\&P 500 -- Gold & w=0 & 0.29 & 0.17 & 0.19 & -0.014 & [-0.153, 0.172] & 592 & negligible \\
+T1b & S\&P 500 -- US 10y Treasury & w=0 & 0.34 & 0.24 & 0.19 & 0.056 & [-0.131, 0.191] & 1185 & positive lift \\
+T1b & S\&P 500 -- US 10y zero-coupon (GSW) & w=0 & 0.35 & 0.24 & 0.19 & 0.057 & [-0.137, 0.178] & 1227 & positive lift \\
+T1b & S\&P 500 -- US Treasury 20y+ (TLT) & w=0 & 0.35 & 0.24 & 0.19 & 0.053 & [-0.129, 0.173] & 1188 & positive lift \\
+T3b & S\&P 500 -- US 10y Treasury & w=0 & 0.56 & 0.61 & 0.52 & 0.092 & [-0.282, 0.336] & 779 & positive lift \\
+T3b & S\&P 500 -- US 10y zero-coupon (GSW) & w=0 & 0.72 & 0.60 & 0.53 & 0.066 & [-0.272, 0.340] & 826 & positive lift \\
+T3b & S\&P 500 -- US Treasury 20y+ (TLT) & w=0 & 0.68 & 0.56 & 0.51 & 0.057 & [-0.268, 0.309] & 938 & positive lift \\
+T4 & S\&P 500 -- Gold & w=0, k=2 & 0.49 & 0.40 & 0.58 & -0.180 & [-0.411, 0.080] & 482 & negative \\
+T4 & S\&P 500 -- US 10y Treasury & w=0, k=2 & 0.86 & 0.69 & 0.62 & 0.073 & [-0.213, 0.354] & 482 & positive lift \\
+T4 & S\&P 500 -- US 10y zero-coupon (GSW) & w=0, k=2 & 0.87 & 0.66 & 0.67 & -0.007 & [-0.307, 0.282] & 481 & negligible \\
+T4 & S\&P 500 -- US Treasury 20y+ (TLT) & w=0, k=2 & 0.88 & 0.55 & 0.57 & -0.024 & [-0.373, 0.325] & 482 & negligible \\
+T7 & S\&P 500 -- US 10y Treasury & w=0 & 0.02 & 0.23 & 0.13 & 0.098 & [-0.040, 0.501] & 624 & positive lift \\
+T7 & S\&P 500 -- US 10y zero-coupon (GSW) & w=0 & 0.01 & 0.14 & 0.09 & 0.051 & [-0.085, 0.545] & 621 & positive lift \\
+T2 & S\&P 500 -- Gold & -- & -- & -- & -- & -- & -- & -- & not fitted \\
+T5 & S\&P 500 -- Gold & d=29 & 0.49 & -- & -- & -- & -- & -- & ineligible \\
+T6 & S\&P 500 -- Gold & -- & -- & -- & -- & -- & -- & -- & not fitted \\
+\bottomrule
+\end{tabular}
+}
+\caption{Rule results (classifier-derived labels), constants frozen on 2005--2015 and scored on 2016--2024. \emph{Base} is the unconditional rate of the conclusion predicate; \emph{Lift} = Test $-$ Base. \emph{n} is the number of condition-days on the test period. 12 additional unfitted rows omitted for space.}
+\label{tab:rule-results_classifier-pub}
+\end{figure}

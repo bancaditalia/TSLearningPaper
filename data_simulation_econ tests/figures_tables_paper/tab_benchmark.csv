@@ -1,0 +1,10 @@
+template,pair,rule_lift_ci,rule_verdict,test,test_verdict,agreement
+T1b,S&P 500 - Gold,"0.149 [-0.298, 0.692]",positive lift,Baur-Lucey,weak safe haven,yes
+T1b,S&P 500 - Bitcoin,-0.298,negative,Baur-Lucey,not a safe haven,yes
+T2,S&P 500 - Gold,"0.293 [0.265, 0.375]",significant,Forbes-Rigobon,contagion,yes
+T2,S&P 500 - Bitcoin,"0.093 [0.093, 0.093]",near-vacuous,Forbes-Rigobon,interdependence (no contagion after correction),n.a.
+T3b,S&P 500 - Gold,"0.031 [-0.202, 0.338]",negligible,Calm correlation,correlated in calm (positive),yes
+T4,S&P 500 - Gold,"0.117 [-0.282, 0.508]",positive lift,Predictive regr.,no lead under stress,yes
+T4,S&P 500 - Bitcoin,"-0.307 [-0.307, -0.307]",negative,Predictive regr.,no lead under stress,partly
+T7,S&P 500 - Gold,"0.071 [-0.108, 0.320]",positive lift,Cond. correlation,no inflation effect,yes
+T7,S&P 500 - Bitcoin,"0.093 [0.093, 0.093]",near-vacuous,Cond. correlation,higher correlation in high inflation,n.a.

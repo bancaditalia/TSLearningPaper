@@ -1,0 +1,17 @@
+# run 'window100' — created by scripts/runs.py; overrides configs/config.yaml
+windows:
+  financial:
+    length: 100
+labels:
+  trend: 0.0283
+  tail_min: auto
+rules:
+  max_w: 50
+  min_condition_days: 60
+paper:
+  pairs:
+  - sp500_gold
+  - sp500_bitcoin
+  - sp500_ust10y
+  - sp500_tlt
+  - sp500_ust10z

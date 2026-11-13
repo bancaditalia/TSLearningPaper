@@ -1,0 +1,274 @@
+{
+  "meta": {
+    "pair": "sp500_gold",
+    "source": "py",
+    "input_mode": "series",
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "temperature": null,
+    "seconds": 22.799027999979444,
+    "json_mode": true,
+    "num_ctx": 32768,
+    "train": [
+      "2015-01-01",
+      "2021-12-31"
+    ],
+    "test": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "n_proposed": 5,
+    "n_parsed": 5,
+    "n_rejected": 0,
+    "prompt_hash": "745252cf4a57",
+    "prompt_chars": 59321
+  },
+  "accepted": [
+    {
+      "template": "LLM_equity_vol_mean_reversion",
+      "head": "equityCalmAfterStorm({X},{Y})",
+      "body": "highVol({X}), lowVol({Y}), <+>[0,60] lowVol({X})",
+      "constants": {
+        "w": 60
+      },
+      "scores": {
+        "rule": "[LLM_equity_vol_mean_reversion] sp500_gold: equityCalmAfterStorm(\"sp500\",\"gold\") :- highVol(\"sp500\"), lowVol(\"gold\"), <+>[0,60] lowVol(\"sp500\").  (w=60)",
+        "train": {
+          "confidence": 1.0,
+          "condition_days": 122,
+          "hit_days": 122,
+          "baseline": 0.8647727272727272,
+          "lift": 0.13522727272727275,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": null,
+          "condition_days": 0,
+          "hit_days": 0,
+          "baseline": null,
+          "lift": null,
+          "eligible": false,
+          "reason": "no condition days"
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "Volatility mean reversion: equity turbulence gives way to a calm regime",
+        "rationale": "Turbulent equity phases are rare and cluster, then decay. Gold being calm at the time makes the turbulence look equity-specific, so it should fade. A full calm window (at most 5% big days) within 60 days is not the default state after turbulence.",
+        "declared_constants": {
+          "w": 60
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    },
+    {
+      "template": "LLM_gold_vol_normalization",
+      "head": "goldCalmAfterStorm({X},{Y})",
+      "body": "highVol({Y}), lowVol({X}), <+>[0,60] lowVol({Y})",
+      "constants": {
+        "w": 60
+      },
+      "scores": {
+        "rule": "[LLM_gold_vol_normalization] sp500_gold: goldCalmAfterStorm(\"sp500\",\"gold\") :- highVol(\"gold\"), lowVol(\"sp500\"), <+>[0,60] lowVol(\"gold\").  (w=60)",
+        "train": {
+          "confidence": 0.9642857142857143,
+          "condition_days": 28,
+          "hit_days": 27,
+          "baseline": 0.6102272727272727,
+          "lift": 0.3540584415584416,
+          "eligible": false,
+          "reason": "only 28 condition days (< 30)"
+        },
+        "test": {
+          "confidence": null,
+          "condition_days": 0,
+          "hit_days": 0,
+          "baseline": null,
+          "lift": null,
+          "eligible": false,
+          "reason": "no condition days"
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "Safe-haven calm-down: gold turbulence subsides once equity stress is absent",
+        "rationale": "Gold turbulence that occurs while equities are calm tends to be an idiosyncratic shock, such as a rates move. Such shocks decay, so gold should return to a calm regime.",
+        "declared_constants": {
+          "w": 60
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    },
+    {
+      "template": "LLM_drawdown_rebound",
+      "head": "equityReboundAfterSelloff({X},{Y})",
+      "body": "highVol({X}), trendDown({X}), isNoCorrelation({X},{Y}), <+>[0,40] trendUp({X})",
+      "constants": {
+        "w": 40
+      },
+      "scores": {
+        "rule": "[LLM_drawdown_rebound] sp500_gold: equityReboundAfterSelloff(\"sp500\",\"gold\") :- highVol(\"sp500\"), trendDown(\"sp500\"), isNoCorrelation(\"sp500\",\"gold\"), <+>[0,40] trendUp(\"sp500\").  (w=40)",
+        "train": {
+          "confidence": 1.0,
+          "condition_days": 240,
+          "hit_days": 240,
+          "baseline": 1.0,
+          "lift": 0.0,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": 1.0,
+          "condition_days": 109,
+          "hit_days": 109,
+          "baseline": 0.9986702127659575,
+          "lift": 0.0013297872340425343,
+          "eligible": true,
+          "reason": null
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "Post-selloff rebound: a turbulent equity decline reverses into a rising trend",
+        "rationale": "After a high-volatility decline, a sharp V-shaped recovery (as in 2016, 2018 and 2020) pushes the 50-day sum back above +0.02. Requiring that gold is not co-moving with equities selects stress that is equity-driven rather than a broad macro move.",
+        "declared_constants": {
+          "w": 40
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    },
+    {
+      "template": "LLM_joint_crash_haven_decoupling",
+      "head": "havenDecouplingAfterJointCrash({X},{Y})",
+      "body": "tailDependent({X},{Y}), highVol({X}), <+>[0,30] isNegativeCorrelation({X},{Y})",
+      "constants": {
+        "w": 30
+      },
+      "scores": {
+        "rule": "[LLM_joint_crash_haven_decoupling] sp500_gold: havenDecouplingAfterJointCrash(\"sp500\",\"gold\") :- tailDependent(\"sp500\",\"gold\"), highVol(\"sp500\"), <+>[0,30] isNegativeCorrelation(\"sp500\",\"gold\").  (w=30)",
+        "train": {
+          "confidence": 0.0,
+          "condition_days": 167,
+          "hit_days": 0,
+          "baseline": 0.3488636363636364,
+          "lift": -0.3488636363636364,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": 0.0,
+          "condition_days": 90,
+          "hit_days": 0,
+          "baseline": 0.09840425531914894,
+          "lift": -0.09840425531914894,
+          "eligible": true,
+          "reason": null
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "Flight-to-quality decoupling after a joint tail event",
+        "rationale": "When both assets have crashed together in a liquidation (as in March 2020), the forced selling fades and the pair tends to move in opposite directions. That makes the negative-correlation regime more likely than its base rate.",
+        "declared_constants": {
+          "w": 30
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    },
+    {
+      "template": "LLM_gold_to_equity_vol_spillover",
+      "head": "goldToEquityVolSpillover({X},{Y})",
+      "body": "highVol({Y}), lowVol({X}), <+>[0,30] highVol({X})",
+      "constants": {
+        "w": 30
+      },
+      "scores": {
+        "rule": "[LLM_gold_to_equity_vol_spillover] sp500_gold: goldToEquityVolSpillover(\"sp500\",\"gold\") :- highVol(\"gold\"), lowVol(\"sp500\"), <+>[0,30] highVol(\"sp500\").  (w=30)",
+        "train": {
+          "confidence": 1.0,
+          "condition_days": 28,
+          "hit_days": 28,
+          "baseline": 0.2840909090909091,
+          "lift": 0.7159090909090908,
+          "eligible": false,
+          "reason": "only 28 condition days (< 30)"
+        },
+        "test": {
+          "confidence": null,
+          "condition_days": 0,
+          "hit_days": 0,
+          "baseline": null,
+          "lift": null,
+          "eligible": false,
+          "reason": "no condition days"
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "Volatility spillover: turbulence in gold precedes turbulence in equities",
+        "rationale": "Gold turbulence amid a calm equity market can signal rising macro or rate stress that later reaches equities. A calm-to-turbulent equity transition within 30 days is not the default outcome.",
+        "declared_constants": {
+          "w": 30
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    }
+  ],
+  "rejected": []
+}

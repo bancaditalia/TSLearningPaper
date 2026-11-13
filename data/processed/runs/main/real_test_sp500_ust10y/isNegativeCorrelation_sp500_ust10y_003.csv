@@ -1,0 +1,15 @@
+X,Y,Start,End
+ust10y_real_415,sp500_real_415,400,450
+ust10y_real_440,sp500_real_440,650,700
+sp500_real_430,ust10y_real_430,550,600
+ust10y_real_425,sp500_real_425,500,550
+ust10y_real_410,sp500_real_410,350,400
+sp500_real_415,ust10y_real_415,400,450
+sp500_real_440,ust10y_real_440,650,700
+ust10y_real_420,sp500_real_420,450,500
+ust10y_real_435,sp500_real_435,600,650
+sp500_real_410,ust10y_real_410,350,400
+sp500_real_425,ust10y_real_425,500,550
+ust10y_real_430,sp500_real_430,550,600
+sp500_real_420,ust10y_real_420,450,500
+sp500_real_435,ust10y_real_435,600,650

@@ -1,0 +1,34 @@
+{
+  "source": "py",
+  "all": true,
+  "runs": [
+    {
+      "name": "main_minw0",
+      "file": "results/runs/main_minw0/rule_results.csv",
+      "train": [
+        "2015-01-01",
+        "2021-12-31"
+      ],
+      "test": [
+        "2022-01-01",
+        "2024-12-31"
+      ],
+      "thresholds": "train",
+      "column": "test 2022\u20132024 (train 2015\u20132021, train thr.)"
+    },
+    {
+      "name": "robust_2016-2024",
+      "file": "results/runs/robust_2016-2024/rule_results.csv",
+      "train": [
+        "2005-01-01",
+        "2015-12-31"
+      ],
+      "test": [
+        "2016-01-01",
+        "2024-12-31"
+      ],
+      "thresholds": "rolling",
+      "column": "test 2016\u20132024 (train 2005\u20132015, rolling thr.)"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "batches": {
+    "sp500_bitcoin_000": 456.6
+  },
+  "total_seconds": 456.6,
+  "deadband": 10.0,
+  "n_done": 1,
+  "n_skipped": 0,
+  "n_failed": 0,
+  "timestamp": "2026-10-28T12:43:23"
+}

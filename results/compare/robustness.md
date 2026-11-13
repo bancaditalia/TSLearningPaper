@@ -1,0 +1,47 @@
+Robustness of the rule results across windows (py labels). Test-period lift with its 95% bootstrap CI in each window: (1) train 2015–2021, test 2022–2024, tau/qLow fitted on train; (2) train 2005–2015, test 2016–2024, tau/qLow rolling (past 2 years). Constants are refitted in each window on its own training period, and each window has its own classifier. Rules scored in only some windows are included; the others show their verdict. Pairs absent from a window (e.g. Bitcoin before 2017) do not appear.
+
+| Rule | Pair | test 2022–2024 (train 2015–2021, train thr.) | test 2016–2024 (train 2005–2015, rolling thr.) | verdict 1 | verdict 2 | same sign |
+|---|---|---|---|---|---|---|
+| T1 | S&P 500 – Bitcoin | -0.059 [-0.059, -0.059] | — | negative | — | — |
+| T1 | S&P 500 – Gold | +0.091 [-0.190, 0.440] | -0.069 [-0.259, 0.154] | positive lift | negative | no |
+| T1 | S&P 500 – US 10y Treasury | +0.089 [-0.167, 0.549] | +0.204 [-0.036, 0.373] | positive lift | positive lift | yes |
+| T1 | S&P 500 – US 10y zero-coupon (GSW) | +0.159 [-0.202, 0.523] | +0.230 [0.088, 0.308] | positive lift | significant | yes |
+| T1 | S&P 500 – US Treasury 20y+ (TLT) | +0.078 [-0.114, 0.276] | +0.066 [-0.291, 0.444] | positive lift | positive lift | yes |
+| T1b | S&P 500 – Bitcoin | -0.298 | — | negative | — | — |
+| T1b | S&P 500 – Gold | +0.149 [-0.298, 0.692] | -0.037 [-0.178, 0.196] | positive lift | negligible | no |
+| T1b | S&P 500 – US 10y Treasury | +0.096 [-0.298, 0.472] | +0.060 [-0.082, 0.191] | positive lift | positive lift | yes |
+| T1b | S&P 500 – US 10y zero-coupon (GSW) | +0.157 [-0.283, 0.589] | +0.062 [-0.150, 0.187] | positive lift | positive lift | yes |
+| T1b | S&P 500 – US Treasury 20y+ (TLT) | +0.202 | +0.023 [-0.133, 0.131] | positive lift | negligible | yes |
+| T2 | S&P 500 – Bitcoin | +0.093 [0.093, 0.093] | — | near-vacuous | — | — |
+| T2 | S&P 500 – Gold | +0.293 [0.265, 0.375] | +0.125 [-0.386, 0.505] | significant | positive lift | yes |
+| T2 | S&P 500 – US Treasury 20y+ (TLT) | not fitted | +0.004 [-0.326, 0.508] | not fitted | negligible | — |
+| T2b | S&P 500 – Bitcoin | +0.030 [-0.214, 0.264] | — | negligible | — | — |
+| T2b | S&P 500 – Gold | +0.084 [-0.178, 0.323] | +0.014 [-0.054, 0.166] | positive lift | negligible | yes |
+| T2b | S&P 500 – US Treasury 20y+ (TLT) | not fitted | +0.001 [-0.074, 0.271] | not fitted | negligible | — |
+| T3 | S&P 500 – Bitcoin | +0.036 [-0.035, 0.188] | — | negligible | — | — |
+| T3 | S&P 500 – Gold | +0.020 [-0.188, 0.398] | not fitted | negligible | not fitted | — |
+| T3 | S&P 500 – US 10y zero-coupon (GSW) | ineligible | -0.020 [-0.053, 0.027] | ineligible | negligible | — |
+| T3 | S&P 500 – US Treasury 20y+ (TLT) | ineligible | -0.061 [-0.121, 0.017] | ineligible | negative | — |
+| T3b | S&P 500 – Gold | +0.031 [-0.202, 0.338] | not fitted | negligible | not fitted | — |
+| T3b | S&P 500 – US 10y zero-coupon (GSW) | not fitted | -0.191 [-0.478, 0.307] | not fitted | negative | — |
+| T3b | S&P 500 – US Treasury 20y+ (TLT) | +0.000 [-0.028, 0.005] | -0.209 [-0.470, 0.464] | negligible | negative | no |
+| T4 | S&P 500 – Bitcoin | -0.307 [-0.307, -0.307] | — | negative | — | — |
+| T4 | S&P 500 – Gold | +0.117 [-0.282, 0.508] | -0.180 [-0.411, 0.080] | positive lift | negative | no |
+| T4 | S&P 500 – US 10y Treasury | -0.051 [-0.467, 0.283] | +0.073 [-0.213, 0.354] | negative | positive lift | no |
+| T4 | S&P 500 – US 10y zero-coupon (GSW) | +0.177 [-0.289, 0.461] | -0.007 [-0.307, 0.282] | positive lift | negligible | no |
+| T4 | S&P 500 – US Treasury 20y+ (TLT) | +0.185 [-0.258, 0.438] | -0.024 [-0.373, 0.325] | positive lift | negligible | no |
+| T4b | S&P 500 – Bitcoin | -0.316 [-0.316, -0.316] | — | negative | — | — |
+| T4b | S&P 500 – Gold | +0.132 [-0.316, 0.559] | -0.024 [-0.134, 0.126] | positive lift | negligible | no |
+| T4b | S&P 500 – US 10y Treasury | +0.101 [-0.211, 0.538] | +0.013 [-0.092, 0.148] | positive lift | negligible | yes |
+| T4b | S&P 500 – US 10y zero-coupon (GSW) | +0.116 [-0.320, 0.537] | +0.034 [-0.136, 0.218] | positive lift | negligible | yes |
+| T4b | S&P 500 – US Treasury 20y+ (TLT) | +0.104 [-0.192, 0.434] | +0.025 [-0.141, 0.226] | positive lift | negligible | yes |
+| T7 | S&P 500 – Bitcoin | +0.093 [0.093, 0.093] | — | near-vacuous | — | — |
+| T7 | S&P 500 – Gold | +0.071 [-0.108, 0.320] | not fitted | positive lift | not fitted | — |
+| T7 | S&P 500 – US 10y Treasury | -0.008 [-0.233, 0.275] | +0.169 [-0.132, 0.441] | negligible | positive lift | no |
+| T7 | S&P 500 – US 10y zero-coupon (GSW) | -0.102 [-0.431, 0.364] | +0.181 [-0.049, 0.526] | negative | positive lift | no |
+| T7 | S&P 500 – US Treasury 20y+ (TLT) | -0.007 [-0.296, 0.287] | +0.085 [-0.182, 0.298] | negligible | positive lift | no |
+| T7b | S&P 500 – Bitcoin | +0.039 [-0.160, 0.243] | — | negligible | — | — |
+| T7b | S&P 500 – Gold | +0.056 [-0.181, 0.150] | not fitted | positive lift | not fitted | — |
+| T7b | S&P 500 – US 10y Treasury | -0.006 [-0.271, 0.171] | +0.142 [-0.093, 0.539] | negligible | positive lift | no |
+| T7b | S&P 500 – US 10y zero-coupon (GSW) | -0.088 [-0.291, 0.174] | +0.198 [-0.011, 0.429] | negative | positive lift | no |
+| T7b | S&P 500 – US Treasury 20y+ (TLT) | -0.005 [-0.297, 0.183] | +0.072 [-0.160, 0.464] | negligible | positive lift | no |

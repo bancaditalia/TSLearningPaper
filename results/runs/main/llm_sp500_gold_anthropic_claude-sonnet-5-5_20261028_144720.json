@@ -1,0 +1,276 @@
+{
+  "meta": {
+    "pair": "sp500_gold",
+    "source": "py",
+    "input_mode": "series",
+    "provider": "anthropic",
+    "model": "claude-sonnet-5-5",
+    "temperature": null,
+    "seconds": 17.7685113750631,
+    "json_mode": true,
+    "num_ctx": 32768,
+    "train": [
+      "2015-01-01",
+      "2021-12-31"
+    ],
+    "test": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "n_proposed": 5,
+    "n_parsed": 5,
+    "n_rejected": 0,
+    "prompt_hash": "745252cf4a57",
+    "prompt_chars": 59321
+  },
+  "accepted": [
+    {
+      "template": "LLM_selloff_rebound",
+      "head": "reboundAfterPanic({X})",
+      "body": "highVol({X}), trendDown({X}), <+>[0,40] trendUp({X})",
+      "constants": {
+        "w": 40
+      },
+      "scores": {
+        "rule": "[LLM_selloff_rebound] sp500_gold: reboundAfterPanic(\"sp500\") :- highVol(\"sp500\"), trendDown(\"sp500\"), <+>[0,40] trendUp(\"sp500\").  (w=40)",
+        "train": {
+          "confidence": 1.0,
+          "condition_days": 304,
+          "hit_days": 304,
+          "baseline": 1.0,
+          "lift": 0.0,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": 1.0,
+          "condition_days": 224,
+          "hit_days": 224,
+          "baseline": 0.9986702127659575,
+          "lift": 0.0013297872340425343,
+          "eligible": true,
+          "reason": null
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "Post-panic rebound after a turbulent equity drawdown",
+        "rationale": "The turbulent, falling phases of 2015, early 2016, late 2018 and March 2020 were each followed by a window with a positive 50-day sum within about two months. The condition is selective because it needs both high volatility and a falling trend.",
+        "declared_constants": {
+          "w": 40
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": [
+          "Y"
+        ],
+        "head_reuses_vocabulary": null
+      }
+    },
+    {
+      "template": "LLM_calm_before_storm",
+      "head": "complacencyThenShock({X},{Y})",
+      "body": "lowVol({X}), lowVol({Y}), <+>[0,100] highVol({X})",
+      "constants": {
+        "w": 100
+      },
+      "scores": {
+        "rule": "[LLM_calm_before_storm] sp500_gold: complacencyThenShock(\"sp500\",\"gold\") :- lowVol(\"sp500\"), lowVol(\"gold\"), <+>[0,100] highVol(\"sp500\").  (w=100)",
+        "train": {
+          "confidence": 0.30486202365308807,
+          "condition_days": 761,
+          "hit_days": 232,
+          "baseline": 0.44829545454545455,
+          "lift": -0.1434334308923665,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": 0.0,
+          "condition_days": 227,
+          "hit_days": 0,
+          "baseline": 0.31648936170212766,
+          "lift": -0.31648936170212766,
+          "eligible": true,
+          "reason": null
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "Volatility clustering break: shared calm precedes a turbulent regime",
+        "rationale": "When both assets are calm together, as in 2017, equity turbulence tends to return within a few months, as it did in February 2018. The condition is rare and the conclusion is not the default state.",
+        "declared_constants": {
+          "w": 100
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    },
+    {
+      "template": "LLM_safe_haven_bid",
+      "head": "goldHavenBid({X},{Y})",
+      "body": "isNegativeCorrelation({X},{Y}), trendDown({X}), <+>[0,20] trendUp({Y})",
+      "constants": {
+        "w": 20
+      },
+      "scores": {
+        "rule": "[LLM_safe_haven_bid] sp500_gold: goldHavenBid(\"sp500\",\"gold\") :- isNegativeCorrelation(\"sp500\",\"gold\"), trendDown(\"sp500\"), <+>[0,20] trendUp(\"gold\").  (w=20)",
+        "train": {
+          "confidence": 1.0,
+          "condition_days": 216,
+          "hit_days": 216,
+          "baseline": 0.9147727272727273,
+          "lift": 0.08522727272727271,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": 1.0,
+          "condition_days": 48,
+          "hit_days": 48,
+          "baseline": 0.8617021276595744,
+          "lift": 0.13829787234042556,
+          "eligible": true,
+          "reason": null
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "Flight to safety: gold rallies while equities fall in a negative-correlation regime",
+        "rationale": "If equities are in a downtrend and move opposite to gold, gold's 50-day sum tends to turn positive soon after. This matches the January-February 2016 and late-2018 episodes.",
+        "declared_constants": {
+          "w": 20
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    },
+    {
+      "template": "LLM_joint_stress_contagion",
+      "head": "stressContagion({X},{Y})",
+      "body": "highVol({X}), highVol({Y}), <+>[0,20] tailDependent({X},{Y})",
+      "constants": {
+        "w": 20
+      },
+      "scores": {
+        "rule": "[LLM_joint_stress_contagion] sp500_gold: stressContagion(\"sp500\",\"gold\") :- highVol(\"sp500\"), highVol(\"gold\"), <+>[0,20] tailDependent(\"sp500\",\"gold\").  (w=20)",
+        "train": {
+          "confidence": 1.0,
+          "condition_days": 95,
+          "hit_days": 95,
+          "baseline": 0.12727272727272726,
+          "lift": 0.8727272727272728,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": null,
+          "condition_days": 0,
+          "hit_days": 0,
+          "baseline": null,
+          "lift": null,
+          "eligible": false,
+          "reason": "no condition days"
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "Joint turbulence escalating into common tail losses",
+        "rationale": "When both assets are turbulent at once, as in March 2020, their worst days often coincide, because forced liquidation hits gold along with equities. The condition is rare and the conclusion is not usually true.",
+        "declared_constants": {
+          "w": 20
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    },
+    {
+      "template": "LLM_tail_coupling_decouples",
+      "head": "tailCouplingFades({X},{Y})",
+      "body": "tailDependent({X},{Y}), trendDown({X}), <+>[0,60] lowVol({X})",
+      "constants": {
+        "w": 60
+      },
+      "scores": {
+        "rule": "[LLM_tail_coupling_decouples] sp500_gold: tailCouplingFades(\"sp500\",\"gold\") :- tailDependent(\"sp500\",\"gold\"), trendDown(\"sp500\"), <+>[0,60] lowVol(\"sp500\").  (w=60)",
+        "train": {
+          "confidence": 0.6013513513513513,
+          "condition_days": 148,
+          "hit_days": 89,
+          "baseline": 0.8647727272727272,
+          "lift": -0.26342137592137593,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": 0.0,
+          "condition_days": 76,
+          "hit_days": 0,
+          "baseline": 0.6316489361702128,
+          "lift": -0.6316489361702128,
+          "eligible": true,
+          "reason": null
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "Post-crisis correlation reset after joint tail events",
+        "rationale": "After a joint tail-loss episode with a falling equity trend, equity volatility usually calms within a couple of months, as in mid-2020 and 2021. The condition picks out crisis windows only.",
+        "declared_constants": {
+          "w": 60
+        },
+        "constants_mismatch": null,
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": null
+      }
+    }
+  ],
+  "rejected": []
+}

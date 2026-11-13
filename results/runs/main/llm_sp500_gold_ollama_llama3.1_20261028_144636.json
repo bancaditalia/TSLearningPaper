@@ -1,0 +1,252 @@
+{
+  "meta": {
+    "pair": "sp500_gold",
+    "source": "py",
+    "input_mode": "series",
+    "provider": "ollama",
+    "model": "llama3.1",
+    "temperature": 0.3,
+    "seconds": 500.8512873330619,
+    "json_mode": true,
+    "num_ctx": 32768,
+    "train": [
+      "2015-01-01",
+      "2021-12-31"
+    ],
+    "test": [
+      "2022-01-01",
+      "2024-12-31"
+    ],
+    "n_proposed": 6,
+    "n_parsed": 4,
+    "n_rejected": 2,
+    "prompt_hash": "745252cf4a57",
+    "prompt_chars": 59321
+  },
+  "accepted": [
+    {
+      "template": "LLM_highVolFollowedByTrendUp",
+      "head": "trendUp({X})",
+      "body": "highVol({X}), <+>[5,20] trendUp({X})",
+      "constants": {
+        "w": 20,
+        "w_lo": 5
+      },
+      "scores": {
+        "rule": "[LLM_highVolFollowedByTrendUp] sp500_gold: trendUp(\"sp500\") :- highVol(\"sp500\"), <+>[5,20] trendUp(\"sp500\").  (w=20, w_lo=5)",
+        "train": {
+          "confidence": 0.9428571428571428,
+          "condition_days": 350,
+          "hit_days": 330,
+          "baseline": 0.9835227272727273,
+          "lift": -0.04066558441558443,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": 0.9495798319327731,
+          "condition_days": 238,
+          "hit_days": 226,
+          "baseline": 0.976063829787234,
+          "lift": -0.026483997854460983,
+          "eligible": true,
+          "reason": null
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "High volatility followed by an upward trend",
+        "rationale": "When high volatility is followed by a trend up, it indicates that the market is likely to continue its upward momentum.",
+        "declared_constants": {
+          "w": 15
+        },
+        "constants_mismatch": {
+          "w": 15
+        },
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": "trendUp"
+      }
+    },
+    {
+      "template": "LLM_lowVolFollowedByTrendDown",
+      "head": "trendDown({X})",
+      "body": "lowVol({X}), <+>[5,20] trendDown({X})",
+      "constants": {
+        "w": 20,
+        "w_lo": 5
+      },
+      "scores": {
+        "rule": "[LLM_lowVolFollowedByTrendDown] sp500_gold: trendDown(\"sp500\") :- lowVol(\"sp500\"), <+>[5,20] trendDown(\"sp500\").  (w=20, w_lo=5)",
+        "train": {
+          "confidence": 0.5349019607843137,
+          "condition_days": 1275,
+          "hit_days": 682,
+          "baseline": 0.6147727272727272,
+          "lift": -0.07987076648841351,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": 0.4435695538057743,
+          "condition_days": 381,
+          "hit_days": 169,
+          "baseline": 0.5159574468085106,
+          "lift": -0.07238789300273635,
+          "eligible": true,
+          "reason": null
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "Low volatility followed by a downward trend",
+        "rationale": "When low volatility is followed by a trend down, it indicates that the market is likely to continue its downward momentum.",
+        "declared_constants": {
+          "w": 15
+        },
+        "constants_mismatch": {
+          "w": 15
+        },
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": "trendDown"
+      }
+    },
+    {
+      "template": "LLM_isPositiveCorrelationFollowedByTrendUp",
+      "head": "trendUp({X})",
+      "body": "isPositiveCorrelation({X},{Y}), <+>[5,20] trendUp({X})",
+      "constants": {
+        "w": 20,
+        "w_lo": 5
+      },
+      "scores": {
+        "rule": "[LLM_isPositiveCorrelationFollowedByTrendUp] sp500_gold: trendUp(\"sp500\") :- isPositiveCorrelation(\"sp500\",\"gold\"), <+>[5,20] trendUp(\"sp500\").  (w=20, w_lo=5)",
+        "train": {
+          "confidence": 1.0,
+          "condition_days": 240,
+          "hit_days": 240,
+          "baseline": 0.9835227272727273,
+          "lift": 0.01647727272727273,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": 0.9627329192546584,
+          "condition_days": 161,
+          "hit_days": 155,
+          "baseline": 0.976063829787234,
+          "lift": -0.013330910532575624,
+          "eligible": true,
+          "reason": null
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "Positive correlation followed by an upward trend",
+        "rationale": "When positive correlation is followed by a trend up, it indicates that the market is likely to continue its upward momentum.",
+        "declared_constants": {
+          "w": 15
+        },
+        "constants_mismatch": {
+          "w": 15
+        },
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": "trendUp"
+      }
+    },
+    {
+      "template": "LLM_isNegativeCorrelationFollowedByTrendDown",
+      "head": "trendDown({X})",
+      "body": "isNegativeCorrelation({X},{Y}), <+>[5,20] trendDown({X})",
+      "constants": {
+        "w": 20,
+        "w_lo": 5
+      },
+      "scores": {
+        "rule": "[LLM_isNegativeCorrelationFollowedByTrendDown] sp500_gold: trendDown(\"sp500\") :- isNegativeCorrelation(\"sp500\",\"gold\"), <+>[5,20] trendDown(\"sp500\").  (w=20, w_lo=5)",
+        "train": {
+          "confidence": 0.552,
+          "condition_days": 375,
+          "hit_days": 207,
+          "baseline": 0.6147727272727272,
+          "lift": -0.0627727272727272,
+          "eligible": true,
+          "reason": null
+        },
+        "test": {
+          "confidence": 1.0,
+          "condition_days": 48,
+          "hit_days": 48,
+          "baseline": 0.5159574468085106,
+          "lift": 0.48404255319148937,
+          "eligible": true,
+          "reason": null
+        },
+        "fitted_on_train_only": false,
+        "train_day_range": [
+          0,
+          1760
+        ],
+        "test_day_range": [
+          1760,
+          2512
+        ]
+      },
+      "diagnostics": {
+        "source": "llm",
+        "phenomenon": "Negative correlation followed by a downward trend",
+        "rationale": "When negative correlation is followed by a trend down, it indicates that the market is likely to continue its downward momentum.",
+        "declared_constants": {
+          "w": 15
+        },
+        "constants_mismatch": {
+          "w": 15
+        },
+        "unbound_head_dropped": null,
+        "head_reuses_vocabulary": "trendDown"
+      }
+    }
+  ],
+  "rejected": [
+    {
+      "name": "LLM_tailDependentFollowedByTrend",
+      "body": "tailDependent(X,Y), <+>[5,20] (trendUp(X) OR trendDown(X))",
+      "reason": "cannot parse atom '<+>[5,20] (trendUp(X) OR trendDown(X))'",
+      "phenomenon": "Tail dependence followed by an upward or downward trend",
+      "rationale": "When tail dependence is followed by a trend up or down, it indicates that the market is likely to continue its upward or downward momentum."
+    },
+    {
+      "name": "LLM_leadsPositivelyFollowedByTrend",
+      "body": "leadsPositively(X,Y,5), <+>[5,20] (trendUp(X) OR trendDown(X))",
+      "reason": "cannot parse atom '<+>[5,20] (trendUp(X) OR trendDown(X))'",
+      "phenomenon": "Positive lead followed by an upward or downward trend",
+      "rationale": "When positive lead is followed by a trend up or down, it indicates that the market is likely to continue its upward or downward momentum."
+    }
+  ]
+}

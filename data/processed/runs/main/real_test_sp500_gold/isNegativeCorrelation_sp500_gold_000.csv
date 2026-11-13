@@ -1,0 +1,17 @@
+X,Y,Start,End
+sp500_real_35,gold_real_35,350,400
+sp500_real_20,gold_real_20,200,250
+gold_real_25,sp500_real_25,250,300
+gold_real_10,sp500_real_10,100,150
+sp500_real_30,gold_real_30,300,350
+sp500_real_45,gold_real_45,450,500
+gold_real_35,sp500_real_35,350,400
+gold_real_20,sp500_real_20,200,250
+sp500_real_40,gold_real_40,400,450
+sp500_real_15,gold_real_15,150,200
+gold_real_45,sp500_real_45,450,500
+gold_real_30,sp500_real_30,300,350
+sp500_real_25,gold_real_25,250,300
+sp500_real_10,gold_real_10,100,150
+gold_real_15,sp500_real_15,150,200
+gold_real_40,sp500_real_40,400,450

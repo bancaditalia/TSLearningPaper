@@ -1,0 +1,28 @@
+{
+ "X": {
+  "mu": 0.0502,
+  "alpha": 0.0,
+  "gamma": 0.2067,
+  "beta": 0.8814,
+  "nu": 6.8246,
+  "var": 1.4863
+ },
+ "Y": {
+  "mu": 0.0509,
+  "alpha": 0.0339,
+  "gamma": 0.0,
+  "beta": 0.9607,
+  "nu": 4.7417,
+  "var": 1.1806
+ },
+ "INFL": {
+  "const": 1.4549,
+  "phi": 0.4728,
+  "sd": 2.8207,
+  "measure": "month-on-month log change of CPIAUCSL, annualised %, 1985-2024"
+ },
+ "sample": {
+  "returns": "2000-08-31 to 2024-12-31, 6083 days",
+  "gold": "GOLD_FUT (Jul 2026 vintage)"
+ }
+}

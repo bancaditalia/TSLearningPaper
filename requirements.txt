@@ -1,0 +1,22 @@
+# Packages the code imports, with loose version limits: for installing and running the
+# project. To reproduce the paper's numbers exactly, use requirements-frozen.txt
+# (pip freeze of the environment the results were produced with: .venv, Python 3.13).
+#
+#   python3.13 -m venv .venv && source .venv/bin/activate
+#   pip install -r requirements.txt
+#
+# The Vadalog engine is not a Python package: see README, Setup.
+
+numpy>=2.1
+pandas>=2.2
+scipy>=1.13
+scikit-learn>=1.5
+statsmodels>=0.14
+torch>=2.3
+matplotlib>=3.8
+PyYAML>=6.0
+requests>=2.31
+yfinance>=0.2.40
+tqdm>=4.66
+arch>=7.0        # econometric tests (data_simulation_econ tests/)
+fredapi>=0.5     # macro series download (ingest_macro)

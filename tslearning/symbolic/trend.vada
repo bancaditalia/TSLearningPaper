@@ -1,0 +1,21 @@
+@input("flow").
+@bind("flow","csv useHeaders=true, delimiter=',',nullString='NULL', quoteMode='MINIMAL', recordSeparator='\n'","","${X}").
+@mapping("flow",0,"var3","string").
+@mapping("flow",1,"var3","int").
+@mapping("flow",2,"var3","double").
+@mapping("flow",3,"var3","int").
+@mapping("flow",4,"var3","int").
+@temporalMappings("flow",3,4,-1,-1,"[_,_)").
+
+sumFlow(X,Sum):- /\50 no_date flow(X,K,V), Sum = sum(V).
+%% NON MSUM!
+%msumFlow(X,Sum):- /\50 no_date flow(X,K,V), Sum = msum(V).
+
+trendUp(X, Sum):- sumFlow(X,Sum), Sum >= 0.02.
+trendDown(X,Sum):- sumFlow(X,Sum), Sum <= -0.02.
+deadZone(X,Sum):- sumFlow(X,Sum), Sum < 0.02, Sum > -0.02.
+
+@output("sumFlow").
+@output("trendUp").
+@output("trendDown").
+@output("deadZone").

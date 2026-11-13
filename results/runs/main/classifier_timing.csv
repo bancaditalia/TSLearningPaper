@@ -1,0 +1,8 @@
+folder,window_pairs,s_per_window_pair,weights,repeats
+_timing,75,6.456083090354999e-05,classifier_v7p3_s42.pt,10
+real_test_results,71,6.52451871592604e-05,classifier_v7p3_s42.pt,10
+real_test_sp500_gold,141,5.7823375752525976e-05,classifier_v7p3_s42.pt,10
+real_test_sp500_tlt,141,5.778102905998099e-05,classifier_v7p3_s42.pt,10
+real_test_sp500_ust10y,141,5.9995744525989956e-05,classifier_v7p3_s42.pt,10
+real_test_sp500_ust10z,140,6.042937714872615e-05,classifier_v7p3_s42.pt,10
+ALL,709,6.0217495717381473e-05,classifier_v7p3_s42.pt,10

@@ -1,0 +1,354 @@
+# tslearning config — all chosen constants live here.
+# (Fitted values like per-series tau/qLow are NOT here; they are computed
+#  from training data and saved to data/processed/.)
+
+seed: 42
+
+# ── Reasoner (Vadalog evaluator) endpoint ─────────────────────────
+reasoner_endpoint: "http://localhost:8080/evaluateFromRepoWithParams"
+
+# The engine resolves `programName` relative to its own REPOSITORY folder. Set this to
+# the same folder the engine is configured with, expressed relative to the repo root —
+# every program name is then derived from it, so there is one place to change.
+#
+#   "."                  repository = TSLearning/ (the repo root). Program names become
+#                        "tslearning/symbolic/preLabeling.vada", and generated
+#                        verification programs can be run straight from
+#                        "data/processed/verification/<tag>.vada" — no staging.
+#   "tslearning/symbolic" repository = the .vada folder. Program names are bare
+#                        ("preLabeling.vada"), but anything generated outside that folder
+#                        is unreachable and has to be copied into it first.
+reasoner_repository: "."
+
+# ── Paths ─────────────────────────────────────────────────────────
+# All paths are RELATIVE TO THE REPO ROOT. The loader resolves them to
+# absolute paths, so notebooks work no matter which folder they run from.
+#
+# To move where a file lives: change the value here, and repoint the code
+# that reads/writes it — never move files by hand while the old path is
+# still hardcoded somewhere.
+#
+# data/ is currently flat. These subfolders are the TARGET layout; a stage
+# starts using its target path only when you migrate that stage. Until then
+# leave older code pointing at plain "data/".
+paths:
+  data_root:      data             # current FLAT data folder (transitional)
+  data_raw:       data/raw         # the 14 untouchable original CSVs
+  data_interim:   data/interim     # intermediate transforms (regenerable)
+  data_processed: data/processed   # ready-to-use datasets (regenerable)
+  results:        results          # computed result tables (fingerprints, metrics)
+  figures:        figures          # saved plots
+  symbolic:       tslearning/symbolic   # the .vadanb reasoner assets
+
+# ── Windows: different per data type ──────────────────────────────
+# length = window size, step = stride between windows.
+windows:
+  financial:      # daily returns: SP500, NASDAQ, Bitcoin, VIX, Gold, UST10Y, TLT
+    length: 50
+    step: 1
+  macro_monthly:  # FRED/Eurostat monthly: inflation, rate, unemployment, credit, money
+    length: 12    # 1 year
+    step: 1
+  macro_quarterly:  # FRED quarterly: GDP
+    length: 8     # 2 years
+    step: 1
+  # seasonal one-offs, if used
+  airline:      {length: 12,  step: 1}
+  electricity:  {length: 336, step: 48}
+
+# which frequency each series uses
+series_freq:
+  SP500: financial
+  NASDAQ: financial
+  Bitcoin: financial
+  VIX: financial
+  Gold: financial
+  UST10Y: financial          # US 10y Treasury note futures (ZN=F), daily
+  TLT: financial             # iShares 20+ Year Treasury Bond ETF, daily, from mid-2002
+  UST10Z: financial          # US 10y zero-coupon return from the Fed GSW yield curve (data/raw/feds200628.csv)
+  US_Inflation: macro_monthly
+  US_Rate: macro_monthly
+  US_Unemployment: macro_monthly
+  US_Credit: macro_monthly
+  US_Money: macro_monthly
+  US_GDP: macro_quarterly
+  Airline: airline           # seasonal; predates the split -> fractional split
+  Electricity: electricity   # seasonal; predates the split -> fractional split
+  # EU macro (Eurostat), DE/FR/IT × {Unemployment, Inflation, GDP}
+  DE_Unemployment: macro_monthly
+  DE_Inflation: macro_monthly
+  DE_GDP: macro_quarterly
+  FR_Unemployment: macro_monthly
+  FR_Inflation: macro_monthly
+  FR_GDP: macro_quarterly
+  IT_Unemployment: macro_monthly
+  IT_Inflation: macro_monthly
+  IT_GDP: macro_quarterly
+  # Wider EU set — same three Eurostat datasets (une_rt_m, prc_hicp_midx,
+  # namq_10_gdp), which cover the whole EU. Coverage varies by country: the
+  # smaller members have shorter monthly histories, and parse_eurostat prints
+  # SKIPPED (rather than failing) for any missing dimension combination.
+  ES_Unemployment: macro_monthly
+  ES_Inflation: macro_monthly
+  ES_GDP: macro_quarterly
+  NL_Unemployment: macro_monthly
+  NL_Inflation: macro_monthly
+  NL_GDP: macro_quarterly
+  BE_Unemployment: macro_monthly
+  BE_Inflation: macro_monthly
+  BE_GDP: macro_quarterly
+  AT_Unemployment: macro_monthly
+  AT_Inflation: macro_monthly
+  AT_GDP: macro_quarterly
+  PT_Unemployment: macro_monthly
+  PT_Inflation: macro_monthly
+  PT_GDP: macro_quarterly
+  GR_Unemployment: macro_monthly
+  GR_Inflation: macro_monthly
+  GR_GDP: macro_quarterly
+  IE_Unemployment: macro_monthly
+  IE_Inflation: macro_monthly
+  IE_GDP: macro_quarterly
+  FI_Unemployment: macro_monthly
+  FI_Inflation: macro_monthly
+  FI_GDP: macro_quarterly
+  PL_Unemployment: macro_monthly
+  PL_Inflation: macro_monthly
+  PL_GDP: macro_quarterly
+  SE_Unemployment: macro_monthly
+  SE_Inflation: macro_monthly
+  SE_GDP: macro_quarterly
+  DK_Unemployment: macro_monthly
+  DK_Inflation: macro_monthly
+  DK_GDP: macro_quarterly
+
+# ── Data period downloaded (financial series, Yahoo Finance) ──────
+# Bitcoin keeps its own floor (2017, ingest_financial.TICKERS). Cached files are not
+# re-downloaded: `data_prep.py -d financial --extend` adds the missing earlier days in
+# front of them, keeping the rows already there unchanged.
+data:
+  financial_start: "2002-01-01"
+  financial_end: "2024-12-31"
+
+# ── Train/test split (calendar, not fraction) ─────────────────────
+split:
+  train: ["2015-01-01", "2021-12-31"]
+  test:  ["2022-01-01", "2024-12-31"]
+
+# ── Real pairs: how step 6 labels them (the paper's settings) ─────
+# Defaults for prep_real_pairs.py and label.py --track real. The scripts used to default
+# to 2018 / stride 10 / no lags, which silently produced a different dataset.
+# Flags still override these; change them HERE to change what the paper uses.
+real_pairs:
+  date_from: "2015-01-01"     # start of the train period
+  date_to: "2024-12-31"       # end of the test period
+  stride: 1                   # every window (stride 10 drops rules under 30 condition days)
+  lags: [1, 2, 3, 4, 5]       # lead-lag predicates, needed by T4/T4b
+  macro_states: [US_Inflation]  # recomputed for financial pairs after labelling (T7/T7b)
+
+# ── Labels: how the correlation regime is decided ─────────────────
+#
+# THE DEADBAND IS THE SINGLE SOURCE OF TRUTH FOR THE REGIME CUT.
+# It must be identical in three places, or the pipeline silently trains on one
+# definition and mines rules from another:
+#
+#   py_labeler.py          the facts the rules are mined from
+#   relabel.py             the classifier's training labels
+#   preLabeling.vada       the reasoner's own labels  (passed as ${Deadband})
+#
+# All three now read this value. That is not tidiness — it is the fix for the bug
+# that produced the collapse: the .vada used absolute cuts (same% > 55 / diff% > 45)
+# while everything downstream used relative dominance, and nothing reconciled them.
+#
+# The rule:
+#     score = sameSign% - diffSign%
+#     score >  +deadband  -> isPositiveCorrelation
+#     score <  -deadband  -> isNegativeCorrelation
+#     |score| <= deadband -> isNoCorrelation
+#
+# WHY 10 AND NOT 5: at 5 percentage points, 86-95% of real days land in one class;
+# at 10 all three carry usable mass. Note honestly that this is a BALANCE criterion,
+# not a derivation — unlike tau (90th pct), qLow (5th pct) and the tail threshold
+# (mu = W*p^2), which are fitted. The principled version is to set it near one
+# standard error of the score (a difference of two proportions over the window), so
+# that "no correlation" means "not distinguishable from zero".
+labels:
+  deadband: 10.0
+
+  # The other labelling cut-offs. One source for the Python labeller (exact_flags.py,
+  # py_labeler.py) AND the reasoner: preLabeling.vada is generated from these for any
+  # run whose values differ (reasoner_client.ruleset_for_run). The values below are
+  # the paper's, chosen for a 50-day window; a run with another window length should
+  # set its own in configs/runs/<run>.yaml (see configs/runs/README.md for scaling).
+  trend: 0.02           # |sum of the window's returns| >= trend -> trendUp / trendDown
+  high_vol_pct: 30.0    # >= this % of "big" days (|r| > tau) -> highVol
+  low_vol_pct: 5.0      # <= this % -> lowVol
+  tail_min: 2           # >= this many co-crash days (both below qLow) -> tailDependent.
+                        # "auto" = the smallest count that independent series would reach
+                        # with probability <= tail_alpha (exact_flags.tail_min_auto):
+                        # 2 for W <= 59 (so the paper's 2 at W=50), 3 for 60-175, 4 above.
+  tail_alpha: 0.01      # only used by tail_min: auto
+
+  # tau / qLow (the "big move" and "crash" day thresholds), per window:
+  #   train    one value per series, fitted on split.train (the paper)
+  #   rolling  the percentile of the rolling_days returns BEFORE each window starts
+  #            (past only, no look-ahead); under rolling_min_days of history -> train value.
+  #            Synthetic windows (no calendar) always use the train value.
+  # See tslearning/labeling/thresholds.py.
+  thresholds: train
+  rolling_days: 500
+  rolling_min_days: 250
+
+  # SUPERSEDED, kept for reference: the absolute bars this replaced. Never wired to
+  # any code path, and unreachable on real data — measured max diff% is 32 against a
+  # bar of 45, so isNegativeCorrelation could not fire at all.
+  pos_threshold: 60.0   # percentagePositive > 60  -> positive
+  neg_threshold: 40.0   # < 40 -> negative; between -> no correlation
+
+# ── Rule fitting and scoring ──────────────────────────────────────
+# Both are in TICKS (trading days for financial pairs).
+rules:
+  min_condition_days: 30   # below this a rule is not scored (scoring.MIN_CONDITION_DAYS)
+  max_w: 25                # largest window w tried when fitting <+>[0,w] / <->[0,w]
+  min_w: 1                 # smallest w tried (2026-10-26; was 0). With w = 0, <+>[0,0] P is
+                           # just "P now": every fitted rule now uses a real temporal window
+
+# ── Generative models (DDPM) ──────────────────────────────────────
+# split: date     -> train on every window that ends before the test period starts
+#                    (or before train_until), so no test-period data reaches the
+#                    synthetic training set. (fraction = the old first-80%-of-each-series
+#                    split, which for Bitcoin reached into 2023: kept only to reproduce.)
+synth:
+  split: date
+  train_until: null        # null = the day before split.test starts
+
+# ── Segmentation smoothing (§4.2) ─────────────────────────────────
+segmentation:
+  method: hmm           # hmm | majority | none
+  hmm_stickiness: 0.98
+
+
+# --- Compute tau and qLow ----------------
+
+predicates:
+    vol_percentile: 90.0
+    crash_percentile: 5.0
+    lags: [1, 2, 3, 4, 5]
+    # predicate -> shape; tells the loader how to read each {predicate}_*.csv
+    kind:
+      isPositiveCorrelation: "pair_bin"
+      isNegativeCorrelation: "pair_bin"
+      isNoCorrelation: "pair_bin"
+      isNonLinearCorrelation: "pair_bin"
+      tailDependent: "pair_bin"
+      percentagePositive: "pair_cont:Pct"
+      magnitudeSameSignConsistencyPercentage: "pair_cont:Pct"
+      magnitudeDiffSignConsistencyPercentage: "pair_cont:Pct"
+      onlyMagnitudeConsistencyPercentage: "pair_cont:Pct"
+      magnitudeSameSignConsistencyMax: "pair_cont:Max"
+      magnitudeDiffSignConsistencyMax: "pair_cont:Max"
+      trendUp: "unary_bin"
+      trendDown: "unary_bin"
+      deadZone: "unary_bin"
+      highVol: "unary_bin"
+      lowVol: "unary_bin"
+      bigMovePct: "unary_cont:Pct"
+      sumFlow: "unary_cont:Sum"
+      positivePctLag: "lag_cont:Pct"
+      magnitudeSameSignConsistencyPctLag: "lag_cont:Pct"
+      magnitudeDiffSignConsistencyPctLag: "lag_cont:Pct"
+      onlyMagnitudeConsistencyPctLag: "lag_cont:Pct"
+      leadsPositively: "lag_bin"
+      leadsNegatively: "lag_bin"
+      noLead: "lag_bin"
+      # Macro STATE predicates (T7). Monthly facts mapped onto a daily pair's timeline —
+      # a background condition, not a member of the pair. Indexed by ECONOMY, not by
+      # series: inflationHigh(C) with C = "us", "de", ... See labeling/macro_state.py.
+      inflationHigh: "unary_bin"
+      inflationLow: "unary_bin"
+      # Static link series -> economy, market(X, C). Built from `markets` below, not
+      # read from a CSV; it is what ties a macro state to a pair (T7).
+      market: "pair_static"
+
+# ── Markets: which economy each series belongs to ─────────────────
+# The link a macro-conditioned rule needs: market(X, C), inflationHigh(C). A series with
+# no entry (gold, bitcoin: global assets) has no economy, so a T7 rule with it as X
+# reports "missing predicates" instead of silently borrowing US inflation.
+markets:
+  sp500: us
+  nasdaq: us
+  vix: us
+  ust10y: us
+  tlt: us
+  ust10z: us
+
+# ── Classifier heads: what the classifier predicts vs. only supervises ─────────
+# softmax_group = mutually-exclusive regime (one-of-N)  -> softmax head
+# multilabel    = independent flags predicted at inference (can co-occur) -> sigmoids
+# aux           = auxiliary supervision only (not predicted at inference)
+# Move a name between lists to change what is predicted. Keep in sync everywhere.
+#classifier:
+# ── Paper: chosen templates for the publication tables ────────────
+# Only these appear in rule_results_pub.tex/md (fitted rows only).
+# Change this list, rerun `python scripts/rule_table.py`, and the pub tables update.
+# What `python scripts/paper_final.py` (no arguments) builds into paper_tables/: the run
+# the paper's numbers come from, and the pairs the paper reports. Change them here.
+paper_final:
+  run: main
+  pairs: [sp500_gold, sp500_bitcoin, sp500_tlt, sp500_ust10z]
+
+paper:
+  # The pairs every paper table covers (scripts/paper.py). Since 2026-10-26 the paper's
+  # setup: gold, bitcoin and the three bond series (nasdaq dropped, redundant). The base
+  # run's folders (data/processed/, results/) still hold the old draft with
+  # gold/bitcoin/nasdaq; the paper's numbers come from the run
+  # main_minw0.
+  pairs: [sp500_gold, sp500_bitcoin, sp500_ust10y, sp500_tlt, sp500_ust10z]
+  # Fidelity test sets (REPRODUCIBILITY.md §2): the --step each was labelled with, and the
+  # reasoner-label folder to score against (bitcoin: the relabelled copy)
+  fidelity:
+    sp500_gold:    {step: 5}
+    sp500_bitcoin: {step: 10, results: data/processed/real_test_results_dominance}
+    sp500_ust10y:  {step: 5}
+    sp500_tlt:     {step: 5}
+    sp500_ust10z:  {step: 5}
+  # LLM comparison (rule_table.py / paper.py): pool every run made with the prompt of the
+  # latest run, and show the top_k rules by TRAIN lift (never selected on the test period)
+  llm:
+    pool: true
+    top_k: 5        # per model, in the comparison table
+    box_top_k: 3    # per model, in the LLM-rules box (the first 3 of those 5)
+  chosen_templates:
+    - T1b_safeHaven_bw
+    - T2_contagion
+    - T3b_decoupled_bw
+    - T4_leadsUnderStress
+    - T5_hedgeHorizon
+    - T6_regimeReversal
+    - T7_macroConditioned
+
+classifier:
+  # THE classifier the paper reports — every script that loads a classifier without an
+  # explicit --classifier / --weights uses this file (infer.py, eval.py,
+  # classifier_timing.py). Change it here, once, after choosing.
+  # Path relative to the repo root.
+  weights: data/processed/classifier_v7p3_s42.pt
+  softmax_group: [isPositiveCorrelation, isNegativeCorrelation, isNoCorrelation]
+  multilabel:    [trendUp, trendDown, highVol, lowVol, tailDependent]
+  aux:
+    - percentagePositive
+    - magnitudeSameSignConsistencyPercentage
+    - magnitudeDiffSignConsistencyPercentage
+    - onlyMagnitudeConsistencyPercentage
+    - magnitudeSameSignConsistencyMax
+    - magnitudeDiffSignConsistencyMax
+    - bigMovePct
+    - sumFlow
+    - isNonLinearCorrelation
+    - positivePctLag
+    - magnitudeSameSignConsistencyPctLag
+    - magnitudeDiffSignConsistencyPctLag
+    - onlyMagnitudeConsistencyPctLag
+    - leadsPositively
+    - leadsNegatively
+    - noLead

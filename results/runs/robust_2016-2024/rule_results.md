@@ -1,0 +1,50 @@
+| Rule | Pair | Constants | Train | Test | Base | Lift | CI | n | Verdict |
+|---|---|---|---|---|---|---|---|---|---|
+| T1 | S&P 500 – Gold | w=0 | 0.18 | 0.13 | 0.15 | -0.027 | [-0.153, 0.248] | 420 | negligible |
+| T1 | S&P 500 – US 10y Treasury | w=0 | 0.76 | 0.65 | 0.41 | 0.231 | [-0.130, 0.586] | 420 | positive lift |
+| T1 | S&P 500 – US 10y zero-coupon (GSW) | w=0 | 0.79 | 0.67 | 0.42 | 0.248 | [-0.113, 0.578] | 419 | positive lift |
+| T1 | S&P 500 – US Treasury 20y+ (TLT) | w=6 | 0.88 | 0.50 | 0.31 | 0.186 | [-0.174, 0.597] | 420 | positive lift |
+| T1b | S&P 500 – Gold | w=0 | 0.29 | 0.15 | 0.19 | -0.033 | [-0.186, 0.230] | 346 | negligible |
+| T1b | S&P 500 – US 10y Treasury | w=0 | 0.36 | 0.29 | 0.19 | 0.104 | [-0.186, 0.254] | 936 | positive lift |
+| T1b | S&P 500 – US 10y zero-coupon (GSW) | w=0 | 0.33 | 0.30 | 0.19 | 0.110 | [-0.110, 0.209] | 949 | positive lift |
+| T1b | S&P 500 – US Treasury 20y+ (TLT) | w=0 | 0.35 | 0.30 | 0.19 | 0.111 | [-0.186, 0.285] | 655 | positive lift |
+| T2 | S&P 500 – Gold | w=0 | 0.18 | 0.00 | 0.16 | -0.158 | [-0.158, -0.158] | 122 | negative |
+| T3 | S&P 500 – US 10y Treasury | w=0 | 0.49 | 0.40 | 0.45 | -0.050 | [-0.278, 0.146] | 1169 | negative |
+| T3 | S&P 500 – US 10y zero-coupon (GSW) | w=0 | 0.34 | 0.45 | 0.51 | -0.055 | [-0.283, 0.125] | 1196 | negative |
+| T3 | S&P 500 – US Treasury 20y+ (TLT) | w=0 | 0.41 | 0.57 | 0.59 | -0.020 | [-0.160, 0.113] | 1145 | negligible |
+| T3b | S&P 500 – US 10y Treasury | w=0 | 0.61 | 0.46 | 0.52 | -0.058 | [-0.360, 0.297] | 1013 | negative |
+| T3b | S&P 500 – US 10y zero-coupon (GSW) | w=0 | 0.63 | 0.47 | 0.53 | -0.058 | [-0.237, 0.286] | 1140 | negative |
+| T3b | S&P 500 – US Treasury 20y+ (TLT) | w=0 | 0.62 | 0.49 | 0.51 | -0.018 | [-0.281, 0.281] | 1327 | negligible |
+| T4 | S&P 500 – Gold | w=0, k=2 | 0.49 | 0.40 | 0.58 | -0.180 | [-0.411, 0.080] | 482 | negative |
+| T4 | S&P 500 – US 10y Treasury | w=0, k=2 | 0.86 | 0.69 | 0.62 | 0.073 | [-0.213, 0.354] | 482 | positive lift |
+| T4 | S&P 500 – US 10y zero-coupon (GSW) | w=0, k=2 | 0.87 | 0.66 | 0.67 | -0.007 | [-0.307, 0.282] | 481 | negligible |
+| T4 | S&P 500 – US Treasury 20y+ (TLT) | w=0, k=2 | 0.88 | 0.55 | 0.57 | -0.024 | [-0.373, 0.325] | 482 | negligible |
+| T4b | S&P 500 – Gold | w=0, k=1 | 0.28 | 0.19 | 0.21 | -0.024 | [-0.134, 0.126] | 1265 | negligible |
+| T4b | S&P 500 – US 10y Treasury | w=0, k=1 | 0.29 | 0.23 | 0.21 | 0.013 | [-0.092, 0.148] | 1682 | negligible |
+| T4b | S&P 500 – US 10y zero-coupon (GSW) | w=0, k=1 | 0.28 | 0.25 | 0.21 | 0.034 | [-0.136, 0.218] | 1509 | negligible |
+| T4b | S&P 500 – US Treasury 20y+ (TLT) | w=0, k=1 | 0.28 | 0.24 | 0.21 | 0.025 | [-0.141, 0.226] | 1249 | negligible |
+| T7 | S&P 500 – US 10y Treasury | w=0 | 0.13 | 0.21 | 0.14 | 0.071 | [-0.063, 0.327] | 624 | positive lift |
+| T7 | S&P 500 – US 10y zero-coupon (GSW) | w=0 | 0.14 | 0.09 | 0.07 | 0.021 | [-0.070, 0.272] | 621 | negligible |
+| T7 | S&P 500 – US Treasury 20y+ (TLT) | w=0 | 0.06 | 0.12 | 0.12 | -0.007 | [-0.101, 0.025] | 624 | negligible |
+| T7b | S&P 500 – Gold | w=0 | 0.17 | 0.51 | 0.28 | 0.234 | [-0.032, 0.476] | 357 | positive lift |
+| T7b | S&P 500 – US 10y Treasury | w=0 | 0.61 | 0.42 | 0.28 | 0.142 | [-0.139, 0.401] | 311 | positive lift |
+| T7b | S&P 500 – US 10y zero-coupon (GSW) | w=0 | 0.45 | 0.36 | 0.28 | 0.084 | [-0.276, 0.437] | 158 | positive lift |
+| T7b | S&P 500 – US Treasury 20y+ (TLT) | w=5 | 0.84 | 0.28 | 0.29 | -0.016 | [-0.243, 0.391] | 281 | negligible |
+| T2 | S&P 500 – US 10y Treasury | — | — | — | — | — | — | — | not fitted: no signal (best gap -5.15pp <= 0) |
+| T2 | S&P 500 – US 10y zero-coupon (GSW) | — | — | — | — | — | — | — | not fitted: no signal (best gap -7.97pp <= 0) |
+| T2 | S&P 500 – US Treasury 20y+ (TLT) | — | — | — | — | — | — | — | not fitted: no signal (best gap -1.99pp <= 0) |
+| T2b | S&P 500 – Gold | — | — | — | — | — | — | — | not fitted: no signal (best gap -0.44pp <= 0) |
+| T2b | S&P 500 – US 10y Treasury | — | — | — | — | — | — | — | not fitted: no signal (best gap -7.07pp <= 0) |
+| T2b | S&P 500 – US 10y zero-coupon (GSW) | — | — | — | — | — | — | — | not fitted: no signal (best gap -6.73pp <= 0) |
+| T2b | S&P 500 – US Treasury 20y+ (TLT) | — | — | — | — | — | — | — | not fitted: no signal (best gap -3.58pp <= 0) |
+| T3 | S&P 500 – Gold | — | — | — | — | — | — | — | not fitted: no signal (best gap -2.83pp <= 0) |
+| T3b | S&P 500 – Gold | — | — | — | — | — | — | — | not fitted: no signal (best gap -2.42pp <= 0) |
+| T5 | S&P 500 – Gold | d=9 | 0.83 | — | — | — | — | — | ineligible (too few episodes on the test slice) |
+| T5 | S&P 500 – US 10y Treasury | d=119 | 0.37 | — | — | — | — | — | ineligible (too few episodes on the test slice) |
+| T5 | S&P 500 – US 10y zero-coupon (GSW) | d=45 | 0.79 | — | — | — | — | — | ineligible (too few episodes on the test slice) |
+| T5 | S&P 500 – US Treasury 20y+ (TLT) | d=51 | 0.70 | — | — | — | — | — | ineligible (too few episodes on the test slice) |
+| T6 | S&P 500 – Gold | — | — | — | — | — | — | — | not fitted: no common window (a=293 >= b=224) |
+| T6 | S&P 500 – US 10y Treasury | — | — | — | — | — | — | — | not fitted: no common window (a=1190 >= b=356) |
+| T6 | S&P 500 – US 10y zero-coupon (GSW) | d⁻=33, a=70, b=80 | 0.14 | — | — | — | — | — | ineligible (too few episodes on the test slice) |
+| T6 | S&P 500 – US Treasury 20y+ (TLT) | — | — | — | — | — | — | — | not fitted: no matched transitions |
+| T7 | S&P 500 – Gold | — | — | — | — | — | — | — | not fitted: no signal (best gap -1.36pp <= 0) |

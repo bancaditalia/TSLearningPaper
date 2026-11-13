@@ -1,0 +1,10 @@
+X,Y,Start,End
+sp500_synth_200,ust10y_synth_200,10000,10050
+sp500_synth_206,ust10y_synth_206,10300,10350
+sp500_synth_211,ust10y_synth_211,10550,10600
+sp500_synth_212,ust10y_synth_212,10600,10650
+sp500_synth_214,ust10y_synth_214,10700,10750
+sp500_synth_215,ust10y_synth_215,10750,10800
+sp500_synth_216,ust10y_synth_216,10800,10850
+sp500_synth_219,ust10y_synth_219,10950,11000
+sp500_synth_222,ust10y_synth_222,11100,11150

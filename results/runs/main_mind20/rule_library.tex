@@ -1,0 +1,24 @@
+% run 'main_mind20': train 2015-01-01..2021-12-31, test 2022-01-01..2024-12-31, window 50, real-pair stride 1
+\begin{sidewaysfigure}
+\centering
+\begin{tabular}{lllll}
+\toprule
+\# & Phenomenon & DatalogMTL body (schema) & Fitted & Source \\
+\midrule
+T1 & Safe haven & $\mathit{highVol}(X), \mathit{trendDown}(X), \diamondplus_{[0,w]} \mathit{isNegativeCorrelation(X,Y)} \to \mathit{safeHaven}(X,Y)$ & w & \cite{baur2010hedge,baur2010safehaven} \\
+T1b & Safe haven (backward) & $\mathit{highVol}(X), \mathit{trendDown}(X) \to \mathit{stressedDown}(X)$; $\mathit{isNegativeCorrelation}(X,Y), \diamondminus_{[0,w]} \mathit{stressedDown}(X) \to \mathit{safeHavenBw}(X,Y)$ & w & \cite{baur2010hedge,baur2010safehaven} \\
+T2 & Contagion / co-exceedance & $\mathit{tailDependent}(X,Y), \diamondplus_{[0,w]} \mathit{isPositiveCorrelation}(X,Y) \to \mathit{contagion}(X,Y)$ & w & \cite{longin2001extreme} \\
+T2b & Contagion / co-exceedance (backward) & $\mathit{isPositiveCorrelation}(X,Y), \diamondminus_{[0,w]} \mathit{tailDependent}(X,Y) \to \mathit{contagionBw}(X,Y)$ & w & \cite{longin2001extreme} \\
+T3 & Decoupling in calm markets & $\mathit{lowVol}(X), \mathit{lowVol}(Y), \diamondplus_{[0,w]} \mathit{isNoCorrelation}(X,Y) \to \mathit{decoupled}(X,Y)$ & w & \cite{ang2002asymmetric} \\
+T3b & Decoupling in calm markets (backward) & $\mathit{lowVol}(X), \mathit{lowVol}(Y) \to \mathit{bothCalm}(X,Y)$; $\mathit{isNoCorrelation}(X,Y), \diamondminus_{[0,w]} \mathit{bothCalm}(X,Y) \to \mathit{decoupledBw}(X,Y)$ & w & \cite{ang2002asymmetric} \\
+T4 & Lead-lag / price discovery under stress & $\mathit{highVol}(X), \diamondplus_{[0,w]} \mathit{leadsPositively}(X,Y,k) \to \mathit{leadsUnderStress}(X,Y,k)$ & w, k & \cite{hasbrouck1995onesecurity,dejong1997highfrequency} \\
+T4b & Lead-lag / price discovery under stress (backward) & $\mathit{leadsPositively}(X,Y,k), \diamondminus_{[0,w]} \mathit{highVol}(X) \to \mathit{leadsUnderStressBw}(X,Y,k)$ & w, k & \cite{hasbrouck1995onesecurity,dejong1997highfrequency} \\
+T5 & Hedge horizon (regime persistence) & $\mathit{isNegativeCorrelation}(X,Y), \boxplus_{[0,d]} \mathit{isNegativeCorrelation}(X,Y) \to \mathit{hedgeHorizon}(X,Y)$ & d & \cite{baur2010hedge} \\
+T6 & Correlation regime reversal & $\boxminus_{[0, d^{-}]}\mathit{isNegativeCorrelation}(X,Y), \boxplus_{[a,b]}\mathit{isPositiveCorrelation}(X,Y) \to \mathit{regimeReversal}(X,Y)$ & $d^-$, a, b & \cite{ang2002regimeshifts} \\
+T7 & Macro-conditioned co-movement & $\mathit{market}(X,C), \mathit{inflationHigh}(C), \diamondplus_{[0,w]} \mathit{isPositiveCorrelation}(X,Y) \to \mathit{macroConditioned}(X,Y)$ & w & \cite{bekaert2013risk} \\
+T7b & Macro-conditioned co-movement (backward) & $\mathit{isPositiveCorrelation}(X,Y), \mathit{market}(X,C), \diamondminus_{[0,w]} \mathit{inflationHigh}(C) \to \mathit{macroConditionedBw}(X,Y)$ & w & \cite{bekaert2013risk} \\
+\bottomrule
+\end{tabular}
+\caption{The rule library. Each template encodes a named phenomenon from the finance literature; constants are fitted per pair (Fig.~\ref{fig:rule-results}) by the 1-SE rule on the training period only.}
+\label{fig:rule-library}
+\end{sidewaysfigure}
